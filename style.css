@@ -1,0 +1,201 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    background-image: url('jack.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: scroll;
+    position: relative
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(123, 105, 167, 0.568); 
+    z-index: -1;
+}
+/* Cambie el color del header y la fuente*/
+header {
+    background-color: #e5dde6;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.hero {
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 50px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    height: auto;
+}
+/* Cambie los botones que teniamos por button y les puse otro estilo */
+button {
+   border: 0;
+   background-image:inear-gradient(
+    150deg,
+    #8f7193,
+    #a788ab,
+    #c0a0c3,
+    #dfcae1);
+    border-radius: 8px;
+    color:#fff;
+    display: flex;
+    font-size: 18px;
+    padding: 4px;
+    cursor: pointer;
+    transition: .3s;
+    display:inline-flex;
+}
+button span{
+    background-color: #8f7193;
+    padding: 16px 24px;
+    border-radius: 6px;
+    transition: .3s;
+}
+
+button:hover span{
+    background: none;
+    color: #240229
+}
+button:active{
+    transform: scale(0.9);
+}
+
+
+.services {
+    text-align: center;
+    padding: 40px 0;
+}
+.services-title {
+    font-size: 36px;
+    margin-bottom: 30px; /* Ajusta el espacio entre el título y los servicios */
+    color: #f5f5f5;
+}
+
+.service {
+    display: inline-block;
+    width: calc(20% - 20px);
+    margin: 0 10px;
+    padding: 20px;
+    background-color: #e5dde6;
+    border-radius: 5px;
+    text-align: left;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+.service h3 {
+    font-size: 24px; /* Aumenta el tamaño de la letra del título del servicio */
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.fotos h2{
+    text-align: center;
+    color: #f5f5f5;
+    font-size: 36px;
+}
+
+.fotos p{
+    text-align: center;
+    color: #f5f5f5;
+    margin-bottom: 20px;
+}
+
+/* Galeria de fotos */
+
+.galeria_contenedor{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.galeria{
+    display: flex;
+    width: 800px;
+    height: 430px;
+}
+.galeria img{
+    width: 0px;
+    flex-grow: 1;
+    object-fit: cover;
+    opacity: .8;
+    transition: .5s ease;
+}
+
+.galeria img:hover{
+    cursor: crosshair;
+    width: 500px;
+    opacity: 1;
+    filter: contrast(120%);
+}
+
+.contact {
+    text-align: center;
+    padding: 30px 0;
+    background-color: #e5dde6;
+    margin: 0;
+}
+
+.contact h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contact a {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #8f7193;
+    color: #fff;
+}
+.textoImagen{
+    color: white;
+    margin-bottom: 20px;
+}
