@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="login-styles.css">
+    <script src="jsLogin.js" defer></script>
     <title>Iniciar Sesión</title>
 </head>
 <body>
     <div class="container">
         <div class="login-container">
-            <form class="login-form">
+            <form id="login-form" class="login-form" method="post">
                 <h2>Iniciar Sesión</h2>
                 <label for="username">Usuario:</label>
                 <input type="text" id="username" name="username" required>
