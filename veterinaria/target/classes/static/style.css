@@ -61,9 +61,22 @@ nav ul li a {
     margin-bottom: 20px;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    margin-right: 0; /* Empuja el logo hacia la izquierda */
+}
+
 .logo img {
-    width: 50px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    width: 50px;
     height: auto;
+    margin-right: 10px; /* Ajusta el espacio entre la imagen y el título */
+}
+
+.logo h1 {
+    font-size: 24px; /* Ajusta el tamaño del título */
+    color: #333;
+    margin: 0; /* Elimina el margen superior e inferior del título */
 }
 /* Cambie los botones que teniamos por button y les puse otro estilo */
 button {

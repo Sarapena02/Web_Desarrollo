@@ -24,14 +24,13 @@ public class MascotaController {
         return "mostrarMascotas"; 
     }
 
-    //Busca una mascota por su id
+    //Busca una mascota por su id en la url
     @GetMapping("/find/{id}")
     public String buscarMascota(Model model, @PathVariable("id") int id){
         Mascota mascota = mascotaService.SearchById(id);
         if(mascota != null)
         model.addAttribute("mascota", mascota);
-
         return "buscarMascota";
     }
-    
+   
 }
