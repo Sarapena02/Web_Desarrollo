@@ -14,11 +14,11 @@ public class MascotaRepository {
     private Map<Integer, Mascota> mascotas = new HashMap<>();
 
     public MascotaRepository(){
-        mascotas.put(1, new Mascota("Jack", "Siames", 2, "Hipotrofia", "Activo"));
-        mascotas.put(2, new Mascota("Sasha", "Siames", 3, "Hipotrofia", "Activo"));
-        mascotas.put(3, new Mascota("Jack", "Siames", 2, "Hipotrofia", "Activo"));
-        mascotas.put(4, new Mascota("Jack", "Siames", 2, "Hipotrofia", "Activo"));
-        mascotas.put(5, new Mascota("Jack", "Siames", 2, "Hipotrofia", "Activo"));
+        mascotas.put(1, new Mascota("Jack", "Siames", 2, "NA", "Activo","/jack1.jpeg"));
+        mascotas.put(2, new Mascota("Sasha", "Siames", 3, "Hipotrofia", "Activo",""));
+        mascotas.put(3, new Mascota("Jack", "Siames", 2, "Hipotrofia", "Activo",""));
+        mascotas.put(4, new Mascota("Jack", "Siames", 2, "Hipotrofia", "Activo",""));
+        mascotas.put(5, new Mascota("Jack", "Siames", 2, "Hipotrofia", "Activo",""));
     }
 
     public Mascota findById(Integer id){

@@ -6,13 +6,15 @@ public class Mascota {
     public int edad;
     public String enfermedad;
     public String estado;
+    public String imagen;
 
-    public Mascota(String nombre, String raza, int edad, String enfermedad, String estado) {
+    public Mascota(String nombre, String raza, int edad, String enfermedad, String estado, String imagen) {
         this.nombre = nombre;
         this.raza = raza;
         this.edad = edad;
         this.enfermedad = enfermedad;
         this.estado = estado;
+        this.imagen = imagen;
     }
 
     public String getNombre() {
@@ -55,6 +57,12 @@ public class Mascota {
         this.estado = estado;
     }
 
-    
-    
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
 }
