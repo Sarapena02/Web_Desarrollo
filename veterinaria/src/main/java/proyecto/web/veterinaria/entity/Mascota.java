@@ -17,6 +17,10 @@ public class Mascota {
         this.imagen = imagen;
     }
 
+    public Mascota(String imagen) {
+        this.imagen = imagen;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -65,11 +69,4 @@ public class Mascota {
         this.imagen = imagen;
     }
 
-<<<<<<< Updated upstream
-=======
-
-
-    
-    
->>>>>>> Stashed changes
 }
