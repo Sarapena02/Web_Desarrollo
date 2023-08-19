@@ -65,4 +65,11 @@ public class Mascota {
         this.imagen = imagen;
     }
 
+<<<<<<< Updated upstream
+=======
+
+
+    
+    
+>>>>>>> Stashed changes
 }
