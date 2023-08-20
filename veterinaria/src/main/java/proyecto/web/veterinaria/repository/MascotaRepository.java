@@ -20,6 +20,7 @@ public class MascotaRepository {
         mascotas.put(3, new Mascota("Jack", "Siames", 2, "Hipotrofia", "Activo", "https://estaticos-cdn.prensaiberica.es/clip/ce847ef4-8930-42e0-9c1d-9929902d3820_16-9-discover-aspect-ratio_default_0.jpg"));
         mascotas.put(4, new Mascota("Jack", "Siames", 2, "Hipotrofia", "Activo", "https://estaticos-cdn.prensaiberica.es/clip/ce847ef4-8930-42e0-9c1d-9929902d3820_16-9-discover-aspect-ratio_default_0.jpg"));
         mascotas.put(5, new Mascota("Jack", "Siames", 2, "Hipotrofia", "Activo", "https://estaticos-cdn.prensaiberica.es/clip/ce847ef4-8930-42e0-9c1d-9929902d3820_16-9-discover-aspect-ratio_default_0.jpg"));
+>>>>>>> Stashed changes
     }
 
     public Mascota findById(Integer id){
