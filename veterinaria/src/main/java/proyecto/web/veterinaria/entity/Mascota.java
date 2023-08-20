@@ -64,12 +64,4 @@ public class Mascota {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-
-<<<<<<< Updated upstream
-=======
-
-
-    
-    
->>>>>>> Stashed changes
 }
