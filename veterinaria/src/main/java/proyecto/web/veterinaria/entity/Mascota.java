@@ -1,20 +1,22 @@
 package proyecto.web.veterinaria.entity;
 
 public class Mascota {
-    public String nombre;
-    public String raza;
-    public int edad;
-    public String enfermedad;
-    public String estado;
-    public String imagen;
+    private Integer id;
+    private String nombre;
+    private String raza;
+    private int edad;
+    private String enfermedad;
+    private String estado;
+    private String imagen;
 
-    public Mascota(String nombre, String raza, int edad, String enfermedad, String estado, String imagen) {
+    public Mascota(String nombre, String raza, int edad, String enfermedad, String estado, String imagen, Integer id) {
         this.nombre = nombre;
         this.raza = raza;
         this.edad = edad;
         this.enfermedad = enfermedad;
         this.estado = estado;
         this.imagen = imagen;
+        this.id = id;
     }
 
     public String getNombre() {
@@ -63,6 +65,14 @@ public class Mascota {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
 }
