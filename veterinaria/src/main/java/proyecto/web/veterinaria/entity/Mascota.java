@@ -74,5 +74,4 @@ public class Mascota {
     public void setId(Integer id) {
         this.id = id;
     }
-
 }

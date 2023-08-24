@@ -210,3 +210,33 @@ footer {
     background-color: #8f7193;
     color: #fff;
 }
+.mascota-imagen {
+    max-width: 150px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    margin-right: 15px;
+}
+
+.mascota-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.nombre-mascota {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.subtitulo {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.detalle {
+    font-size: 16px;
+    margin: 3px 0;
+}
+
