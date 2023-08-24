@@ -39,12 +39,17 @@
         <tbody>
 
         <tr th:each=" mascota: ${mascotas}">
-        <td><img th:src="${mascota.imagen}"></td>
+        <td><img th:src="'/' + ${mascota.imagen}"></td>
         <td th:text="${mascota.nombre}"></td>
         <td th:text="${mascota.raza}"></td>
         <td th:text="${mascota.edad}"></td>
         <td th:text="${mascota.enfermedad}"></td>
         <td th:text="${mascota.estado}"></td>
+        <td>
+            <a class="btn btn-info" th:href="@{/mascotas/update/{id}(id=${mascota.id})}">Modificar</a>
+            <a class="btn btn-info" th:href="@{/mascotas/delete/{id}(id=${mascota.id})}">Eliminar</a>
+
+        </td>
         </tr>
         </tbody>
         </table>
