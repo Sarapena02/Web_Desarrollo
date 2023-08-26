@@ -67,37 +67,36 @@ nav ul li a {
     margin: 0; /* Elimina el margen superior e inferior del título */
 }
 /* Cambie los botones que teniamos por button y les puse otro estilo */
-button {
-   border: 0;
-   background-image:inear-gradient(
-    150deg,
-    #8f7193,
-    #a788ab,
-    #c0a0c3,
-    #dfcae1);
-    border-radius: 8px;
-    color:#fff;
-    display: flex;
-    font-size: 18px;
-    padding: 4px;
-    cursor: pointer;
-    transition: .3s;
-    display:inline-flex;
-}
-button span{
-    background-color: #8f7193;
-    padding: 16px 24px;
-    border-radius: 6px;
-    transition: .3s;
-}
-
-button:hover span{
-    background: none;
-    color: #240229
-}
-button:active{
-    transform: scale(0.9);
-}
+.button {
+    border: 0;
+    background-image: linear-gradient(
+     150deg,
+     #8f7193,
+     #c0a0c3,
+     #9c879e);
+     border-radius: 8px;
+     color:#fff;
+     display: flex;
+     font-size: 18px;
+     padding: 4px;
+     cursor: pointer;
+     transition: .3s;
+     display:inline-flex;
+ }
+ .button span{
+     background-color: #8f7193;
+     padding: 16px 24px;
+     border-radius: 6px;
+     transition: .1s;
+ }
+ 
+ .button:hover {
+     background: none;
+     color: #53285a
+ }
+ .button:active{
+     transform: scale(0.3);
+ } 
 
 .mostrarMascota {
     max-width: 800px;

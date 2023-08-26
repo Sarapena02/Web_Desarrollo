@@ -81,14 +81,13 @@ nav ul li a {
     color: #333;
     margin: 0;
 }
-button {
+.button {
     border: 0;
-    background-image:inear-gradient(
+    background-image: linear-gradient(
      150deg,
      #8f7193,
-     #a788ab,
      #c0a0c3,
-     #dfcae1);
+     #9c879e);
      border-radius: 8px;
      color:#fff;
      display: flex;
@@ -98,20 +97,20 @@ button {
      transition: .3s;
      display:inline-flex;
  }
- button span{
+ .button span{
      background-color: #8f7193;
      padding: 16px 24px;
      border-radius: 6px;
-     transition: .3s;
+     transition: .1s;
  }
  
- button:hover span{
+ .button:hover {
      background: none;
-     color: #240229
+     color: #53285a
  }
- button:active{
-     transform: scale(0.9);
- }
+ .button:active{
+     transform: scale(0.3);
+ } 
  
  
 /* Contenedor de la tabla */

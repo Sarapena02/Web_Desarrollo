@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar Mascotas</title>
+    <link rel="stylesheet" href="/Imagenes/mostrarMascotas.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="/Imagenes/icon.png" alt="Logo de la veterinaria">
+            <h1>Veterinaria PetQuitas</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><button href="#inicio" ><span>Inicio</span></button></li>
+                <li><button href="#servicios" ><span>Servicios</span></button></li>
+                <li><button href="#contacto" ><span>Contacto</span></button></li>
+                <a href="/LogIn"><button><span>Log In</span></button></a>
+            </ul>
+        </nav>
+    </header>
+
+<div class ="container">
+    <div style="width: 80%;">
+        <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+        <th scope="col">Foto</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Raza</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Enfermedad</th>
+        <th scope="col">Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each=" mascota: ${mascotas}">
+        <td><img th:src="'/' + ${mascota.imagen}"></td>
+        <td th:text="${mascota.nombre}"></td>
+        <td th:text="${mascota.raza}"></td>
+        <td th:text="${mascota.edad}"></td>
+        <td th:text="${mascota.enfermedad}"></td>
+        <td th:text="${mascota.estado}"></td>
+        <td>
+            <a class="btn btn-info" th:href="@{/mascotas/update/{id}(id=${mascota.id})}">Modificar</a>
+            <a class="btn btn-info" th:href="@{/mascotas/delete/{id}(id=${mascota.id})}">Eliminar</a>
+
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+</div>
+        <footer>
+            <p>&copy; 2023 Veterinaria PetQuitas. Todos los derechos reservados.</p>
+        </footer>
+
+</body>
+</html>
