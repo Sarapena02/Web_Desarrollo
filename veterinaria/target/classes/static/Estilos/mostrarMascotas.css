@@ -10,7 +10,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
     color: #333;
-    background-image: url('Muffy.jpg');
+    background-image: url('/Imagenes/Muffy.jpg');
     background-size: cover;
     background-position: center;
     overflow: scroll;

@@ -27,6 +27,7 @@
         <th scope="col">Cedula</th>
         <th scope="col">Correo</th>
         <th scope="col">Celular</th>
+        <th scope="col">Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -37,8 +38,8 @@
         <td th:text="${cliente.correo}"></td>
         <td th:text="${cliente.celular}"></td>
         <td>
-            <a class="btn btn-info" th:href="@{/clientes/update/{id}(id=${cliente.id})}">Modificar</a>
-            <a class="btn btn-info" th:href="@{/clientes/delete/{id}(id=${cliente.id})}">Eliminar</a>
+            <a class="button" th:href="@{/clientes/update/{id}(id=${cliente.id})}">Modificar</a>
+            <a class="button" th:href="@{/clientes/delete/{id}(id=${cliente.id})}">Eliminar</a>
 
         </td>
         </tr>
