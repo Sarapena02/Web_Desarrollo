@@ -1,9 +1,15 @@
-Veterinaria PetQuitas
+#**VETERINARIA PETQUITAS**
+-----------------------------------------------------------------
 
-Integrantes:
-Juan Hernandez
-Sara Peña
-Daniela Florez
+##**Integrantes:**
+-Juan Hernandez
+-Sara Peña
+-Daniela Florez
+---------------------------------------------------------------
 
-Veterinaria PetQuitas es una veterinaria enfocada en el cuidado de felinos. Conocemos el valor que estos tienen en el hogar de muchos colombianos y queremos que 
-conozcan de los servicios que ofrece PetQuitas
+La pagina Web de la Veterinaria PetQuitas es una veterinaria que esta enfocada en el cuidado de felinos. 
+
+
+##Caracteristicas clave
+
+
