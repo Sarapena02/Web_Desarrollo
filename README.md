@@ -1,7 +1,7 @@
-#**VETERINARIA PETQUITAS**
+**VETERINARIA PETQUITAS**
 -----------------------------------------------------------------
 
-##**Integrantes:**
+**Integrantes:**
 -Juan Hernandez
 -Sara Peña
 -Daniela Florez
