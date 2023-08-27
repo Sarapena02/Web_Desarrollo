@@ -32,17 +32,21 @@ public class ClienteController {
     @PostMapping("/login")
     public String login(@RequestParam String correo, @RequestParam String cedula, HttpSession session) {
         Cliente cliente = clienteService.autenticar(correo, cedula);
-        if(cliente != null){
+        if (cliente != null) {
             session.setAttribute("cliente", cliente);
+            System.out.println("Cliente autenticado: " + cliente.getNombre());
             return "redirect:/clientes/find/" + cliente.getId();
-        }else
-            return "login";
-    }
+        } else {
+            System.out.println("Autenticación fallida para correo: " + correo);
+            return "Inicio/LogIn";
+        }
+}
+
 
     @GetMapping("/all")
     public String getAll(Model model) {
         model.addAttribute("clientes", clienteService.findAll());
-        return "mostrarClientes";
+        return "CRUD_Cliente/mostrarClientes";
     }
 
     @GetMapping("/find/{id}")
@@ -56,17 +60,18 @@ public class ClienteController {
             mascotasCliente.add(mascota);
         }
         
-        if (cliente != null)
+        if (cliente != null) {
             model.addAttribute("cliente", cliente);
             model.addAttribute("mascotas", mascotasCliente);
-        return "buscarCliente";
+        }
+        return "CRUD_Cliente/buscarCliente";
     }
 
     @GetMapping("/add")
     public String mostrarFormularioCrear(Model model) {
         Cliente cliente = new Cliente("", "", "", "", 0,Arrays.asList());
         model.addAttribute("cliente", cliente);
-        return "crear_cliente";
+        return "CRUD_Cliente/crear_cliente";
     }
 
     @PostMapping("/agregar")
@@ -85,7 +90,7 @@ public class ClienteController {
     public String actualizarCliente(@PathVariable("id") int id, Model model) {
         Cliente cliente = clienteService.SearchById(id);
         model.addAttribute("cliente", cliente);
-        return "actualizar_cliente";
+        return "CRUD_Cliente/actualizar_cliente";
     }
 
     @PostMapping("/update/{id}")

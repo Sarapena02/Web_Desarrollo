@@ -12,7 +12,7 @@ public class ErrorController extends RuntimeException{
     @ExceptionHandler(NotFoundException.class)
     public String error(Model model, NotFoundException e){
         model.addAttribute("id", e.getId());
-        return "pagina_error";
+        return "Error/pagina_error";
         
     }
 }

@@ -30,7 +30,7 @@ public class MascotaController {
     @GetMapping("/all")
     public String getAll(Model model) {
         model.addAttribute("mascotas", mascotaService.findAll());
-        return "mostrarMascotas"; 
+        return "CRUD_Mascota/mostrarMascotas"; 
     }
 
     //Busca una mascota por su id en la url
@@ -43,14 +43,14 @@ public class MascotaController {
             throw new NotFoundException(id);
         }
         
-        return "buscarMascota";
+        return "CRUD_Mascota/buscarMascota";
     }
 
     @GetMapping("/add")
     public String mostrarFormularioCrear(Model model){
         Mascota mascota = new Mascota("", "", 0, "", "", "",0);
         model.addAttribute("mascota", mascota);
-        return "crear_mascota";
+        return "CRUD_Mascota/crear_mascota";
     }
 
     @PostMapping("/agregar")
@@ -78,7 +78,7 @@ public class MascotaController {
     public String actualizarMascota(@PathVariable("id") int id, Model model){
         Mascota mascota = mascotaService.SearchById(id);
         model.addAttribute("mascota", mascota);
-        return "actualizar_mascota";
+        return "CRUD_Mascota/actualizar_mascota";
     }
 
     @PostMapping("/update/{id}")
