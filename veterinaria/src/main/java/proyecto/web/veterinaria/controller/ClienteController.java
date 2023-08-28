@@ -53,17 +53,23 @@ public class ClienteController {
     public String buscarCliente(Model model, @PathVariable("id") int id) {
         Cliente cliente = clienteService.SearchById(id);
 
-        //buscar mascotas del cliente
-        ArrayList<Mascota> mascotasCliente = new ArrayList<>();
-        for(int i=0;i<cliente.getMascotasId().size();i++){
-            Mascota mascota = mascotaService.SearchById(cliente.getMascotasId().get(i));
-            mascotasCliente.add(mascota);
+         if (cliente != null) {
+             ArrayList<Mascota> mascotasCliente = new ArrayList<>();
+            for(int i=0;i<cliente.getMascotasId().size();i++){
+                Mascota mascota = mascotaService.SearchById(cliente.getMascotasId().get(i));
+                mascotasCliente.add(mascota);
         }
-        
-        if (cliente != null) {
             model.addAttribute("cliente", cliente);
             model.addAttribute("mascotas", mascotasCliente);
+        }else{
+            throw new NotFoundException(id,true);
         }
+
+        //buscar mascotas del cliente
+       
+        
+       
+        
         return "CRUD_Cliente/buscarCliente";
     }
 

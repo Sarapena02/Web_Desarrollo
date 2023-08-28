@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar Mascota</title>
+    <title>Informacíon del cliente</title>
     <link rel="stylesheet" href="/Estilos/buscarMascota.css">
 </head>
 <body>
@@ -13,8 +13,14 @@
             <h1>Veterinaria PetQuitas</h1>
         </div>
         <nav>
-            <a class="button" href="#" onclick="history.go(-1); return false;"><span>Volver</span></a>
+            <ul>
+                <li><a class="button" href="/"><span>Inicio</span></a></li>
+                <li><a class="button" href="/#servicios"><span>Servicios</span></a></li>
+                <li><a class="button" href="/#contacto"><span>Contacto</span></a></li>
+                <a class="button" href="/LogIn"><span>Log In</span></a>
+            </ul>
         </nav>
+        
     </header>
 
     <div class="mostrarMascota">
@@ -45,7 +51,7 @@
                 <ul class="mascota-items">
                     <li th:each="mascota : ${mascotas}">
                         <div class="mascota-item">
-                            <img th:src="@{${mascota.imagen}}" alt="Imagen de mascota" class="mascota-imagen">
+                            <img th:src="@{'/' + ${mascota.imagen}}" alt="Imagen de mascota" class="mascota-imagen">
 
                             <div class="mascota-detalle">
                                 <h3 class="nombre-mascota" th:text="${mascota.nombre}"></h3>
