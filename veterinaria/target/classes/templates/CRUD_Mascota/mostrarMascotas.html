@@ -45,11 +45,7 @@
         <td th:text="${mascota.edad}"></td>
         <td th:text="${mascota.enfermedad}"></td>
         <td th:text="${mascota.estado}"></td>
-        <td>
-            <a class="button" th:href="@{/mascotas/update/{id}(id=${mascota.id})}">Modificar</a>
-            <a class="button" th:href="@{/mascotas/delete/{id}(id=${mascota.id})}">Eliminar</a>
-
-        </td>
+        
         </tr>
         </tbody>
         </table>

@@ -29,12 +29,12 @@ public class MascotaController {
 
     //Busca una mascota por su id en la url
     @GetMapping("/find/{id}")
-    public String buscarMascota(Model model, @PathVariable("id") int id){
+    public String buscarMascota(Model model, @PathVariable("id") Long id){
         Mascota mascota = mascotaService.SearchById(id);
         if(mascota != null){
             model.addAttribute("mascota", mascota);
         }else{
-            throw new NotFoundException(id,false);
+            //throw new NotFoundException(id,false);
         }
         
         return "CRUD_Mascota/buscarMascota";
@@ -42,7 +42,7 @@ public class MascotaController {
 
     @GetMapping("/add")
     public String mostrarFormularioCrear(Model model){
-        Mascota mascota = new Mascota("", "", 0, "", "", "",0);
+        Mascota mascota = new Mascota("", "", 0, "", "", "");
         model.addAttribute("mascota", mascota);
         return "CRUD_Mascota/crear_mascota";
     }
@@ -56,13 +56,13 @@ public class MascotaController {
     }
 
     @GetMapping("/delete/{id}")
-    public String eliminarMascota(@PathVariable("id") int id){
+    public String eliminarMascota(@PathVariable("id") Long id){
         mascotaService.deleteById(id);
         return "redirect:/mascotas/all";
     }
 
     @GetMapping("/update/{id}")
-    public String actualizarMascota(@PathVariable("id") int id, Model model){
+    public String actualizarMascota(@PathVariable("id") Long id, Model model){
         Mascota mascota = mascotaService.SearchById(id);
         model.addAttribute("mascota", mascota);
         return "CRUD_Mascota/actualizar_mascota";

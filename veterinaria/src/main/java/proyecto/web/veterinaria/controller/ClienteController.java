@@ -3,6 +3,7 @@ package proyecto.web.veterinaria.controller;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,9 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import jakarta.servlet.http.HttpSession;
 import proyecto.web.veterinaria.entity.Cliente;
 import proyecto.web.veterinaria.entity.Mascota;
 import proyecto.web.veterinaria.service.ClienteService;
@@ -29,7 +28,7 @@ public class ClienteController {
     @Autowired
     MascotaService mascotaService;
 
-    @PostMapping("/login")
+    /*@PostMapping("/login")
     public String login(@RequestParam String correo, @RequestParam String cedula, HttpSession session) {
         Cliente cliente = clienteService.autenticar(correo, cedula);
         if (cliente != null) {
@@ -40,7 +39,7 @@ public class ClienteController {
             System.out.println("Autenticación fallida para correo: " + correo);
             return "Inicio/LogIn";
         }
-}
+    }*/
 
 
     @GetMapping("/all")
@@ -50,10 +49,19 @@ public class ClienteController {
     }
 
     @GetMapping("/find/{id}")
-    public String buscarCliente(Model model, @PathVariable("id") int id) {
+    public String buscarCliente(Model model, @PathVariable("id") Long id) {
         Cliente cliente = clienteService.SearchById(id);
 
-         if (cliente != null) {
+        ArrayList<Mascota> mascotasCliente = new ArrayList<>();
+        mascotasCliente.addAll(mascotasCliente);
+        if(mascotasCliente.size()>0){
+            cliente.setNombre("no hay");
+            
+        }
+        model.addAttribute("cliente", cliente);
+        model.addAttribute("mascotas", mascotasCliente);
+
+         /*if (cliente != null) {
              ArrayList<Mascota> mascotasCliente = new ArrayList<>();
             for(int i=0;i<cliente.getMascotasId().size();i++){
                 Mascota mascota = mascotaService.SearchById(cliente.getMascotasId().get(i));
@@ -62,20 +70,15 @@ public class ClienteController {
             model.addAttribute("cliente", cliente);
             model.addAttribute("mascotas", mascotasCliente);
         }else{
-            throw new NotFoundException(id,true);
-        }
+            //throw new NotFoundException(id,true);
+        }*/
 
-        //buscar mascotas del cliente
-       
-        
-       
-        
         return "CRUD_Cliente/buscarCliente";
     }
 
     @GetMapping("/add")
     public String mostrarFormularioCrear(Model model) {
-        Cliente cliente = new Cliente("", "", "", "", 0,Arrays.asList());
+        Cliente cliente = new Cliente("", "", "", "");
         model.addAttribute("cliente", cliente);
         return "CRUD_Cliente/crear_cliente";
     }
@@ -87,13 +90,13 @@ public class ClienteController {
     }
 
     @GetMapping("/delete/{id}")
-    public String eliminarCliente(@PathVariable("id") int id) {
+    public String eliminarCliente(@PathVariable("id") Long id) {
         clienteService.deleteById(id);
         return "redirect:/clientes/all";
     }
     
     @GetMapping("/update/{id}")
-    public String actualizarCliente(@PathVariable("id") int id, Model model) {
+    public String actualizarCliente(@PathVariable("id") Long id, Model model) {
         Cliente cliente = clienteService.SearchById(id);
         model.addAttribute("cliente", cliente);
         return "CRUD_Cliente/actualizar_cliente";

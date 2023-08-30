@@ -6,11 +6,11 @@ import proyecto.web.veterinaria.entity.Mascota;
 
 public interface MascotaService {
 
-    public Mascota SearchById(Integer id);
+    public Mascota SearchById(Long id);
 
     public Collection<Mascota> findAll();
 
-    public void deleteById(Integer id);
+    public void deleteById(Long id);
 
     public void updateById(Mascota mascota);
 

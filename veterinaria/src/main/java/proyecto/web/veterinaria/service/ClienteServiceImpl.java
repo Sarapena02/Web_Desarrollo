@@ -15,8 +15,8 @@ public class ClienteServiceImpl implements ClienteService{
     ClienteRepository clienteRepository;
     
     @Override
-    public Cliente SearchById(Integer id) {
-        return clienteRepository.findById(id);
+    public Cliente SearchById(Long id) {
+        return clienteRepository.findById(id).get();
     }
 
     @Override
@@ -25,24 +25,24 @@ public class ClienteServiceImpl implements ClienteService{
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         clienteRepository.deleteById(id);
     }
 
     @Override
     public void updateById(Cliente cliente) {
-        clienteRepository.updateById(cliente);
+        clienteRepository.save(cliente);
     }
 
     @Override
     public void add(Cliente cliente) {
-        clienteRepository.add(cliente);
+        clienteRepository.save(cliente);
     }
 
-    @Override
+   /* @Override
     public Cliente autenticar(String correo, String cedula) {
         return clienteRepository.autenticar(correo, cedula);
-    }
+    }*/ 
 
     
 }

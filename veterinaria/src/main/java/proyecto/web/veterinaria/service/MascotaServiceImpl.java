@@ -15,8 +15,8 @@ public class MascotaServiceImpl implements MascotaService{
     MascotaRepository mascotaRepository;
 
     @Override
-    public Mascota SearchById(Integer id) {
-        return mascotaRepository.findById(id);
+    public Mascota SearchById(Long id) {
+        return mascotaRepository.findById(id).get();
     }
 
     @Override
@@ -25,18 +25,18 @@ public class MascotaServiceImpl implements MascotaService{
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         mascotaRepository.deleteById(id);
     }
 
     @Override
     public void updateById(Mascota mascota) {
-        mascotaRepository.updateById(mascota);
+        mascotaRepository.save(mascota);
     }
 
     @Override
     public void add(Mascota mascota) {
-        mascotaRepository.add(mascota);
+        mascotaRepository.save(mascota);
     }
     
 }
