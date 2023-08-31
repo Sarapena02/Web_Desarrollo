@@ -10,12 +10,12 @@ public class ControllerInicio {
 
     @GetMapping()
     public String inicio() {
-        return "index";
+        return "Inicio/index";
     }
 
     @GetMapping("/LogIn")
     public String login() {
-        return "LogIn";
+        return "Inicio/LogIn";
     }
    
 }

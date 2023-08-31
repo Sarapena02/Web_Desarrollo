@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informacíon del cliente</title>
+    <link rel="stylesheet" href="/Estilos/buscarMascota.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/Imagenes/icon.png" alt="Logo de la veterinaria">
+            <h1>Veterinaria PetQuitas</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a class="button" href="/"><span>Inicio</span></a></li>
+                <li><a class="button" href="/#servicios"><span>Servicios</span></a></li>
+                <li><a class="button" href="/#contacto"><span>Contacto</span></a></li>
+                <a class="button" href="/LogIn"><span>Log In</span></a>
+            </ul>
+        </nav>
+        
+    </header>
+
+    <div class="mostrarMascota">
+        <h1 class="tituloInfo">Informacion del cliente</h1>
+        <div class="top-section">
+            <div class="pet-details">
+                <div class="detail">
+                    <p class="label"><strong>Nombre:</strong></p>
+                    <p class="value" th:text="${cliente.nombre}"></p>
+                </div>
+                <div class="detail">
+                    <p class="label"><strong>Cedula:</strong></p>
+                    <p class="value" th:text="${cliente.cedula}"></p>
+                </div>
+                <div class="detail">
+                    <p class="label"><strong>Correo:</strong></p>
+                    <p class="value" th:text="${cliente.correo}"></p>
+                </div>
+                <div class="detail">
+                    <p class="label"><strong>Celular:</strong></p>
+                    <p class="value" th:text="${cliente.celular}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-section">
+            <div class="mascotas-list">
+                <h2 class="subtitulo">Mascotas:</h2>
+                <ul class="mascota-items">
+                    <li th:each="mascota : ${mascotas}">
+                        <div class="mascota-item">
+                            <img th:src="@{'/' + ${mascota.imagen}}" alt="Imagen de mascota" class="mascota-imagen">
+
+                            <div class="mascota-detalle">
+                                <h3 class="nombre-mascota" th:text="${mascota.nombre}"></h3>
+                                <p class="detalle"><strong>Raza:</strong> <span th:text="${mascota.raza}"></span></p>
+                                <p class="detalle"><strong>Edad:</strong> <span th:text="${mascota.edad}"></span> años</p>
+                                <p class="detalle"><strong>Enfermedad:</strong> <span th:text="${mascota.enfermedad}"></span></p>
+                                <p class="detalle"><strong>Estado:</strong> <span th:text="${mascota.estado}"></span></p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Veterinaria PetQuitas. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
