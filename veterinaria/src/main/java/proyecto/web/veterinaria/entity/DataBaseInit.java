@@ -34,7 +34,7 @@ public class DataBaseInit implements ApplicationRunner{
 
         for(Mascota mascota : mascotaRepository.findAll()){
             mascota.setCliente(cliente);
-            mascotaRepository.save(mascota);
+            mascotaRepository.save(mascota);    
         }
     }
     
