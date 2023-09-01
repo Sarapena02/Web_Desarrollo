@@ -13,6 +13,7 @@ public class Mascota {
     //id generado automatico
     private Long id;
 
+    //Se agregan los atributos
     private String nombre;
     private String raza;
     private int edad;
@@ -20,10 +21,14 @@ public class Mascota {
     private String estado;
     private String imagen;
 
+    //Cliente de la mascota con relacion de muchos a uno
     @ManyToOne
     private Cliente cliente;
 
-    
+    //Constructores
+    public Mascota() {
+        
+    }
     public Mascota(String nombre, String raza, int edad, String enfermedad, String estado, String imagen) {
         this.nombre = nombre;
         this.raza = raza;
@@ -33,6 +38,7 @@ public class Mascota {
         this.imagen = imagen;
     }
 
+    //Getters and Setters
     public String getNombre() {
         return nombre;
     }
