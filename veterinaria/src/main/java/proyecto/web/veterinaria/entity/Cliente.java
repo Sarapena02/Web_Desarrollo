@@ -3,23 +3,42 @@ package proyecto.web.veterinaria.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+
+@Entity
 public class Cliente {
-    private Integer id;
+
+    @Id
+    @GeneratedValue
+    //id generado automatico
+    private Long id;
+
+    //Se agregan los atributos
     private String nombre;
     private String cedula;
     private String correo;
     private String celular;
-    private List<Integer> mascotasId = new ArrayList<>();
 
-    public Cliente(String nombre, String cedula, String correo, String celular, Integer id, List<Integer> mascotasId) {
+    //lista de mascotas con relacion de uno a muchos
+    @OneToMany(mappedBy = "cliente")
+    private List<Mascota> mascotas = new ArrayList<>();
+
+    //Constructores
+    public Cliente() {
+        
+    }
+    public Cliente(String nombre, String cedula, String correo, String celular) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.correo = correo;
         this.celular = celular;
-        this.id = id;
-        this.mascotasId = mascotasId;
     }
 
+    //Getters and Setters
     public String getNombre() {
         return nombre;
     }
@@ -52,19 +71,19 @@ public class Cliente {
         this.celular = celular;
     }
     
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     
-    public List<Integer> getMascotasId() {
-        return mascotasId;
+    public List<Mascota> getMascotas() {
+        return mascotas;
     }
-
-    public void setMascotasId(List<Integer> mascotasId) {
-        this.mascotasId = mascotasId;
+    
+    public void setMascotas(List<Mascota> mascotas) {
+        this.mascotas = mascotas;
     }
 }

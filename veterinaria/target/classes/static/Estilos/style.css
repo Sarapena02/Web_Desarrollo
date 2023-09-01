@@ -211,3 +211,50 @@ footer {
     color: white;
     margin-bottom: 20px;
 }
+/* Estilos para el dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px; /* Agregado para redondear los bordes del dropdown */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px 20px; /* Ajuste del padding para un espacio más cómodo */
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s; /* Agregado para una transición suave */
+}
+
+.dropdown-content a:hover {
+    background-color: #e5e5e5; /* Cambio en el color de fondo al pasar el cursor */
+}
+
+/* Estilos para los botones dentro del dropdown */
+.dropdown-content a[href^="/logInVet"],
+.dropdown-content a[href^="/logInCliente"] {
+    background-color: #8f7193;
+    color: white;
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+    padding: 10px 20px; /* Ajuste del padding para un espacio más cómodo */
+}
+
+/* Cambio de color al pasar el cursor por encima del botón */
+.dropdown-content a[href^="/logInVet"]:hover,
+.dropdown-content a[href^="/logInCliente"]:hover {
+    background-color: #53285a;
+    transform: scale(1.05); /* Cambio de escala al pasar el cursor */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}

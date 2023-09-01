@@ -1,8 +1,5 @@
 package proyecto.web.veterinaria.controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpSession;
 import proyecto.web.veterinaria.entity.Cliente;
-import proyecto.web.veterinaria.entity.Mascota;
 import proyecto.web.veterinaria.service.ClienteService;
-import proyecto.web.veterinaria.service.MascotaService;
 
 @Controller
 @RequestMapping("/clientes")
@@ -26,81 +21,82 @@ public class ClienteController {
     @Autowired
     ClienteService clienteService;
 
-    @Autowired
-    MascotaService mascotaService;
-
+    //se autentifica el cliente
     @PostMapping("/login")
-    public String login(@RequestParam String correo, @RequestParam String cedula, HttpSession session) {
-        Cliente cliente = clienteService.autenticar(correo, cedula);
+    public String login(@RequestParam String cedula, HttpSession session) {
+        //busca dentro de la base de datos el cliente que tenga la cedula
+        Cliente cliente = clienteService.SearchByCedula(cedula);
         if (cliente != null) {
+            //si lo encuentra redirecciona a la pagina donde esta toda su informacion
             session.setAttribute("cliente", cliente);
             System.out.println("Cliente autenticado: " + cliente.getNombre());
             return "redirect:/clientes/find/" + cliente.getId();
         } else {
-            System.out.println("Autenticación fallida para correo: " + correo);
-            return "Inicio/LogIn";
+            //si no lo encuentra se vuelve a mostrar la pagina del login
+            return "Inicio/logInCliente";
         }
-}
+    }
 
-
+    //Se muestra la lista de todos los clientes
+    //localhost:8090/clientes/all
     @GetMapping("/all")
     public String getAll(Model model) {
+        //trae todos los clientes de la base de datos
         model.addAttribute("clientes", clienteService.findAll());
         return "CRUD_Cliente/mostrarClientes";
     }
 
+    //Se busca un cliente por su id
+    //localhost:8090/clientes/find/{id}
     @GetMapping("/find/{id}")
-    public String buscarCliente(Model model, @PathVariable("id") int id) {
+    public String buscarCliente(Model model, @PathVariable("id") Long id) {
+        //busca un cliente por su id
         Cliente cliente = clienteService.SearchById(id);
+        model.addAttribute("cliente", cliente);
 
-         if (cliente != null) {
-             ArrayList<Mascota> mascotasCliente = new ArrayList<>();
-            for(int i=0;i<cliente.getMascotasId().size();i++){
-                Mascota mascota = mascotaService.SearchById(cliente.getMascotasId().get(i));
-                mascotasCliente.add(mascota);
-        }
-            model.addAttribute("cliente", cliente);
-            model.addAttribute("mascotas", mascotasCliente);
-        }else{
-            throw new NotFoundException(id,true);
-        }
-
-        //buscar mascotas del cliente
-       
-        
-       
-        
         return "CRUD_Cliente/buscarCliente";
     }
 
+    //Se muestra el formulario para crear un nuevo cliente
+    //localhost:8090/clientes/add
     @GetMapping("/add")
     public String mostrarFormularioCrear(Model model) {
-        Cliente cliente = new Cliente("", "", "", "", 0,Arrays.asList());
+        //se crea un nuevo cliente vacio
+        Cliente cliente = new Cliente("", "", "", "");
         model.addAttribute("cliente", cliente);
         return "CRUD_Cliente/crear_cliente";
     }
 
+    //Se agrega un nuevo cliente a la base de datos
     @PostMapping("/agregar")
     public String agregarCliente(@ModelAttribute("cliente") Cliente cliente){
+        //Se agrega el cliente que se selecciono en el formulario
         clienteService.add(cliente);
         return "redirect:/clientes/all";
     }
 
+    //Se elimina un cliente de la base de datos por su id
     @GetMapping("/delete/{id}")
-    public String eliminarCliente(@PathVariable("id") int id) {
+    public String eliminarCliente(@PathVariable("id") Long id) {
+        //Se elimina el cliente con el id que se selecciono
         clienteService.deleteById(id);
         return "redirect:/clientes/all";
     }
     
+    //Se muestra el formulario para actualizar a un cliente en la base de datos
+    //localhost:8090/clientes/update/{id}
     @GetMapping("/update/{id}")
-    public String actualizarCliente(@PathVariable("id") int id, Model model) {
+    public String actualizarCliente(@PathVariable("id") Long id, Model model) {
+        //Se busca el cliente por el id
         Cliente cliente = clienteService.SearchById(id);
         model.addAttribute("cliente", cliente);
         return "CRUD_Cliente/actualizar_cliente";
     }
 
+    //Se actualiza un cliente en la base de datos
     @PostMapping("/update/{id}")
     public String actualizarCliente(@PathVariable("id") int id, @ModelAttribute("cliente") Cliente cliente) {
+        //Se actualiza el cliente que se selecciono en el formulario
         clienteService.updateById(cliente);
         return "redirect:/clientes/all";
     }

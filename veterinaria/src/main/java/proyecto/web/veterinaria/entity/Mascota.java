@@ -1,7 +1,19 @@
 package proyecto.web.veterinaria.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+
+@Entity
 public class Mascota {
-    private Integer id;
+
+    @Id
+    @GeneratedValue
+    //id generado automatico
+    private Long id;
+
+    //Se agregan los atributos
     private String nombre;
     private String raza;
     private int edad;
@@ -9,16 +21,24 @@ public class Mascota {
     private String estado;
     private String imagen;
 
-    public Mascota(String nombre, String raza, int edad, String enfermedad, String estado, String imagen, Integer id) {
+    //Cliente de la mascota con relacion de muchos a uno
+    @ManyToOne
+    private Cliente cliente;
+
+    //Constructores
+    public Mascota() {
+        
+    }
+    public Mascota(String nombre, String raza, int edad, String enfermedad, String estado, String imagen) {
         this.nombre = nombre;
         this.raza = raza;
         this.edad = edad;
         this.enfermedad = enfermedad;
         this.estado = estado;
         this.imagen = imagen;
-        this.id = id;
     }
 
+    //Getters and Setters
     public String getNombre() {
         return nombre;
     }
@@ -67,11 +87,19 @@ public class Mascota {
         this.imagen = imagen;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }

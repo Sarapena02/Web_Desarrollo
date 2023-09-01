@@ -8,14 +8,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping()
 public class ControllerInicio {
 
+    //landing page
+    //localhost:8090
     @GetMapping()
     public String inicio() {
         return "Inicio/index";
     }
 
-    @GetMapping("/LogIn")
-    public String login() {
-        return "Inicio/LogIn";
+    //login de cliente
+    //localhost:8090/logInCliente
+    @GetMapping("/logInCliente")
+    public String loginCliente() {
+        return "Inicio/logInCliente";
+    }
+
+    //login de veterinario
+    //localhost:8090/logInVet
+    @GetMapping("/logInVet")
+    public String loginVet() {
+        return "Inicio/logInVet";
     }
    
 }
