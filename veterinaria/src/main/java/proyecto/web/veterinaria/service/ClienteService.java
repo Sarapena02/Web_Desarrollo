@@ -4,8 +4,10 @@ import java.util.Collection;
 
 import proyecto.web.veterinaria.entity.Cliente;
 
+//servicio de cliente
 public interface ClienteService {
 
+    //metodos de cliente
     public Cliente SearchById(Long id);
 
     public Collection<Cliente> findAll();
@@ -16,5 +18,5 @@ public interface ClienteService {
 
     public void add(Cliente cliente);
 
-    //public Cliente autenticar(String correo, String cedula);
+    public Cliente SearchByCedula(String cedula);
 }

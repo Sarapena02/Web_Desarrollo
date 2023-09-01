@@ -1,13 +1,13 @@
 package proyecto.web.veterinaria.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import proyecto.web.veterinaria.entity.Cliente;
 
 
-@Repository
+//repositorio de cliente
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
-
+    //busca un cliente por su cedula
+    Cliente findByCedula(String cedula);
 }

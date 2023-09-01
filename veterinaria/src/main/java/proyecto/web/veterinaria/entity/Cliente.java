@@ -17,18 +17,20 @@ public class Cliente {
     //id generado automatico
     private Long id;
 
+    //Se agregan los atributos
     private String nombre;
     private String cedula;
     private String correo;
     private String celular;
 
+    //lista de mascotas con relacion de uno a muchos
     @OneToMany(mappedBy = "cliente")
     private List<Mascota> mascotas = new ArrayList<>();
 
+    //Constructores
     public Cliente() {
         
     }
-
     public Cliente(String nombre, String cedula, String correo, String celular) {
         this.nombre = nombre;
         this.cedula = cedula;
@@ -36,6 +38,7 @@ public class Cliente {
         this.celular = celular;
     }
 
+    //Getters and Setters
     public String getNombre() {
         return nombre;
     }
