@@ -4,13 +4,15 @@ import java.util.Collection;
 
 import proyecto.web.veterinaria.entity.Mascota;
 
+//Servicio de Mascota
 public interface MascotaService {
 
-    public Mascota SearchById(Integer id);
+    //Metodos de mascota
+    public Mascota SearchById(Long id);
 
     public Collection<Mascota> findAll();
 
-    public void deleteById(Integer id);
+    public void deleteById(Long id);
 
     public void updateById(Mascota mascota);
 

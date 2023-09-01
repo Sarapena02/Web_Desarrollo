@@ -4,17 +4,19 @@ import java.util.Collection;
 
 import proyecto.web.veterinaria.entity.Cliente;
 
+//servicio de cliente
 public interface ClienteService {
 
-    public Cliente SearchById(Integer id);
+    //metodos de cliente
+    public Cliente SearchById(Long id);
 
     public Collection<Cliente> findAll();
 
-    public void deleteById(Integer id);
+    public void deleteById(Long id);
 
     public void updateById(Cliente cliente);
 
     public void add(Cliente cliente);
 
-    public Cliente autenticar(String correo, String cedula);
+    public Cliente SearchByCedula(String cedula);
 }
