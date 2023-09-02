@@ -69,10 +69,18 @@ public class ClienteController {
 
     //Se agrega un nuevo cliente a la base de datos
     @PostMapping("/agregar")
-    public String agregarCliente(@ModelAttribute("cliente") Cliente cliente){
-        //Se agrega el cliente que se selecciono en el formulario
-        clienteService.add(cliente);
-        return "redirect:/clientes/all";
+    public String agregarCliente(@ModelAttribute("cliente") Cliente cliente, Model model) {
+        //Se busca si ya existe un cliente con esa cedula
+        Cliente clienteExiste = clienteService.SearchByCedula(cliente.getCedula());
+        //Si ya existe entonces se manda una alerta al formulario
+        if(clienteExiste != null){
+            model.addAttribute("alerta", "La cédula ya está registrada en el sistema.");
+            return "CRUD_Cliente/crear_cliente";
+        }else{
+            //Se agrega el cliente que se selecciono en el formulario
+            clienteService.add(cliente);
+            return "redirect:/clientes/all";
+        }
     }
 
     //Se elimina un cliente de la base de datos por su id
