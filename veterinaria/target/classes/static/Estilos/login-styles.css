@@ -1,0 +1,171 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #dfcae1;
+    color: #333;
+    background-image: url('jack.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: scroll;
+    position: relative;
+}
+body::before {
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(123, 105, 167, 0.568);
+    z-index: -1;
+}
+header {
+    background-color: #e5dde6;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.hero {
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-right: 0; /* Empuja el logo hacia la izquierda */
+}
+
+.logo img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px; /* Ajusta el espacio entre la imagen y el título */
+}
+
+.logo h1 {
+    font-size: 24px; /* Ajusta el tamaño del título */
+    color: #333;
+    margin: 0; /* Elimina el margen superior e inferior del título */
+}
+/* Cambie los botones que teniamos por button y les puse otro estilo */
+.button {
+    border: 0;
+    background-image: linear-gradient(
+     150deg,
+     #8f7193,
+     #c0a0c3,
+     #9c879e);
+     border-radius: 8px;
+     color:#fff;
+     display: flex;
+     font-size: 18px;
+     padding: 4px;
+     cursor: pointer;
+     transition: .3s;
+     display:inline-flex;
+ }
+ .button span{
+     background-color: #8f7193;
+     padding: 16px 24px;
+     border-radius: 6px;
+     transition: .1s;
+ }
+ 
+ .button:hover {
+     background: none;
+     color: #53285a
+ }
+ .button:active{
+     transform: scale(0.3);
+ }
+ 
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.login-form h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #8a4e4e;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+.login-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #8f7193;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #555;
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #8f7193;
+    color: #fff;
+    position: absolute;
+    bottom: 0; /* Fijar el footer en la parte inferior */
+    width: 100%;
+}

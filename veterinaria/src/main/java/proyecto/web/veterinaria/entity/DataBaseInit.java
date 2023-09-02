@@ -238,24 +238,21 @@ public class DataBaseInit implements ApplicationRunner{
         //crear asociaciones
         List<Cliente> clientes = clienteRepository.findAll(); //Guarda en una lista todos los clientes
         List<Mascota> mascotas = mascotaRepository.findAll(); //Guarda en una lista todlas las mascotas
-        Random random = new Random(); //Creamos el random para que se elija un cliente aleatorio
 
-        for (Mascota mascota : mascotas) {
-            int randomIndex = random.nextInt(clientes.size()); // Elegir un cliente aleatorio dentro del arreglo de clientes
-            Cliente clienteAsociado = clientes.get(randomIndex);
-            mascota.setCliente(clienteAsociado); //Se le asigna la mascota al cliente
-            mascotaRepository.save(mascota); //Lo guarda en la base de datos
+        for (int i = 0; i < mascotas.size(); i++) {
+            // Asegúrate de que i no sea mayor que la cantidad de clientes disponibles
+            int clienteIndex = i % clientes.size(); // Calcula el índice del cliente correspondiente
+            Cliente clienteAsociado = clientes.get(clienteIndex);
+            
+            // Obtén la mascota actual
+            Mascota mascota = mascotas.get(i);
+            
+            // Asigna el cliente al que corresponde
+            mascota.setCliente(clienteAsociado);
+            
+            // Guarda la mascota en la base de datos
+            mascotaRepository.save(mascota);
         }
-
-
-
-
-
-
-
-
-
-
         }
     }
    
