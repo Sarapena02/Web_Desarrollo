@@ -374,3 +374,9 @@ Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection wa
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:678)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 94 more
+2023-09-01 20:25:01 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MASCOTAWHERE" not found; SQL statement:
+SELECT * FROM mascotaWHERE id = 1 [42102-214]
+2023-09-01 20:26:49 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]MASCOTA"; expected "MERGE"; SQL statement:
+MASCOTA [42001-214]
