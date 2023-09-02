@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscar Mascota</title>
     <link rel="stylesheet" href="/Estilos/buscarMascota.css">
+    <link rel="stylesheet" href="/Estilos/footer.css">
 </head>
 <body>
     <header>
@@ -25,7 +26,7 @@
     <div class="mostrarMascota">
         <h1 class="tituloInfo">Informacion de la mascota</h1>
         <div class="top-section">
-            <img class="pet-image" th:src="'/' + ${mascota.imagen}">
+            <img class="pet-image" th:src="${mascota.imagen}">
             <div class="pet-details">
                 <div class="detail">
                     <p class="label"><strong>Nombre:</strong></p>

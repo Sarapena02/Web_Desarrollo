@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mostrar Mascotas</title>
     <link rel="stylesheet" href="/Estilos/mostrarMascotas.css">
+    <script src="https://kit.fontawesome.com/0f4cd78e74.js" crossorigin="anonymous"></script>
+    <script src="/JavaScript/barraDeBusqueda2.js"></script>
+
 </head>
 <body>
 
@@ -15,17 +18,30 @@
         </div>
         <nav>
             <ul>
-                <li><a class="button" href="/"><span>Inicio</span></a></li>
-                <li><a class="button" href="/#servicios"><span>Servicios</span></a></li>
-                <li><a class="button" href="/#contacto"><span>Contacto</span></a></li>
-                <a class="button" href="/LogIn"><span>Log In</span></a>
+                <li><a class="buttonH" href="/"><span>Inicio</span></a></li>
+                <li><a class="buttonH" href="/#servicios"><span>Servicios</span></a></li>
+                <li><a class="buttonH" href="/#contacto"><span>Contacto</span></a></li>
+                <a class="buttonH" href="/LogIn"><span>Log In</span></a>
             </ul>
         </nav>
     </header>
 
+    <div class="bu">
+        <a class="buttonH" href="/clientes/add">Agregar</a>
+    </div>
+
+    <div class="search-bar">
+            <select id="search-filter-select">
+                <option value="nombre">Nombre</option>
+                <option value="cedula">cedula</option>
+            </select>
+
+        <input type="text" id="search-input" placeholder="Buscar por nombre o cedula">
+    </div>
+
 <div class ="container">
     <div style="width: 80%;">
-        <table class="table table-striped table-bordered">
+        <table id="clientes-table" class="table table-striped table-bordered">
         <thead>
         <tr>
         <th scope="col">Nombre</th>
@@ -43,10 +59,15 @@
         <td th:text="${cliente.correo}"></td>
         <td th:text="${cliente.celular}"></td>
         <td>
-            <a class="button" th:href="@{/clientes/update/{id}(id=${cliente.id})}">Modificar</a>
-            <a class="button" th:href="@{/clientes/delete/{id}(id=${cliente.id})}">Eliminar</a>
-
-        </td>
+            <a class="button" th:href="@{/clientes/update/{id}(id=${cliente.id})}">
+                <i class="fa-solid fa-pen-to-square"></i>
+            </a>
+            <a class="button" th:href="@{/clientes/delete/{id}(id=${cliente.id})}">
+                <i class="fa-solid fa-eraser"></i> 
+            </a>
+            <a class="button" th:href="@{/clientes/find/{id}(id=${cliente.id})}">
+                <i class="fa-solid fa-eye"></i>
+            </a>
         </tr>
         </tbody>
         </table>
