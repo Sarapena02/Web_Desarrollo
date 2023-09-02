@@ -1,6 +1,10 @@
 package proyecto.web.veterinaria.entity;
 
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -25,6 +29,107 @@ public class DataBaseInit implements ApplicationRunner{
         //agregar clientes
         clienteRepository.save(new Cliente("Juan", "123456789", "juan@correo", "123456789"));
         clienteRepository.save(new Cliente("Pedro", "987654321", "pedro@correo", "987654321"));
+        clienteRepository.save(new Cliente("Ana", "123456789", "ana@correo", "123456789"));
+        clienteRepository.save(new Cliente("Juan", "456789123", "juan@correo", "456789123"));
+        clienteRepository.save(new Cliente("María", "789123456", "maria@correo", "789123456"));
+        clienteRepository.save(new Cliente("Luis", "321654987", "luis@correo", "321654987"));
+        clienteRepository.save(new Cliente("Sofía", "654987321", "sofia@correo", "654987321"));
+        clienteRepository.save(new Cliente("Carlos", "987321654", "carlos@correo", "987321654"));
+        clienteRepository.save(new Cliente("Laura", "654321987", "laura@correo", "654321987"));
+        clienteRepository.save(new Cliente("Miguel", "321987654", "miguel@correo", "321987654"));
+        clienteRepository.save(new Cliente("Lucía", "987654123", "lucia@correo", "987654123"));
+        clienteRepository.save(new Cliente("Alejandro", "123987654", "alejandro@correo", "123987654"));
+        clienteRepository.save(new Cliente("Isabella", "789654321", "isabella@correo", "789654321"));
+        clienteRepository.save(new Cliente("Diego", "456321987", "diego@correo", "456321987"));
+        clienteRepository.save(new Cliente("Valentina", "987123456", "valentina@correo", "987123456"));
+        clienteRepository.save(new Cliente("Javier", "654123789", "javier@correo", "654123789"));
+        clienteRepository.save(new Cliente("Paula", "789456123", "paula@correo", "789456123"));
+        clienteRepository.save(new Cliente("Andrés", "321789654", "andres@correo", "321789654"));
+        clienteRepository.save(new Cliente("Camila", "987456321", "camila@correo", "987456321"));
+        clienteRepository.save(new Cliente("Jorge", "123654789", "jorge@correo", "123654789"));
+        clienteRepository.save(new Cliente("Valeria", "456987321", "valeria@correo", "456987321"));
+        clienteRepository.save(new Cliente("Francisco", "789321654", "francisco@correo", "789321654"));
+        clienteRepository.save(new Cliente("Natalia", "654789123", "natalia@correo", "654789123"));
+        clienteRepository.save(new Cliente("Gustavo", "321456987", "gustavo@correo", "321456987"));
+        clienteRepository.save(new Cliente("Elena", "987789321", "elena@correo", "987789321"));
+        clienteRepository.save(new Cliente("Felipe", "654987789", "felipe@correo", "654987789"));
+        clienteRepository.save(new Cliente("Daniela", "789987654", "daniela@correo", "789987654"));
+        clienteRepository.save(new Cliente("Ricardo", "321123987", "ricardo@correo", "321123987"));
+        clienteRepository.save(new Cliente("Marcela", "987654987", "marcela@correo", "987654987"));
+        clienteRepository.save(new Cliente("Santiago", "123789123", "santiago@correo", "123789123"));
+        clienteRepository.save(new Cliente("Gabriela", "456123456", "gabriela@correo", "456123456"));
+        clienteRepository.save(new Cliente("Roberto", "789456789", "roberto@correo", "789456789"));
+        clienteRepository.save(new Cliente("Renata", "321987321", "renata@correo", "321987321"));
+        clienteRepository.save(new Cliente("Manuel", "987654654", "manuel@correo", "987654654"));
+        clienteRepository.save(new Cliente("Mariana", "123321123", "mariana@correo", "123321123"));
+        clienteRepository.save(new Cliente("Raúl", "456456456", "raul@correo", "456456456"));
+        clienteRepository.save(new Cliente("Cristina", "789789789", "cristina@correo", "789789789"));
+        clienteRepository.save(new Cliente("Pedro", "987654321", "pedro@correo", "987654321"));
+        clienteRepository.save(new Cliente("Ana", "123456789", "ana@correo", "123456789"));
+        clienteRepository.save(new Cliente("Juan", "456789123", "juan@correo", "456789123"));
+        clienteRepository.save(new Cliente("María", "789123456", "maria@correo", "789123456"));
+        clienteRepository.save(new Cliente("Luis", "321654987", "luis@correo", "321654987"));
+        clienteRepository.save(new Cliente("Sofía", "654987321", "sofia@correo", "654987321"));
+        clienteRepository.save(new Cliente("Carlos", "987321654", "carlos@correo", "987321654"));
+        clienteRepository.save(new Cliente("Laura", "654321987", "laura@correo", "654321987"));
+        clienteRepository.save(new Cliente("Miguel", "321987654", "miguel@correo", "321987654"));
+        clienteRepository.save(new Cliente("Lucía", "987654123", "lucia@correo", "987654123"));
+        clienteRepository.save(new Cliente("Alejandro", "123987654", "alejandro@correo", "123987654"));
+        clienteRepository.save(new Cliente("Isabella", "789654321", "isabella@correo", "789654321"));
+        clienteRepository.save(new Cliente("Diego", "456321987", "diego@correo", "456321987"));
+        clienteRepository.save(new Cliente("Valentina", "987123456", "valentina@correo", "987123456"));
+        clienteRepository.save(new Cliente("Javier", "654123789", "javier@correo", "654123789"));
+        clienteRepository.save(new Cliente("Paula", "789456123", "paula@correo", "789456123"));
+        clienteRepository.save(new Cliente("Andrés", "321789654", "andres@correo", "321789654"));
+        clienteRepository.save(new Cliente("Camila", "987456321", "camila@correo", "987456321"));
+        clienteRepository.save(new Cliente("Jorge", "123654789", "jorge@correo", "123654789"));
+        clienteRepository.save(new Cliente("Valeria", "456987321", "valeria@correo", "456987321"));
+        clienteRepository.save(new Cliente("Francisco", "789321654", "francisco@correo", "789321654"));
+        clienteRepository.save(new Cliente("Natalia", "654789123", "natalia@correo", "654789123"));
+        clienteRepository.save(new Cliente("Gustavo", "321456987", "gustavo@correo", "321456987"));
+        clienteRepository.save(new Cliente("Elena", "987789321", "elena@correo", "987789321"));
+        clienteRepository.save(new Cliente("Felipe", "654987789", "felipe@correo", "654987789"));
+        clienteRepository.save(new Cliente("Daniela", "789987654", "daniela@correo", "789987654"));
+        clienteRepository.save(new Cliente("Ricardo", "321123987", "ricardo@correo", "321123987"));
+        clienteRepository.save(new Cliente("Marcela", "987654987", "marcela@correo", "987654987"));
+        clienteRepository.save(new Cliente("Santiago", "123789123", "santiago@correo", "123789123"));
+        clienteRepository.save(new Cliente("Gabriela", "456123456", "gabriela@correo", "456123456"));
+        clienteRepository.save(new Cliente("Roberto", "789456789", "roberto@correo", "789456789"));
+        clienteRepository.save(new Cliente("Renata", "321987321", "renata@correo", "321987321"));
+        clienteRepository.save(new Cliente("Manuel", "987654654", "manuel@correo", "987654654"));
+        clienteRepository.save(new Cliente("Mariana", "123321123", "mariana@correo", "123321123"));
+        clienteRepository.save(new Cliente("Raúl", "456456456", "raul@correo", "456456456"));
+        clienteRepository.save(new Cliente("Cristina", "789789789", "cristina@correo.com", "789789789"));
+        clienteRepository.save(new Cliente("Juan", "123456789", "juan@correo.com", "987654321"));
+        clienteRepository.save(new Cliente("Ana", "456789123", "ana@correo.com", "654321987"));
+        clienteRepository.save(new Cliente("Pedro", "987654321", "pedro@correo.com", "123456789"));
+        clienteRepository.save(new Cliente("Maria", "321654987", "maria@correo.com", "321654987"));
+        clienteRepository.save(new Cliente("Luis", "654789321", "luis@correo.com", "789321654"));
+        clienteRepository.save(new Cliente("Laura", "789123654", "laura@correo.com", "456789123"));
+        clienteRepository.save(new Cliente("Pablo", "456123789", "pablo@correo.com", "987123654"));
+        clienteRepository.save(new Cliente("Sofia", "321789456", "sofia@correo.com", "654789123"));
+        clienteRepository.save(new Cliente("Carlos", "987123456", "carlos@correo.com", "123789456"));
+        clienteRepository.save(new Cliente("Lucia", "654987123", "lucia@correo.com", "321987456"));
+        clienteRepository.save(new Cliente("Miguel", "789654321", "miguel@correo.com", "789654321"));
+        clienteRepository.save(new Cliente("Elena", "456321987", "elena@correo.com", "456321987"));
+        clienteRepository.save(new Cliente("Diego", "123789654", "diego@correo.com", "123789654"));
+        clienteRepository.save(new Cliente("Valentina", "987456321", "valentina@correo.com", "987456321"));
+        clienteRepository.save(new Cliente("Manuel", "321987654", "manuel@correo.com", "321987654"));
+        clienteRepository.save(new Cliente("Luisa", "654123789", "luisa@correo.com", "654123789"));
+        clienteRepository.save(new Cliente("Javier", "789321987", "javier@correo.com", "789321987"));
+        clienteRepository.save(new Cliente("Isabella", "456789321", "isabella@correo.com", "456789321"));
+        clienteRepository.save(new Cliente("Alberto", "123654789", "alberto@correo.com", "123654789"));
+        clienteRepository.save(new Cliente("Carolina", "987321654", "carolina@correo.com", "987321654"));
+        clienteRepository.save(new Cliente("Roberto", "654987321", "roberto@correo.com", "654987321"));
+        clienteRepository.save(new Cliente("Fernanda", "789456123", "fernanda@correo.com", "789456123"));
+        clienteRepository.save(new Cliente("Raul", "456123987", "raul@correo.com", "456123987"));
+        clienteRepository.save(new Cliente("Natalia", "321789654", "natalia@correo.com", "321789654"));
+        clienteRepository.save(new Cliente("Julio", "987654123", "julio@correo.com", "987654123"));
+        clienteRepository.save(new Cliente("Diana", "654321789", "diana@correo.com", "654321789"));
+        clienteRepository.save(new Cliente("Hector", "789123456", "hector@correo.com", "789123456"));
+        clienteRepository.save(new Cliente("Gloria", "123456987", "gloria@correo.com", "123456987"));
+
+
 
         //agregar mascotas
         mascotaRepository.save(new Mascota("Jack", "Siames", 2, "NA", "Activo", "Imagenes/jack1.jpeg"));
@@ -131,13 +236,26 @@ public class DataBaseInit implements ApplicationRunner{
 
 
         //crear asociaciones
-        Cliente cliente = clienteRepository.findById(1L).get();
+        List<Cliente> clientes = clienteRepository.findAll(); //Guarda en una lista todos los clientes
+        List<Mascota> mascotas = mascotaRepository.findAll(); //Guarda en una lista todlas las mascotas
+        Random random = new Random(); //Creamos el random para que se elija un cliente aleatorio
 
-        //asignar mascotas a clientes
-        for(Mascota mascota : mascotaRepository.findAll()){
-            mascota.setCliente(cliente);
-            mascotaRepository.save(mascota);    
+        for (Mascota mascota : mascotas) {
+            int randomIndex = random.nextInt(clientes.size()); // Elegir un cliente aleatorio dentro del arreglo de clientes
+            Cliente clienteAsociado = clientes.get(randomIndex);
+            mascota.setCliente(clienteAsociado); //Se le asigna la mascota al cliente
+            mascotaRepository.save(mascota); //Lo guarda en la base de datos
+        }
+
+
+
+
+
+
+
+
+
+
         }
     }
-    
-}
+   
