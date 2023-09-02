@@ -84,6 +84,7 @@ public class ClienteController {
     }
 
     //Se elimina un cliente de la base de datos por su id
+    //localhost:8090/clientes/delete/{id}
     @GetMapping("/delete/{id}")
     public String eliminarCliente(@PathVariable("id") Long id) {
         //Se elimina el cliente con el id que se selecciono
