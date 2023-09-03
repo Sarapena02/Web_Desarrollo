@@ -162,6 +162,10 @@ nav ul li a {
     border-top: 2px dashed var(--background);
 }
 
+.bottom-section ul{
+    list-style: none;
+}
+
 .bottom-section p {
     font-size: 18px;
     color: var(--text-main);
@@ -203,11 +207,59 @@ nav ul li a {
     padding-bottom: 2px;
     color: var(--text-secondary);
 }
-footer {
-    text-align: center;
-    padding: 20px;
+/* Estilos para el footer */
+.footer {
     background-color: #8f7193;
     color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.footer-logo h3 {
+    font-size: 24px;
+    color: #fff;
+    margin: 0;
+}
+
+.footer-info p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+/* Estilos para los íconos de redes sociales */
+.footer-social {
+    margin-top: 20px;
+}
+
+.social-icon {
+    font-size: 24px;
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: #53285a;
 }
 .mascota-imagen {
     max-width: 150px;
@@ -237,5 +289,52 @@ footer {
 .detalle {
     font-size: 16px;
     margin: 3px 0;
+}
+/* Estilos para el dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px; /* Agregado para redondear los bordes del dropdown */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px 20px; /* Ajuste del padding para un espacio más cómodo */
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s; /* Agregado para una transición suave */
+}
+
+.dropdown-content a:hover {
+    background-color: #e5e5e5; /* Cambio en el color de fondo al pasar el cursor */
+}
+
+/* Estilos para los botones dentro del dropdown */
+.dropdown-content a[href^="/logInVet"],
+.dropdown-content a[href^="/logInCliente"] {
+    background-color: #8f7193;
+    color: white;
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+    padding: 10px 20px; /* Ajuste del padding para un espacio más cómodo */
+}
+
+/* Cambio de color al pasar el cursor por encima del botón */
+.dropdown-content a[href^="/logInVet"]:hover,
+.dropdown-content a[href^="/logInCliente"]:hover {
+    background-color: #53285a;
+    transform: scale(1.05); /* Cambio de escala al pasar el cursor */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 

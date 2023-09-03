@@ -21,7 +21,13 @@
                 <li><a class="buttonH" href="/"><span>Inicio</span></a></li>
                 <li><a class="buttonH" href="/#servicios"><span>Servicios</span></a></li>
                 <li><a class="buttonH" href="/#contacto"><span>Contacto</span></a></li>
-                <a class="buttonH" href="/LogIn"><span>Log In</span></a>
+                <li class="dropdown">
+                    <a class="buttonH" href="#"><span>Log In &#9662;</span></a>
+                    <div class="dropdown-content">
+                        <a href="/logInVet">Ingresar como veterinario</a>
+                        <a href="/logInCliente">Ingresar como cliente</a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
@@ -73,9 +79,26 @@
         </table>
         </div>
 </div>
-        <footer>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <img src="/Imagenes/icon.png" alt="Logo de la veterinaria">
+            <h3>Veterinaria PetQuitas</h3>
+        </div>
+        <div class="footer-info">
             <p>&copy; 2023 Veterinaria PetQuitas. Todos los derechos reservados.</p>
-        </footer>
+            <p>Dirección: Calle de las Mascotas, 1234</p>
+            <p>Teléfono: +57-456-7890</p>
+            <p>Correo Electrónico: info@PetQuitas.com</p>
+        </div>
+    </div>
+    <div class="footer-social">
+        <a href="#" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+</footer>
 
 </body>
 </html>
