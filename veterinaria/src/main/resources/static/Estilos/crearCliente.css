@@ -108,14 +108,62 @@ nav ul li a {
     transform: scale(0.3);
 }
 
-footer {
-    text-align: center;
-    padding: 20px;
+/* Estilos para el footer */
+.footer {
     background-color: #8f7193;
     color: #fff;
-    position: fixed;
+    padding: 20px 0;
+    text-align: center;
     bottom: 0;
+    position: fixed;
     width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.footer-logo h3 {
+    font-size: 24px;
+    color: #fff;
+    margin: 0;
+}
+
+.footer-info p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+/* Estilos para los íconos de redes sociales */
+.footer-social {
+    margin-top: 20px;
+}
+
+.social-icon {
+    font-size: 24px;
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: #53285a;
 }
 
 .form-group {
@@ -162,5 +210,75 @@ label {
 
 .btn-primary:hover {
     background-color: #9c879e;
+}
+/* Estilos para el dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px; /* Agregado para redondear los bordes del dropdown */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px 20px; /* Ajuste del padding para un espacio más cómodo */
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s; /* Agregado para una transición suave */
+}
+
+.dropdown-content a:hover {
+    background-color: #e5e5e5; /* Cambio en el color de fondo al pasar el cursor */
+}
+
+/* Estilos para los botones dentro del dropdown */
+.dropdown-content a[href^="/logInVet"],
+.dropdown-content a[href^="/logInCliente"] {
+    background-color: #8f7193;
+    color: white;
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+    padding: 10px 20px; /* Ajuste del padding para un espacio más cómodo */
+}
+
+/* Cambio de color al pasar el cursor por encima del botón */
+.dropdown-content a[href^="/logInVet"]:hover,
+.dropdown-content a[href^="/logInCliente"]:hover {
+    background-color: #53285a;
+    transform: scale(1.05); /* Cambio de escala al pasar el cursor */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.small-form {
+    padding-top: 50px;
+    max-width: 400px; /* Cambia el ancho máximo del formulario según tus preferencias */
+    margin: 0 auto; /* Centra el formulario en la página */
+}
+
+.small-form .form-group {
+    margin-bottom: 20px; /* Reduzca el espacio entre los grupos de formulario */
+}
+
+.small-form label {
+    font-size: 16px; /* Reduzca el tamaño de la fuente de las etiquetas */
+}
+
+.small-form .form-control {
+    padding: 12px; /* Reduzca el relleno de los campos de entrada */
+    font-size: 14px; /* Reduzca el tamaño de la fuente de los campos de entrada */
+}
+
+.small-form .btn-primary {
+    padding: 12px 24px; /* Reduzca el relleno del botón */
+    font-size: 16px; /* Reduzca el tamaño de la fuente del botón */
 }
 
