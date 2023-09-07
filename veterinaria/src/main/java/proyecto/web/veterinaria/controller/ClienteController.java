@@ -50,11 +50,11 @@ public class ClienteController {
     //localhost:8090/clientes/find/{id}
     @GetMapping("/find/{id}")
     public String buscarCliente(Model model, @PathVariable("id") Long id) {
-        //busca un cliente por su id
-        Cliente cliente = clienteService.SearchById(id);
-        model.addAttribute("cliente", cliente);
+            // Buscar un cliente por su ID
+            Cliente cliente = clienteService.SearchById(id);
+            model.addAttribute("cliente", cliente);
+            return "CRUD_Cliente/buscarCliente";
 
-        return "CRUD_Cliente/buscarCliente";
     }
 
     //Se muestra el formulario para crear un nuevo cliente
