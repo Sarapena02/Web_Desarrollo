@@ -1,12 +1,12 @@
 package proyecto.web.veterinaria.entity;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Tratamiento {
@@ -17,20 +17,23 @@ public class Tratamiento {
     private Long id;
 
     //Atributos
-    private Date fecha;
+    private LocalDate fecha;
 
+    @ManyToOne
     private Veterinario veterinario;
 
+    @ManyToOne
     private Mascota mascota;
 
-    private List<Droga> drogas = new ArrayList<>();
+    @ManyToOne
+    private Droga droga;
 
     //Constructores
     public Tratamiento() {
         
     }
 
-    public Tratamiento(Date fecha) {
+    public Tratamiento(LocalDate fecha) {
         this.fecha = fecha;
     }
 
@@ -43,11 +46,11 @@ public class Tratamiento {
         this.id = id;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
@@ -67,12 +70,12 @@ public class Tratamiento {
         this.mascota = mascota;
     }
 
-    public List<Droga> getDrogas() {
-        return drogas;
+    public Droga getDroga() {
+        return droga;
     }
 
-    public void setDrogas(List<Droga> drogas) {
-        this.drogas = drogas;
+    public void setDroga(Droga droga) {
+        this.droga = droga;
     }
    
 }

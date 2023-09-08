@@ -3,10 +3,12 @@ package proyecto.web.veterinaria.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 
 @Entity
@@ -17,12 +19,13 @@ public class Veterinario {
     private Long id;
 
     //Atributos
+    private String nombre;
     private String cedula;
     private String Contraseña;
     private String Especialidad;
     private String foto;
-    private int numeroAtenciones;
 
+    @OneToMany(mappedBy = "veterinario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Tratamiento> tratamientos = new ArrayList<>();
 
     //Constructores
@@ -30,15 +33,24 @@ public class Veterinario {
         
     }
 
-    public Veterinario(String cedula, String Contraseña, String Especialidad, String foto, int numeroAtenciones) {
+    public Veterinario(String nombre, String cedula, String Contraseña, String Especialidad, String foto) {
+        this.nombre = nombre;
         this.cedula = cedula;
         this.Contraseña = Contraseña;
         this.Especialidad = Especialidad;
         this.foto = foto;
-        this.numeroAtenciones = numeroAtenciones;
     }
 
     //Getters and Setters
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public Long getId() {
         return id;
     }
@@ -77,14 +89,6 @@ public class Veterinario {
 
     public void setFoto(String foto) {
         this.foto = foto;
-    }
-
-    public int getNumeroAtenciones() {
-        return numeroAtenciones;
-    }
-
-    public void setNumeroAtenciones(int numeroAtenciones) {
-        this.numeroAtenciones = numeroAtenciones;
     }
 
     public List<Tratamiento> getTratamientos() {
