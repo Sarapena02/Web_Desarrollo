@@ -2,7 +2,6 @@ package proyecto.web.veterinaria.entity;
 
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -248,7 +247,28 @@ public class DataBaseInit implements ApplicationRunner{
         mascotaRepository.save(new Mascota("Salem", "Sphynx", 1, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ69f1xHz-gJbNzikzaWgs6YypjzaHaEGXAKg&usqp=CAU"));
 
         //Agregar veterinarios
-        veterinarioRepository.save(new Veterinario("Walter", "12345678910", "walter1", "Cirugia","https://media.licdn.com/dms/image/D4E03AQFJw7XUiXz6Yg/profile-displayphoto-shrink_800_800/0/1667784141711?e=2147483647&v=beta&t=TY52duHebBPoWB2uxWMWjvm7NO1XBszLRtYTm7VzwkY"));
+        veterinarioRepository.save(new Veterinario("Walter White", "12345678910", "walter1", "Cirugía Veterinaria","https://media.licdn.com/dms/image/D4E03AQFJw7XUiXz6Yg/profile-displayphoto-shrink_800_800/0/1667784141711?e=2147483647&v=beta&t=TY52duHebBPoWB2uxWMWjvm7NO1XBszLRtYTm7VzwkY"));
+        veterinarioRepository.save(new Veterinario("Juan Pérez", "1111111111", "password1", "Cirugía Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ2PnJo6v5y0L8GtemRFnMiwlT-07DEYrjmw&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("María González", "2222222222", "password2", "Dermatología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpQD7h5S7Abv4XV8jDUluWWIAss-d3GW6IBQ&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("Carlos Rodríguez", "3333333333", "password3", "Cardiología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9Ychx9yvKel0ZKKeVW3bvpvC7IcbhsVIsIw&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("Laura Martínez", "4444444444", "password4", "Odontología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRxmZrCXgJu2TulJRlzYviFxokT0nkEXFWtA&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("Luis Sánchez", "5555555555", "password5", "Medicina Interna Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuRCTG-0zAGWAXfQqilR_0C_eiSsWaxzsbSw&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("Ana López", "6666666666", "password6", "Ortopedia Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4h47IO8rim9gXJaJWhbKyLExq3cWIV3_Mnw&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("Jorge Ramírez", "7777777777", "password7", "Oftalmología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCYFicjT9DW_yA9ib6Rjdk7gm5JgHbaPHRiQ&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("Patricia Fernández", "8888888888", "password8", "Neurología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ4sOh8kSf-707bELw7jEKNl7Iil6XgVu-_g&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("Alberto Pérez", "9999999999", "password9", "Oncología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnI-10Rddeyza9vCpDGMsFHQ6m-tVGMjN7eQ&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("Juan Pérez", "1010101010", "password10", "Radiología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaVj8ii95k04OCu9Sy7XyBoU-7pb_HZ_PhUA&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("Carolina González", "1111111112", "password11", "Anestesiología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzgJz7K1Ekd-GA3GTK3i2kjhGKykJKXcveVg&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("Manuel Rodríguez", "1212121212", "password12", "Endocrinología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7uhBKbq26tsDldcyjzxNg5P4HrCBsY6NN9Q&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("Isabel Martínez", "1313131313", "password13", "Radiología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSStGD2sKlQ04YMgY__-nMB0K0ymmz7LL4VtQ&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("Javier Sánchez", "1414141414", "password14", "Medicina Preventiva Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE098wH_h5bKySx-cC7_uRkrS08BEiix9Xu-UddUze8F659UorTOuHMGmB74MUw3o8A1A&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("Eva López", "1515151515", "password15", "Nutrición Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbvr2I4QbjJS4EGWmLXBelmIIZUkMmJ_xp8Q&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("Diego Ramírez", "1616161616", "password16", "Rehabilitación Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfreiFF4m0OnRsb50wtq8FJ3K9aoU2btwtOEUwYf5r2b7PuNhfECrLoagxy5JPs_25jGU&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("María Fernández", "1717171717", "password17", "Urología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSl6mUOa8nZ0Y8Ka3TV-FHi3jJ4IKvgaznng&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("Guillermo Pérez", "1818181818", "password18", "Gastroenterología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFvz0gWXNVabMSDba1umQE-rwTo0OvRSW3PA&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("Andrea González", "1919191919", "password19", "Hematología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9tC508RbAh8jYf6sOv5e7T8TAg9R_WJ37Qg&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("Juan Carlos Rodríguez", "2020202020", "password20", "Nefrología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrVbI7GYlFY-yIDmVCZ4u11CFFmXez1R8DYg&usqp=CAU"));
+        
 
         //Agregar drogas
         drogaRepository.save(new Droga("Paracetamol",100L));

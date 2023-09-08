@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Estilos/login-styles.css">
+    <title>Buscar Mascota</title>
+    <link rel="stylesheet" href="/Estilos/buscarMascota.css">
     <script src="https://kit.fontawesome.com/0f4cd78e74.js" crossorigin="anonymous"></script>
-    <title>Iniciar Sesión</title>
+
 </head>
 <body>
     <header>
@@ -27,20 +28,30 @@
                 </li>
             </ul>
         </nav>
-        
     </header>
 
-    <div class="container">
-        <div class="login-container">
-            <form id="login-form" class="login-form" th:action="@{/veterinarios/login}" method="post">
-                <h2>Iniciar Sesión</h2>
-                <label for="cedula">Cedula:</label>
-                <input type="text" id="cedula" name="cedula" required>
-
-                <label for="contraseña">Contraseña:</label>
-                <input type="password" id="contraseña" name="contraseña" required>
-                <button type="submit" class="login-button">Ingresar</button>
-            </form>
+    <div class="mostrarMascota">
+        <h1 class="tituloInfo">Informacion del veterinario</h1>
+        <div class="top-section">
+            <img class="pet-image" th:src="${veterinario.foto}">
+            <div class="pet-details">
+                <div class="detail">
+                    <p class="label"><strong>Nombre:</strong></p>
+                    <p class="value" th:text="${veterinario.nombre}"></p>
+                </div>
+                <div class="detail">
+                    <p class="label"><strong>Cedula:</strong></p>
+                    <p class="value" th:text="${veterinario.cedula}"></p>
+                </div>
+                <div class="detail">
+                    <p class="label"><strong>Contraseña:</strong></p>
+                    <p class="value" th:text="${veterinario.Contrasenia}"></p>
+                </div>
+                <div class="detail">
+                    <p class="label"><strong>Especialidad:</strong></p>
+                    <p class="value" th:text="${veterinario.Especialidad}"></p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -63,6 +74,5 @@
             <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
         </div>
     </footer>
-    
 </body>
-</html> 
+</html>

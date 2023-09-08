@@ -29,7 +29,6 @@ public class ClienteController {
         if (cliente != null) {
             //si lo encuentra redirecciona a la pagina donde esta toda su informacion
             session.setAttribute("cliente", cliente);
-            System.out.println("Cliente autenticado: " + cliente.getNombre());
             return "redirect:/clientes/find/" + cliente.getId();
         } else {
             //si no lo encuentra se vuelve a mostrar la pagina del login
