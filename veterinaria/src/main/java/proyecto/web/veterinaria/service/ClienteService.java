@@ -19,6 +19,4 @@ public interface ClienteService {
     public void add(Cliente cliente);
 
     public Cliente SearchByCedula(String cedula);
-
-    
 }

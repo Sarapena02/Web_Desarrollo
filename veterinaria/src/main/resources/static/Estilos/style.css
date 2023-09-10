@@ -29,7 +29,6 @@ body::before {
 }
 /* Cambie el color del header y la fuente*/
 header {
-    top: 0;
     background-color: #e5dde6;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -111,16 +110,8 @@ nav ul li a {
     transform: scale(0.3);
 }
 
-.hero h3{
-    font-size: 30px;
-}
-.hero .button{
-    align-items: center;
-    text-align: center; 
-    margin-top: 30px;
-}
+
 .services {
-    margin-top: 80px;
     text-align: center;
     padding: 40px 0;
     display: flex;
@@ -167,26 +158,22 @@ nav ul li a {
 }
 
 .fotos{
-    margin-top: 80px;
+    margin-top: 50px;
     margin-bottom: 50px;
 }
 
 .fotos h2{
     text-align: center;
     color: #f5f5f5;
-    font-size: 50px;
+    font-size: 36px;
 }
 
 .fotos p{
     text-align: center;
     color: #f5f5f5;
     margin-bottom: 20px;
-    font-size: 25px;
+    font-size: 18px;
     font-weight: 500;
-}
-
-.textoImagen p{
-    font-size: 100px;
 }
 
 /* Galeria de fotos */

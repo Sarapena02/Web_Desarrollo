@@ -1,8 +1,6 @@
 package proyecto.web.veterinaria.entity;
 
 
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +10,7 @@ import org.springframework.stereotype.Controller;
 
 import jakarta.transaction.Transactional;
 import proyecto.web.veterinaria.repository.ClienteRepository;
-import proyecto.web.veterinaria.repository.DrogaRepository;
 import proyecto.web.veterinaria.repository.MascotaRepository;
-import proyecto.web.veterinaria.repository.TratamientoRepository;
-import proyecto.web.veterinaria.repository.VeterinarioRepository;
 
 @Controller
 @Transactional
@@ -26,15 +21,6 @@ public class DataBaseInit implements ApplicationRunner{
 
     @Autowired
     MascotaRepository mascotaRepository;
-
-    @Autowired
-    VeterinarioRepository veterinarioRepository;
-
-    @Autowired
-    DrogaRepository drogaRepository;
-
-    @Autowired
-    TratamientoRepository tratamientoRepository;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -247,14 +233,6 @@ public class DataBaseInit implements ApplicationRunner{
         mascotaRepository.save(new Mascota("Angel", "Ragamuffin", 2, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS04FazkkzwCEJA4YTvUEp-D4Sa1whhQidRTg&usqp=CAU"));
         mascotaRepository.save(new Mascota("Salem", "Sphynx", 1, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ69f1xHz-gJbNzikzaWgs6YypjzaHaEGXAKg&usqp=CAU"));
 
-        //Agregar veterinarios
-        veterinarioRepository.save(new Veterinario("Walter", "12345678910", "walter1", "Cirugia","https://media.licdn.com/dms/image/D4E03AQFJw7XUiXz6Yg/profile-displayphoto-shrink_800_800/0/1667784141711?e=2147483647&v=beta&t=TY52duHebBPoWB2uxWMWjvm7NO1XBszLRtYTm7VzwkY"));
-
-        //Agregar drogas
-        drogaRepository.save(new Droga("Paracetamol",100L));
-
-        //Agregar tratamientos
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
 
         //crear asociaciones
         List<Cliente> clientes = clienteRepository.findAll(); //Guarda en una lista todos los clientes
@@ -274,19 +252,6 @@ public class DataBaseInit implements ApplicationRunner{
             // Guarda la mascota en la base de datos
             mascotaRepository.save(mascota);
         }
-
-        Mascota mascotaTra = mascotaRepository.findById(1L).get();
-        Veterinario veterinarioTra = veterinarioRepository.findById(1L).get();
-        Droga drogaTra = drogaRepository.findById(1L).get();
-        Tratamiento tratamientoTra = tratamientoRepository.findById(1L).get();
-
-        tratamientoTra.setMascota(mascotaTra);
-        tratamientoTra.setVeterinario(veterinarioTra);
-        tratamientoTra.setDroga(drogaTra);
-
-        tratamientoRepository.save(tratamientoTra);
-
-
         }
     }
    

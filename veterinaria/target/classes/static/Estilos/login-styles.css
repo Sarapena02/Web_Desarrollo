@@ -9,6 +9,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #dfcae1;
     color: #333;
+    background-image: url('jack.jpg');
     background-size: cover;
     background-position: center;
     overflow: scroll;
@@ -24,8 +25,6 @@ body::before {
     z-index: -1;
 }
 header {
-    position: sticky;
-    top: 0;
     background-color: #e5dde6;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
