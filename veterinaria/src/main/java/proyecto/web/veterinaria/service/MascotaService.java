@@ -2,7 +2,6 @@ package proyecto.web.veterinaria.service;
 
 import java.util.Collection;
 
-import org.springframework.data.jpa.repository.Query;
 
 import proyecto.web.veterinaria.entity.Mascota;
 

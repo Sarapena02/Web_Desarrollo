@@ -21,7 +21,7 @@ public class Veterinario {
     //Atributos
     private String nombre;
     private String cedula;
-    private String Contraseña;
+    private String Contrasenia;
     private String Especialidad;
     private String foto;
 
@@ -33,10 +33,10 @@ public class Veterinario {
         
     }
 
-    public Veterinario(String nombre, String cedula, String Contraseña, String Especialidad, String foto) {
+    public Veterinario(String nombre, String cedula, String Contrasenia, String Especialidad, String foto) {
         this.nombre = nombre;
         this.cedula = cedula;
-        this.Contraseña = Contraseña;
+        this.Contrasenia = Contrasenia;
         this.Especialidad = Especialidad;
         this.foto = foto;
     }
@@ -67,12 +67,12 @@ public class Veterinario {
         this.cedula = cedula;
     }
 
-    public String getContraseña() {
-        return Contraseña;
+    public String getContrasenia() {
+        return Contrasenia;
     }
 
-    public void setContraseña(String contraseña) {
-        Contraseña = contraseña;
+    public void setContrasenia(String Contrasenia) {
+        this.Contrasenia = Contrasenia;
     }
 
     public String getEspecialidad() {
