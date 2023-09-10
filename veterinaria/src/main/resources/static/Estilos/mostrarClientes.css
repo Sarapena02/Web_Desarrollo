@@ -30,6 +30,8 @@ body::before {
 
 /* Encabezado */
 header {
+    position: sticky;
+    top: 0;
     background-color: #e5dde6;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 
 @ControllerAdvice
-public class ErrorController extends RuntimeException{
+public class ErrorControllerr extends RuntimeException{
 
     
     @ExceptionHandler(NotFoundException.class)
