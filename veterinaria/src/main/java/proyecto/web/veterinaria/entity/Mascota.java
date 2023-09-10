@@ -1,9 +1,14 @@
 package proyecto.web.veterinaria.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Mascota {
@@ -24,6 +29,9 @@ public class Mascota {
     //Cliente de la mascota con relacion de muchos a uno
     @ManyToOne
     private Cliente cliente;
+
+    @OneToMany(mappedBy = "mascota", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Tratamiento> tratamientos = new ArrayList<>();
 
     //Constructores
     public Mascota() {
@@ -101,5 +109,11 @@ public class Mascota {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+    public List<Tratamiento> getTratamientos() {
+        return tratamientos;
+    }
+    public void setTratamientos(List<Tratamiento> tratamientos) {
+        this.tratamientos = tratamientos;
     }
 }

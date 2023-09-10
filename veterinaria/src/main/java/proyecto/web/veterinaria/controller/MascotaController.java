@@ -25,7 +25,7 @@ public class MascotaController {
     @GetMapping("/all")
     public String getAll(Model model) {
         //trae todas las mascotas de la base de datos
-        model.addAttribute("mascotas", mascotaService.findAll());
+        model.addAttribute("mascotas", mascotaService.findAllActivos());
         return "CRUD_Mascota/mostrarMascotas"; 
     }
 
@@ -68,7 +68,10 @@ public class MascotaController {
     @GetMapping("/delete/{id}")
     public String eliminarMascota(@PathVariable("id") Long id){
         //Se elimina la mascota con el id que se selecciono
-        mascotaService.deleteById(id);
+        Mascota mascota = mascotaService.SearchById(id);
+        mascota.setEstado("Inactivo");
+        mascotaService.updateById(mascota);
+
         return "redirect:/mascotas/all";
     }
 

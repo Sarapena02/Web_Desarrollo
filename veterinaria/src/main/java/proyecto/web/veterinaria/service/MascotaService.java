@@ -2,6 +2,7 @@ package proyecto.web.veterinaria.service;
 
 import java.util.Collection;
 
+
 import proyecto.web.veterinaria.entity.Mascota;
 
 //Servicio de Mascota
@@ -17,4 +18,6 @@ public interface MascotaService {
     public void updateById(Mascota mascota);
 
     public void add(Mascota mascota);
+
+    public Collection<Mascota> findAllActivos();
 }
