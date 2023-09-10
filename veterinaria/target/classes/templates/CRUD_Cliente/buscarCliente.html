@@ -57,7 +57,7 @@
             <div class="mascotas-list">
                 <h2 class="subtitulo">Mascotas:</h2>
                 <ul class="mascota-items">
-                    <li th:each="mascota : ${cliente.mascotas}">
+                    <li th:each="mascota : ${mascotas}">
                         <div class="mascota-item">
                             <img th:src="@{${mascota.imagen}}" alt="Imagen de mascota" class="mascota-imagen">
 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import proyecto.web.veterinaria.entity.Cliente;
+import proyecto.web.veterinaria.entity.Mascota;
 import proyecto.web.veterinaria.repository.ClienteRepository;
 
 //Implementacion del servicio de cliente
@@ -49,6 +50,12 @@ public class ClienteServiceImpl implements ClienteService{
     @Override
     public Cliente SearchByCedula(String cedula) {
         return clienteRepository.findByCedula(cedula);
+    }
+
+    //Devuelve todas las mascotas activas
+    @Override
+    public Collection<Mascota> findAllActivos(Long id) {
+        return clienteRepository.findAllActivos(id);
     }
 
     
