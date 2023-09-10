@@ -15,7 +15,8 @@ body {
     overflow: scroll;
     position: relative;
     padding-bottom: 120px;
-
+    margin: 0;
+    padding: 0;
 }
 body::before {
     content: '';
@@ -114,8 +115,6 @@ nav ul li a {
     color: #fff;
     padding: 20px 0;
     text-align: center;
-    bottom: 0;
-    position: fixed;
     width: 100%;
 }
 
@@ -262,6 +261,7 @@ label {
     padding-top: 50px;
     max-width: 400px; /* Cambia el ancho máximo del formulario según tus preferencias */
     margin: 0 auto; /* Centra el formulario en la página */
+    margin-bottom: 50px;
 }
 
 .small-form .form-group {
