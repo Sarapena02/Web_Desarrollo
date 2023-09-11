@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informacíon del cliente</title>
+    <title>Buscar veterinario</title>
     <link rel="stylesheet" href="/Estilos/buscarMascota.css">
     <script src="https://kit.fontawesome.com/0f4cd78e74.js" crossorigin="anonymous"></script>
 
@@ -28,49 +28,29 @@
                 </li>
             </ul>
         </nav>
-        
     </header>
 
     <div class="mostrarMascota">
-        <h1 class="tituloInfo">Informacion del cliente</h1>
+        <h1 class="tituloInfo">Informacion del veterinario</h1>
         <div class="top-section">
+            <img class="pet-image" th:src="${veterinario.foto}">
             <div class="pet-details">
                 <div class="detail">
                     <p class="label"><strong>Nombre:</strong></p>
-                    <p class="value" th:text="${cliente.nombre}"></p>
+                    <p class="value" th:text="${veterinario.nombre}"></p>
                 </div>
                 <div class="detail">
                     <p class="label"><strong>Cedula:</strong></p>
-                    <p class="value" th:text="${cliente.cedula}"></p>
+                    <p class="value" th:text="${veterinario.cedula}"></p>
                 </div>
                 <div class="detail">
-                    <p class="label"><strong>Correo:</strong></p>
-                    <p class="value" th:text="${cliente.correo}"></p>
+                    <p class="label"><strong>Contraseña:</strong></p>
+                    <p class="value" th:text="${veterinario.Contrasenia}"></p>
                 </div>
                 <div class="detail">
-                    <p class="label"><strong>Celular:</strong></p>
-                    <p class="value" th:text="${cliente.celular}"></p>
+                    <p class="label"><strong>Especialidad:</strong></p>
+                    <p class="value" th:text="${veterinario.Especialidad}"></p>
                 </div>
-            </div>
-        </div>
-        <div class="bottom-section">
-            <div class="mascotas-list">
-                <h2 class="subtitulo">Mascotas:</h2>
-                <ul class="mascota-items">
-                    <li th:each="mascota : ${mascotas}">
-                        <div class="mascota-item">
-                            <img th:src="@{${mascota.imagen}}" alt="Imagen de mascota" class="mascota-imagen">
-
-                            <div class="mascota-detalle">
-                                <h3 class="nombre-mascota" th:text="${mascota.nombre}"></h3>
-                                <p class="detalle"><strong>Raza:</strong> <span th:text="${mascota.raza}"></span></p>
-                                <p class="detalle"><strong>Edad:</strong> <span th:text="${mascota.edad}"></span> años</p>
-                                <p class="detalle"><strong>Enfermedad:</strong> <span th:text="${mascota.enfermedad}"></span></p>
-                                <p class="detalle"><strong>Estado:</strong> <span th:text="${mascota.estado}"></span></p>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
             </div>
         </div>
     </div>

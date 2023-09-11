@@ -3,6 +3,7 @@ package proyecto.web.veterinaria.service;
 import java.util.Collection;
 
 import proyecto.web.veterinaria.entity.Cliente;
+import proyecto.web.veterinaria.entity.Mascota;
 
 //servicio de cliente
 public interface ClienteService {
@@ -19,6 +20,8 @@ public interface ClienteService {
     public void add(Cliente cliente);
 
     public Cliente SearchByCedula(String cedula);
+
+    public Collection<Mascota> findAllActivos(Long id);
 
     
 }

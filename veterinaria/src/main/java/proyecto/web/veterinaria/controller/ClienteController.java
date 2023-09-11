@@ -1,5 +1,6 @@
 package proyecto.web.veterinaria.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +30,6 @@ public class ClienteController {
         if (cliente != null) {
             //si lo encuentra redirecciona a la pagina donde esta toda su informacion
             session.setAttribute("cliente", cliente);
-            System.out.println("Cliente autenticado: " + cliente.getNombre());
             return "redirect:/clientes/find/" + cliente.getId();
         } else {
             //si no lo encuentra se vuelve a mostrar la pagina del login
@@ -53,6 +53,8 @@ public class ClienteController {
             // Buscar un cliente por su ID
             Cliente cliente = clienteService.SearchById(id);
             model.addAttribute("cliente", cliente);
+            //se buscan las mascotas activas en el sistema de ese cliente
+            model.addAttribute("mascotas", clienteService.findAllActivos(cliente.getId()));
             return "CRUD_Cliente/buscarCliente";
 
     }

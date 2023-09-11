@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mostrar clientes</title>
+    <title>Mostrar veterinarios</title>
     <link rel="stylesheet" href="/Estilos/mostrarMascotas.css">
     <script src="https://kit.fontawesome.com/0f4cd78e74.js" crossorigin="anonymous"></script>
-    <script src="/JavaScript/barraDeBusqueda2.js"></script>
+    <script src="/JavaScript/barraDeBusqueda3.js"></script>
 
 </head>
 <body>
@@ -33,7 +33,7 @@
     </header>
 
     <div class="bu">
-        <a class="buttonH" href="/clientes/add">Agregar</a>
+        <a class="buttonH" href="/veterinarios/add">Agregar</a>
     </div>
 
     <div class="search-bar">
@@ -47,31 +47,31 @@
 
 <div class ="container">
     <div style="width: 80%;">
-        <table id="clientes-table" class="table table-striped table-bordered">
+        <table id="vet-table" class="table table-striped table-bordered">
         <thead>
         <tr>
         <th scope="col">Nombre</th>
         <th scope="col">Cedula</th>
-        <th scope="col">Correo</th>
-        <th scope="col">Celular</th>
+        <th scope="col">Contraseña</th>
+        <th scope="col">Especialidad</th>
         <th scope="col">Acciones</th>
         </tr>
         </thead>
         <tbody>
 
-        <tr th:each=" cliente: ${clientes}">
-        <td th:text="${cliente.nombre}"></td>
-        <td th:text="${cliente.cedula}"></td>
-        <td th:text="${cliente.correo}"></td>
-        <td th:text="${cliente.celular}"></td>
+        <tr th:each="veterinario: ${veterinarios}">
+        <td th:text="${veterinario.nombre}"></td>
+        <td th:text="${veterinario.cedula}"></td>
+        <td th:text="${veterinario.Contrasenia}"></td>
+        <td th:text="${veterinario.Especialidad}"></td>
         <td>
-            <a class="button" th:href="@{/clientes/update/{id}(id=${cliente.id})}">
+            <a class="button" th:href="@{/veterinarios/update/{id}(id=${veterinario.id})}">
                 <i class="fa-solid fa-pen-to-square"></i>
             </a>
-            <a class="button" th:href="@{/clientes/delete/{id}(id=${cliente.id})}">
+            <a class="button" th:href="@{/veterinarios/delete/{id}(id=${veterinario.id})}">
                 <i class="fa-solid fa-eraser"></i> 
             </a>
-            <a class="button" th:href="@{/clientes/find/{id}(id=${cliente.id})}">
+            <a class="button" th:href="@{/veterinarios/find/{id}(id=${veterinario.id})}">
                 <i class="fa-solid fa-eye"></i>
             </a>
         </tr>
