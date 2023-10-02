@@ -1,6 +1,6 @@
 package proyecto.web.veterinaria.repository;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,5 +17,5 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
     //busca mas mascotas activas de un cliente
     @Query("select m from Mascota m inner join Cliente c On m.cliente.id = c.id where c.id = ?1 and m.estado = 'Activo'")
-    Collection<Mascota> findAllActivos(Long id);
+    List<Mascota> findAllActivos(Long id);
 }
