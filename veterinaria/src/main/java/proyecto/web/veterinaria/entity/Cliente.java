@@ -30,7 +30,7 @@ public class Cliente {
 
     //Constructores
     public Cliente() {
-        
+         
     }
     public Cliente(String nombre, String cedula, String correo, String celular) {
         this.nombre = nombre;

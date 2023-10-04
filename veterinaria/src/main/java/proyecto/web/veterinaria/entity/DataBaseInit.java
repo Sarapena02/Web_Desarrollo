@@ -4,10 +4,21 @@ package proyecto.web.veterinaria.entity;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Controller;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 import jakarta.transaction.Transactional;
 import proyecto.web.veterinaria.repository.ClienteRepository;
@@ -271,8 +282,84 @@ public class DataBaseInit implements ApplicationRunner{
         
 
         //Agregar drogas
-        drogaRepository.save(new Droga("Paracetamol",100L));
+        try {
+            // Ruta relativa al archivo Excel
+            String filePath = "C://Users//sarap//Documents//GitHub//Web_Desarrollo//veterinaria//src//main//resources//static//Archivos//MEDICAMENTOS_VETERINARIA.xlsx";
 
+            // Crear un flujo de entrada para el archivo Excel
+            FileInputStream inp = new FileInputStream(filePath);
+
+            // Crear un libro de trabajo a partir del flujo de entrada
+            Workbook wb = WorkbookFactory.create(inp);
+
+            // Obtener la hoja de trabajo (supongamos que es la primera hoja)
+            Sheet sheet = wb.getSheetAt(0);
+
+            int rowCount = sheet.getPhysicalNumberOfRows();
+
+            for(int i = 0; i < rowCount; i++){
+                Row row = sheet.getRow(i);
+
+                int cellCount = row.getPhysicalNumberOfCells();
+
+                for (int j = 0; j < cellCount; j++){
+                    Cell cell = row.getCell(j);
+                    if (cell != null) {
+                        DataFormatter dataFormatter = new DataFormatter();
+                        String cellValue = dataFormatter.formatCellValue(cell);
+                        System.out.println("value: " + cellValue );
+                    }
+                }
+            }
+            inp.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+           /*  int cont = 0;
+            Row row = sheet.getRow(cont);
+
+            while (row != null) {
+                // Obtener la primera celda en la fila (supongamos que es la celda en la columna 0)
+                Cell cell = row.getCell(1);
+
+                // Verificar si la celda no es nula antes de intentar acceder a su valor
+                if (cell != null) {
+                    DataFormatter dataFormatter = new DataFormatter();
+                    String cellValue = dataFormatter.formatCellValue(cell);
+                    System.out.println("value: " + cellValue);
+                }
+
+                cont++;
+                row = sheet.getRow(cont);
+            }
+
+            // Cerrar el flujo de entrada y liberar recursos
+            inp.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+    
+
+       /* File f = new File("C://Users//sarap//Documents//GitHub//Web_Desarrollo//veterinaria//src//main//resources//static//Archivos//MEDICAMENTOS_VETERINARIA.xlsx");
+        InputStream inp = new FileInputStream(f);
+        Workbook wb = WorkbookFactory.create(inp);
+        Sheet sheet = wb.getSheetAt(0);
+
+        int cont = 0;
+        Row row = sheet.getRow(cont);
+
+        String cellValue = "";
+        while(row != null){
+            Cell cell = row.getCell(0);
+                DataFormatter dataFormatter = new DataFormatter();
+                cellValue = dataFormatter.formatCellValue(cell);
+
+            System.out.println("value: " + cellValue);
+
+            cont++;
+            row = sheet.getRow(cont);
+        }*/
         //Agregar tratamientos
         tratamientoRepository.save(new Tratamiento( LocalDate.now()));
 
@@ -309,4 +396,5 @@ public class DataBaseInit implements ApplicationRunner{
 
         }
     }
+
    
