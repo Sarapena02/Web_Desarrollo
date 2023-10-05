@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Random;
 
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -17,9 +16,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Controller;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.InputStream;
 
 import jakarta.transaction.Transactional;
 import proyecto.web.veterinaria.repository.ClienteRepository;
@@ -370,7 +367,7 @@ public class DataBaseInit implements ApplicationRunner{
         }
 
         //Se crean asociaciones de los tratamientos con las drogas y los veterinarios
-        Random random = new Random();
+        Random random = new Random(123);
 
         List<Tratamiento> tratamientos = tratamientoRepository.findAll();
         List<Veterinario> veterinarios = veterinarioRepository.findAll();
@@ -387,9 +384,7 @@ public class DataBaseInit implements ApplicationRunner{
             tratamientos.get(i).setDroga(drogaAleatoria);
 
             tratamientoRepository.save(tratamientos.get(i));
-
-        }
-
+            }
         }
     }
 
