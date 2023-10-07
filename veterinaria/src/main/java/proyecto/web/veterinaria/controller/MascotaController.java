@@ -4,19 +4,23 @@ package proyecto.web.veterinaria.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestBody;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import proyecto.web.veterinaria.entity.Cliente;
 import proyecto.web.veterinaria.entity.Mascota;
 import proyecto.web.veterinaria.service.MascotaService;
 
 @RestController
 @RequestMapping("/mascotas")
+@CrossOrigin(origins = "http://localhost:4200")
 public class MascotaController {
 
     @Autowired
@@ -46,6 +50,11 @@ public class MascotaController {
         mascotaService.add(mascota);
     }
 
+    @GetMapping("/cliente/{id}")
+    public Cliente findCliente(@PathVariable("id") Long id){
+        return mascotaService.findClienteById(id);
+    }
+
     //Se elimina una mascota de la base de datos por su id
     //localhost:8090/mascotas/delete/{id}
     @DeleteMapping("/delete/{id}")
@@ -57,10 +66,13 @@ public class MascotaController {
     }
 
     //Se actualiza una mascota en la base de datos
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public void actualizarMascota(@PathVariable("id") int id, @RequestBody Mascota mascota){
         //Se actualiza la mascota que se selecciono en el formulario
-        mascotaService.updateById(mascota);        
+        mascotaService.updateById(mascota);   
+        System.out.println("------------------------------------");
+        System.out.println(mascota.getCliente().getId());
+        System.out.println("------------------------------------");     
     }
 
    

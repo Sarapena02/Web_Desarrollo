@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import proyecto.web.veterinaria.entity.Cliente;
 import proyecto.web.veterinaria.entity.Mascota;
 import proyecto.web.veterinaria.repository.MascotaRepository;
 
@@ -48,6 +49,11 @@ public class MascotaServiceImpl implements MascotaService{
     @Override
     public List<Mascota> findAllActivos(){
         return mascotaRepository.findAllActivos();
+    }
+
+    @Override
+    public Cliente findClienteById(Long id) {
+        return mascotaRepository.findClienteById(id);
     }
     
 }

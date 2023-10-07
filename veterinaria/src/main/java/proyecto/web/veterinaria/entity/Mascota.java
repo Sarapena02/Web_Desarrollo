@@ -40,7 +40,6 @@ public class Mascota {
 
     //Constructores
     public Mascota() {
-        
     }
     public Mascota(String nombre, String raza, int edad, String enfermedad, String estado, String imagen) {
         this.nombre = nombre;
