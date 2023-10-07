@@ -18,7 +18,10 @@ public class Droga {
 
     //Atributos
     private String nombre;
-    private Long precio;
+    private Long precioVenta;
+    private Long precioCompra;
+    private int unidadesDisponibles;
+    private int unidadesVendidas;
     
     @OneToMany(mappedBy = "droga")
     private List<Tratamiento> tratamientos = new ArrayList<>();
@@ -28,9 +31,13 @@ public class Droga {
         
     }
 
-    public Droga(String nombre, Long precio) {
+    public Droga(String nombre, Long precioVenta, Long precioCompra, int unidadesDisponibles, int unidadesVendidas) {
         this.nombre = nombre;
-        this.precio = precio;
+        this.precioVenta = precioVenta;
+        this.precioCompra = precioCompra;
+        this.unidadesDisponibles = unidadesDisponibles;
+        this.unidadesVendidas = unidadesVendidas;
+
     }
 
 
@@ -51,13 +58,39 @@ public class Droga {
         this.nombre = nombre;
     }
 
-    public Long getPrecio() {
-        return precio;
+    public Long getPrecioVenta() {
+        return precioVenta;
     }
 
-    public void setPrecio(Long precio) {
-        this.precio = precio;
+    public void setPrecioVenta(Long precioVenta) {
+        this.precioVenta = precioVenta;
     }
+
+    public Long getPrecioCompra() {
+        return precioCompra;
+    }
+
+    public void setPrecioCompra(Long precioCompra) {
+        this.precioCompra = precioCompra;
+    }
+
+    public int getUnidadesDisponibles() {
+        return unidadesDisponibles;
+    }
+
+    public void setUnidadesDisponibles(int unidadesDisponibles) {
+        this.unidadesDisponibles = unidadesDisponibles;
+    }
+
+    public int getUnidadesVendidas() {
+        return unidadesVendidas;
+    }
+
+    public void setUnidadesVendidas(int unidadesVendidas) {
+        this.unidadesVendidas = unidadesVendidas;
+    }
+
+    
 
     
 
