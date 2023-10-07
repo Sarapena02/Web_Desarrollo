@@ -3,11 +3,20 @@ package proyecto.web.veterinaria.entity;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Random;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Controller;
+
+import java.io.FileInputStream;
 
 import jakarta.transaction.Transactional;
 import proyecto.web.veterinaria.repository.ClienteRepository;
@@ -271,15 +280,77 @@ public class DataBaseInit implements ApplicationRunner{
         
 
         //Agregar drogas
-        drogaRepository.save(new Droga("Paracetamol",100L));
+        int cont2 = 0;
+        try {
+            // Ruta relativa al archivo Excel
+            String filePath = "veterinaria//src//main//resources//static//Archivos//MEDICAMENTOS_VETERINARIA.xlsx ";
+
+            // Crear un flujo de entrada para el archivo Excel
+            FileInputStream inp = new FileInputStream(filePath);
+
+            // Crear un libro de trabajo a partir del flujo de entrada
+            Workbook wb = WorkbookFactory.create(inp);
+
+            // Obtener la hoja de trabajo (supongamos que es la primera hoja)
+            Sheet sheet = wb.getSheetAt(0);
+
+            int rowCount = sheet.getPhysicalNumberOfRows();
+
+            for(int i = 1   ; i < rowCount; i++){
+                Droga droga = new Droga();
+                Row row = sheet.getRow(i);
+
+                int cellCount = row.getPhysicalNumberOfCells();
+
+                for (int j = 0; j < cellCount; j++){
+
+                    Cell cell = row.getCell(j);
+                    if (cell != null) {
+                        DataFormatter dataFormatter = new DataFormatter();
+                        String cellValue = dataFormatter.formatCellValue(cell);
+                        if(cont2 == 0){
+                            droga.setNombre(cellValue);
+                        }else if(cont2 == 1){
+                            long precioV = Long.parseLong(cellValue);
+                            droga.setPrecioVenta(precioV);
+                        }else if(cont2 == 2){
+                            long precioC = Long.parseLong(cellValue);
+                            droga.setPrecioCompra(precioC);
+                        }else if(cont2 == 3){
+                            int unidadesD = Integer.parseInt(cellValue);
+                            droga.setUnidadesDisponibles(unidadesD);
+                        }else{
+                            int unidadesV = Integer.parseInt(cellValue);
+                            droga.setUnidadesVendidas(unidadesV);
+                        }
+                    }
+                    cont2++;
+                }
+                cont2 = 0;
+                drogaRepository.save(droga);
+            }
+            inp.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         //Agregar tratamientos
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
         tratamientoRepository.save(new Tratamiento( LocalDate.now()));
 
         //crear asociaciones
         List<Cliente> clientes = clienteRepository.findAll(); //Guarda en una lista todos los clientes
         List<Mascota> mascotas = mascotaRepository.findAll(); //Guarda en una lista todlas las mascotas
 
+        //Se crean asociaciones de mascotas y clientes
         for (int i = 0; i < mascotas.size(); i++) {
             // Asegúrate de que i no sea mayor que la cantidad de clientes disponibles
             int clienteIndex = i % clientes.size(); // Calcula el índice del cliente correspondiente
@@ -295,18 +366,26 @@ public class DataBaseInit implements ApplicationRunner{
             mascotaRepository.save(mascota);
         }
 
-        Mascota mascotaTra = mascotaRepository.findById(1L).get();
-        Veterinario veterinarioTra = veterinarioRepository.findById(1L).get();
-        Droga drogaTra = drogaRepository.findById(1L).get();
-        Tratamiento tratamientoTra = tratamientoRepository.findById(1L).get();
+        //Se crean asociaciones de los tratamientos con las drogas y los veterinarios
+        Random random = new Random(123);
 
-        tratamientoTra.setMascota(mascotaTra);
-        tratamientoTra.setVeterinario(veterinarioTra);
-        tratamientoTra.setDroga(drogaTra);
+        List<Tratamiento> tratamientos = tratamientoRepository.findAll();
+        List<Veterinario> veterinarios = veterinarioRepository.findAll();
+        List<Droga> drogas = drogaRepository.findAll();
+        for(int i = 0;i < tratamientos.size();i++){
 
-        tratamientoRepository.save(tratamientoTra);
+            // Selecciona aleatoriamente una mascota, un veterinario y una droga
+            Mascota mascotaAleatoria = mascotas.get(random.nextInt(mascotas.size()));
+            Veterinario veterinarioAleatorio = veterinarios.get(random.nextInt(veterinarios.size()));
+            Droga drogaAleatoria = drogas.get(random.nextInt(drogas.size()));
 
+            tratamientos.get(i).setMascota(mascotaAleatoria);
+            tratamientos.get(i).setVeterinario(veterinarioAleatorio);
+            tratamientos.get(i).setDroga(drogaAleatoria);
 
+            tratamientoRepository.save(tratamientos.get(i));
+            }
         }
     }
+
    
