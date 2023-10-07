@@ -30,7 +30,6 @@ public class Mascota {
 
     
     //Cliente de la mascota con relacion de muchos a uno
-    @JsonIgnore
     @ManyToOne
     private Cliente cliente;
 

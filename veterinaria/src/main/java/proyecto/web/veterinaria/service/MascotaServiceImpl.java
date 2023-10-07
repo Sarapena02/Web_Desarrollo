@@ -30,8 +30,8 @@ public class MascotaServiceImpl implements MascotaService{
 
     //Elimina un mascota
     @Override
-    public void deleteById(Long id) {
-        mascotaRepository.deleteById(id);
+    public void deleteById(Mascota Mascota) {
+        mascotaRepository.save(Mascota);
     }
 
     //Actualiza un mascota

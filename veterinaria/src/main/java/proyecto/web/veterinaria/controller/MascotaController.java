@@ -62,17 +62,14 @@ public class MascotaController {
         //Se elimina la mascota con el id que se selecciono
         Mascota mascota = mascotaService.SearchById(id);
         mascota.setEstado("Inactivo");
-        mascotaService.updateById(mascota);
+        mascotaService.deleteById(mascota);;
     }
 
     //Se actualiza una mascota en la base de datos
     @PutMapping("/update/{id}")
-    public void actualizarMascota(@PathVariable("id") int id, @RequestBody Mascota mascota){
+    public void actualizarMascota(@PathVariable("id") Long id, @RequestBody Mascota mascota){
         //Se actualiza la mascota que se selecciono en el formulario
-        mascotaService.updateById(mascota);   
-        System.out.println("------------------------------------");
-        System.out.println(mascota.getCliente().getId());
-        System.out.println("------------------------------------");     
+        mascotaService.updateById(mascota);     
     }
 
    
