@@ -1,6 +1,6 @@
 package proyecto.web.veterinaria.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class ClienteServiceImpl implements ClienteService{
 
     //Devuelve todos los clientes
     @Override
-    public Collection<Cliente> findAll() {
+    public List<Cliente> findAll() {
         return clienteRepository.findAll();
     }
 
@@ -54,7 +54,7 @@ public class ClienteServiceImpl implements ClienteService{
 
     //Devuelve todas las mascotas activas
     @Override
-    public Collection<Mascota> findAllActivos(Long id) {
+    public List<Mascota> findAllActivos(Long id) {
         return clienteRepository.findAllActivos(id);
     }
 

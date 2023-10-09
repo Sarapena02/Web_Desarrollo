@@ -1,6 +1,6 @@
 package proyecto.web.veterinaria.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import proyecto.web.veterinaria.entity.Cliente;
 import proyecto.web.veterinaria.entity.Mascota;
@@ -11,7 +11,7 @@ public interface ClienteService {
     //metodos de cliente
     public Cliente SearchById(Long id);
 
-    public Collection<Cliente> findAll();
+    public List<Cliente> findAll();
 
     public void deleteById(Long id);
 
@@ -21,7 +21,7 @@ public interface ClienteService {
 
     public Cliente SearchByCedula(String cedula);
 
-    public Collection<Mascota> findAllActivos(Long id);
+    public List<Mascota> findAllActivos(Long id);
 
     
 }

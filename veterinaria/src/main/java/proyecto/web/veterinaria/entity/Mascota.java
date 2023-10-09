@@ -3,6 +3,8 @@ package proyecto.web.veterinaria.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,16 +28,17 @@ public class Mascota {
     private String estado;
     private String imagen;
 
+    
     //Cliente de la mascota con relacion de muchos a uno
     @ManyToOne
     private Cliente cliente;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "mascota", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Tratamiento> tratamientos = new ArrayList<>();
 
     //Constructores
     public Mascota() {
-        
     }
     public Mascota(String nombre, String raza, int edad, String enfermedad, String estado, String imagen) {
         this.nombre = nombre;
