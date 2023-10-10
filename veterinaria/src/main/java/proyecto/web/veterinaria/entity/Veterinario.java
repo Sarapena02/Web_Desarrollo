@@ -3,6 +3,7 @@ package proyecto.web.veterinaria.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -25,6 +26,7 @@ public class Veterinario {
     private String Especialidad;
     private String foto;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "veterinario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Tratamiento> tratamientos = new ArrayList<>();
 
