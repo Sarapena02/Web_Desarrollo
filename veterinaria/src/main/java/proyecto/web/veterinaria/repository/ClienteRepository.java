@@ -13,6 +13,7 @@ import proyecto.web.veterinaria.entity.Mascota;
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
     //busca un cliente por su cedula
+    @Query("select c from Cliente c where c.cedula = ?1")
     Cliente findByCedula(String cedula);
 
     //busca mas mascotas activas de un cliente

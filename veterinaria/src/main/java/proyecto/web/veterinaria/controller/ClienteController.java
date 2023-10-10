@@ -20,7 +20,7 @@ import proyecto.web.veterinaria.service.ClienteService;
 
 @RestController
 @RequestMapping("/clientes")
-@CrossOrigin(origins = "https://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ClienteController {
 
     @Autowired
@@ -28,17 +28,11 @@ public class ClienteController {
 
     // se autentifica el cliente
     @PostMapping("/login")
-    public String login(@RequestParam String cedula, HttpSession session) {
+    public Cliente login(@RequestBody String cedula) {
         // busca dentro de la base de datos el cliente que tenga la cedula
+        System.out.println(cedula);
         Cliente cliente = clienteService.SearchByCedula(cedula);
-        if (cliente != null) {
-            // si lo encuentra redirecciona a la pagina donde esta toda su informacion
-            session.setAttribute("cliente", cliente);
-            return "redirect:/clientes/find/" + cliente.getId();
-        } else {
-            // si no lo encuentra se vuelve a mostrar la pagina del login
-            return "Inicio/logInCliente";
-        }
+       return cliente;
     }
 
     // Se muestra la lista de todos los clientes en formato json
