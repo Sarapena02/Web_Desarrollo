@@ -19,7 +19,7 @@ public interface VeterinarioService {
 
     public void add(Veterinario veterinario);
 
-    public Veterinario SearchByCedula(String cedula);
+    public Veterinario SearchByCedulayContrasenia(String cedula, String contrasenia);
 
     
 }

@@ -1,21 +1,26 @@
 package proyecto.web.veterinaria.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.servlet.http.HttpSession;
 import proyecto.web.veterinaria.entity.Veterinario;
 import proyecto.web.veterinaria.service.VeterinarioService;
 
+@RestController
 @Controller
 @RequestMapping("/veterinarios")
+@CrossOrigin(origins = "http://localhost:4200")
 public class VeterinarioController {
 
     @Autowired
@@ -23,17 +28,11 @@ public class VeterinarioController {
 
 
     @PostMapping("/login")
-    public String login(@RequestParam String cedula, @RequestParam String contraseña, HttpSession session) {
+    public Veterinario login(@RequestBody Map<String, String> requestBody) {
         //busca dentro de la base de datos el cliente que tenga la cedula
-        Veterinario veterinario = veterinarioService.SearchByCedula(cedula);
-        if (veterinario != null) {
-            //si lo encuentra redirecciona a la pagina donde esta toda su informacion
-            session.setAttribute("veterinario", veterinario);
-            return "redirect:/veterinarios/find/" + veterinario.getId();
-        } else {
-            //si no lo encuentra se vuelve a mostrar la pagina del login
-            return "Inicio/logVet";
-        }
+        Veterinario veterinario = veterinarioService.SearchByCedulayContrasenia(requestBody.get("cedula"), requestBody.get("contrasenia"));
+  
+        return veterinario;
     }
 
     //Se busca un veterinario por su id
@@ -70,7 +69,7 @@ public class VeterinarioController {
     @PostMapping("/agregar")
     public String agregarVeterinario(@ModelAttribute("veterinario") Veterinario veterinario, Model model) {
         //Se busca si ya existe un cliente con esa cedula
-        Veterinario veterinarioExiste = veterinarioService.SearchByCedula(veterinario.getCedula());
+        Veterinario veterinarioExiste = veterinarioService.SearchByCedulayContrasenia(veterinario.getCedula(), veterinario.getContrasenia());
         //Si ya existe entonces se manda una alerta al formulario
         if(veterinarioExiste != null){
             model.addAttribute("alerta", "La cédula ya está registrada en el sistema.");
