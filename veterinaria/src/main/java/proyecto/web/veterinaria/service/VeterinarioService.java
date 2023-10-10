@@ -1,6 +1,6 @@
 package proyecto.web.veterinaria.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import proyecto.web.veterinaria.entity.Veterinario;
 
@@ -11,7 +11,7 @@ public interface VeterinarioService {
 
     public Veterinario SearchById(Long id);
 
-    public Collection<Veterinario> findAll();
+    public List<Veterinario> findAll();
 
     public void deleteById(Long id);
 
