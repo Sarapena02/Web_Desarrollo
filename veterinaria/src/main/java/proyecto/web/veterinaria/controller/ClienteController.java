@@ -27,12 +27,11 @@ public class ClienteController {
 
     // se autentifica el cliente
     @PostMapping("/login")
-    @Operation(summary = "Log in de cleinte")
+    @Operation(summary = "Log in de cliente")
     public Cliente login(@RequestBody String cedula) {
         // busca dentro de la base de datos el cliente que tenga la cedula
-        System.out.println(cedula);
         Cliente cliente = clienteService.SearchByCedula(cedula);
-       return cliente;
+        return cliente;
     }
 
     // Se muestra la lista de todos los clientes en formato json
