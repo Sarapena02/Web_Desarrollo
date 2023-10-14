@@ -15,6 +15,9 @@ public interface MascotaRepository extends JpaRepository<Mascota, Long> {
     @Query("select m from Mascota m where m.estado = 'Activo'")
     List<Mascota> findAllActivos();
 
+    @Query("select m from Mascota m where m.estado = 'Inactivo'")
+    List<Mascota> findAllInactivos();
+
     @Query("select m.cliente from Mascota m where m.cliente.id = ?1")
     Cliente findClienteById(Long id);
 

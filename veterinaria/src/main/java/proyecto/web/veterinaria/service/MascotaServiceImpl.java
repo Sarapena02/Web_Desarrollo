@@ -52,6 +52,11 @@ public class MascotaServiceImpl implements MascotaService{
     }
 
     @Override
+    public List<Mascota> findAllInactivos() {
+        return mascotaRepository.findAllInactivos();
+    }
+
+    @Override
     public Cliente findClienteById(Long id) {
         return mascotaRepository.findClienteById(id);
     }

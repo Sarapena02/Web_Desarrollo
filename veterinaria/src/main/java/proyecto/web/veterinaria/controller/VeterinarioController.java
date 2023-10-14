@@ -83,4 +83,16 @@ public class VeterinarioController {
         //Se actualiza el cliente que se selecciono en el formulario
         veterinarioService.updateById(veterinario);
     }
+
+    @GetMapping("/cantidad/activos")
+    @Operation(summary = "Obtener la cantidad de veterinarios activos")
+    public int cantidadVeterinariosActivos() {
+        return veterinarioService.findAllActivos().size();
+    }
+
+    @GetMapping("/cantidad/inactivos")
+    @Operation(summary = "Obtener la cantidad de veterinarios inactivos")
+    public int cantidadVeterinariosInactivos() {
+        return veterinarioService.findAllInactivos().size();
+    }
 }

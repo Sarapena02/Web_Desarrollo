@@ -49,5 +49,14 @@ public class VeterinarioServiceImpl implements VeterinarioService {
     public Veterinario SearchByCedulayContrasenia(String cedula, String contrasenia) {
         return veterinarioRepository.findByCedulaYContrasenia(cedula, contrasenia);
     }
+
+    @Override
+    public List<Veterinario> findAllActivos() {
+        return veterinarioRepository.findAllActivos();
+    }
     
+    @Override
+    public List<Veterinario> findAllInactivos() {
+        return veterinarioRepository.findAllInactivos();
+    }
 }

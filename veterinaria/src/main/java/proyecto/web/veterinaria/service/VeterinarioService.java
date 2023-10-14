@@ -21,5 +21,9 @@ public interface VeterinarioService {
 
     public Veterinario SearchByCedulayContrasenia(String cedula, String contrasenia);
 
+    public List<Veterinario> findAllActivos();
+
+    public List<Veterinario> findAllInactivos();
+
     
 }
