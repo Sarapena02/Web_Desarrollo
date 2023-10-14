@@ -3,6 +3,7 @@ package proyecto.web.veterinaria.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -24,7 +25,9 @@ public class Veterinario {
     private String Contrasenia;
     private String Especialidad;
     private String foto;
+    private String estado;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "veterinario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Tratamiento> tratamientos = new ArrayList<>();
 
@@ -33,12 +36,13 @@ public class Veterinario {
         
     }
 
-    public Veterinario(String nombre, String cedula, String Contrasenia, String Especialidad, String foto) {
+    public Veterinario(String nombre, String cedula, String Contrasenia, String Especialidad, String foto, String estado) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.Contrasenia = Contrasenia;
         this.Especialidad = Especialidad;
         this.foto = foto;
+        this.estado = estado;
     }
 
     //Getters and Setters
@@ -89,6 +93,14 @@ public class Veterinario {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public List<Tratamiento> getTratamientos() {

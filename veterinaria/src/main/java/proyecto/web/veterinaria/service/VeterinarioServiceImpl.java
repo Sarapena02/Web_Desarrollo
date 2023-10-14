@@ -1,6 +1,6 @@
 package proyecto.web.veterinaria.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class VeterinarioServiceImpl implements VeterinarioService {
 
     //Devuelve todos los clientes
     @Override
-    public Collection<Veterinario> findAll() {
+    public List<Veterinario> findAll() {
         return veterinarioRepository.findAll();
     }
 
@@ -46,8 +46,17 @@ public class VeterinarioServiceImpl implements VeterinarioService {
     }
 
     @Override
-    public Veterinario SearchByCedula(String cedula) {
-        return veterinarioRepository.findByCedula(cedula);
+    public Veterinario SearchByCedulayContrasenia(String cedula, String contrasenia) {
+        return veterinarioRepository.findByCedulaYContrasenia(cedula, contrasenia);
+    }
+
+    @Override
+    public List<Veterinario> findAllActivos() {
+        return veterinarioRepository.findAllActivos();
     }
     
+    @Override
+    public List<Veterinario> findAllInactivos() {
+        return veterinarioRepository.findAllInactivos();
+    }
 }
