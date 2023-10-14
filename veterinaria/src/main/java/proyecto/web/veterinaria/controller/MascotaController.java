@@ -81,5 +81,17 @@ public class MascotaController {
         mascotaService.updateById(mascota);     
     }
 
+    @GetMapping("/cantidad/activos")
+    @Operation(summary = "Obtener la cantidad de mascotas activas")
+    public int cantidadMascotasActivas(){
+        return mascotaService.findAllActivos().size();
+    }
+
+    @GetMapping("/cantidad/inactivos")
+    @Operation(summary = "Obtener la cantidad de mascotas inactivas")
+    public int cantidadMascotasInactivas(){
+        return mascotaService.findAllInactivos().size();
+    }
+
    
 }

@@ -21,5 +21,7 @@ public interface MascotaService {
 
     public List<Mascota> findAllActivos();
 
+    public List<Mascota> findAllInactivos();
+
     public Cliente findClienteById(Long id);
 }
