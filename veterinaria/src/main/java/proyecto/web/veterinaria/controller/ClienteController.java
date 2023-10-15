@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
 import proyecto.web.veterinaria.entity.Cliente;
+import proyecto.web.veterinaria.entity.Mascota;
 import proyecto.web.veterinaria.service.ClienteService;
 
 @RestController
@@ -85,5 +86,13 @@ public class ClienteController {
     public void actualizarCliente(@PathVariable("id") int id, @RequestBody Cliente cliente) {
         // Se actualiza el cliente que se selecciono en el formulario
         clienteService.updateById(cliente);
+    }
+
+    //Obtiene las mascotas de un cliente
+    @GetMapping("/mascotas/{id}")
+    @Operation(summary = "Obtener las mascotas de un cliente")
+    public List<Mascota> getMascotas(@PathVariable("id") Long id) {
+        // Obtiene las mascotas de un cliente
+        return clienteService.getMascotas(id);
     }
 }

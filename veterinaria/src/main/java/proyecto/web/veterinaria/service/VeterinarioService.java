@@ -13,7 +13,7 @@ public interface VeterinarioService {
 
     public List<Veterinario> findAll();
 
-    public void deleteById(Long id);
+    public void deleteById(Veterinario veterinario);
 
     public void updateById(Veterinario veterinario);
 
