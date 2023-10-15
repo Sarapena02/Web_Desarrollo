@@ -58,5 +58,10 @@ public class ClienteServiceImpl implements ClienteService{
         return clienteRepository.findAllActivos(id);
     }
 
+    @Override
+    public List<Mascota> getMascotas(Long id) {
+        return clienteRepository.getMascotas(id);
+    }
+
     
 }

@@ -73,7 +73,9 @@ public class VeterinarioController {
     @Operation(summary = "Eliminar un Veterinario")
     public void eliminarVeterinario(@PathVariable("id") Long id) {
         //Se elimina el veterinario con el id que se selecciono
-        veterinarioService.deleteById(id);
+        Veterinario veterinario = veterinarioService.SearchById(id);
+        veterinario.setEstado("Inactivo");
+        veterinarioService.deleteById(veterinario);
     }
 
     //Se actualiza un Veterinario en la base de datos
