@@ -2,6 +2,7 @@ package proyecto.web.veterinaria.entity;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -345,6 +346,89 @@ public class DataBaseInit implements ApplicationRunner{
         tratamientoRepository.save(new Tratamiento( LocalDate.now()));
         tratamientoRepository.save(new Tratamiento( LocalDate.now()));
         tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
+
 
         //crear asociaciones
         List<Cliente> clientes = clienteRepository.findAll(); //Guarda en una lista todos los clientes
@@ -372,20 +456,39 @@ public class DataBaseInit implements ApplicationRunner{
         List<Tratamiento> tratamientos = tratamientoRepository.findAll();
         List<Veterinario> veterinarios = veterinarioRepository.findAll();
         List<Droga> drogas = drogaRepository.findAll();
-        for(int i = 0;i < tratamientos.size();i++){
 
-            // Selecciona aleatoriamente una mascota, un veterinario y una droga
-            Mascota mascotaAleatoria = mascotas.get(random.nextInt(mascotas.size()));
-            Veterinario veterinarioAleatorio = veterinarios.get(random.nextInt(veterinarios.size()));
-            Droga drogaAleatoria = drogas.get(random.nextInt(drogas.size()));
+        // Crear listas separadas de mascotas y drogas no utilizadas
+        List<Mascota> mascotasNoUtilizadas = new ArrayList<>(mascotas);
+        List<Droga> drogasNoUtilizadas = new ArrayList<>(drogas);
 
+        for (int i = 0; i < tratamientos.size(); i++) {
+            // Verificar si hay mascotas y drogas no utilizadas
+            if (mascotasNoUtilizadas.isEmpty() || drogasNoUtilizadas.isEmpty()) {
+                // Manejar el caso en el que ya no hay suficientes mascotas o drogas
+                break;
+            }
+
+            // Selecciona aleatoriamente una mascota y una droga no utilizada
+            Mascota mascotaAleatoria = mascotasNoUtilizadas.get(random.nextInt(mascotasNoUtilizadas.size()));
+            Droga drogaAleatoria = drogasNoUtilizadas.get(random.nextInt(drogasNoUtilizadas.size()));
+
+            // Asignar la mascota y la droga al tratamiento
             tratamientos.get(i).setMascota(mascotaAleatoria);
-            tratamientos.get(i).setVeterinario(veterinarioAleatorio);
             tratamientos.get(i).setDroga(drogaAleatoria);
 
+            // Eliminar la mascota y la droga seleccionadas de las listas no utilizadas
+            mascotasNoUtilizadas.remove(mascotaAleatoria);
+            drogasNoUtilizadas.remove(drogaAleatoria);
+
+            // Seleccionar aleatoriamente un veterinario
+            Veterinario veterinarioAleatorio = veterinarios.get(random.nextInt(veterinarios.size()));
+            tratamientos.get(i).setVeterinario(veterinarioAleatorio);
+
+            // Guardar el tratamiento
             tratamientoRepository.save(tratamientos.get(i));
-            }
         }
+    }
+
     }
 
    
