@@ -29,8 +29,8 @@ public class VeterinarioServiceImpl implements VeterinarioService {
 
     //Elimina un cliente
     @Override
-    public void deleteById(Long id) {
-        veterinarioRepository.deleteById(id);
+    public void deleteById(Veterinario veterinario) {
+        veterinarioRepository.save(veterinario);
     }
 
     //Actualiza un cliente
