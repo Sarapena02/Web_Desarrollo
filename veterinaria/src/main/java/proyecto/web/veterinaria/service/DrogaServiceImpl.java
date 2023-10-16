@@ -33,5 +33,10 @@ public class DrogaServiceImpl implements DrogaService{
     public Long ventasTotales() {
         return drogaRepository.ventasTotales();
     }
+
+    @Override
+    public void actualizarDroga(Droga droga) {
+        drogaRepository.save(droga);
+    }
     
 }

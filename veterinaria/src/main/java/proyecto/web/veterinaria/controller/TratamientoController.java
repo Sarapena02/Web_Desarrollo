@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,9 +32,14 @@ public class TratamientoController {
     public List<Object> TratamientosPorMedicamentoEnelUltimoMes() {
 
         List<Tratamiento> tratamientos = tratamientoService.findTratamientosUltimoMes();
-
-        
         return tratamientoService.TratamientosPorMedicamentoEnelUltimoMes(tratamientos);
+    }
+
+    @PostMapping("/agregar")
+    @Operation(summary = "Agregar un nuevo tratamiento")
+    public void agregarTratamiento(@RequestBody Tratamiento tratamiento){
+        //se añade un nuevo tratamiento
+        tratamientoService.add(tratamiento);
     }
 
 }
