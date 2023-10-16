@@ -33,4 +33,9 @@ public class TratamientoServiceImpl implements TratamientoService {
     public List<Object> TratamientosPorMedicamentoEnelUltimoMes(List<Tratamiento> medicamentos) {
         return tratamientoRepository.TratamientosPorMedicamentoEnelUltimoMes(medicamentos);
     }
+
+    @Override
+    public void add(Tratamiento tratamiento) {
+        tratamientoRepository.save(tratamiento);
+    }
 }
