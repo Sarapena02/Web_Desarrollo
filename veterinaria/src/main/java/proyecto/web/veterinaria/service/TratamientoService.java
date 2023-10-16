@@ -12,5 +12,7 @@ public interface TratamientoService {
     List<Tratamiento> findTratamientosUltimoMes();
 
     List<Object> TratamientosPorMedicamentoEnelUltimoMes(List<Tratamiento> tratamientos);
+
+    void add(Tratamiento tratamiento);
     
 }

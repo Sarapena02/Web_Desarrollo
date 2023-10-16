@@ -2,7 +2,6 @@ package proyecto.web.veterinaria.entity;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,11 +19,9 @@ public class Tratamiento {
     //Atributos
     private LocalDate fecha;
 
-    @JsonIgnore
     @ManyToOne
     private Veterinario veterinario;
 
-    @JsonIgnore
     @ManyToOne
     private Mascota mascota;
 

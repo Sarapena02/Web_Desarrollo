@@ -14,5 +14,7 @@ public interface DrogaService {
     Long gananciasTotales();
 
     Long ventasTotales();
+
+    void actualizarDroga(Droga droga);
     
 }
