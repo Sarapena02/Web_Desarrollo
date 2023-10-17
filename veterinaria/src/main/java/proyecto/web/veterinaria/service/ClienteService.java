@@ -8,7 +8,7 @@ import proyecto.web.veterinaria.entity.Mascota;
 //servicio de cliente
 public interface ClienteService {
 
-    //metodos de cliente
+    // metodos de cliente
     public Cliente SearchById(Long id);
 
     public List<Cliente> findAll();
@@ -21,9 +21,8 @@ public interface ClienteService {
 
     public Cliente SearchByCedula(String cedula);
 
-    public List<Mascota> findAllActivos(Long id);
+    public List<Mascota> findMascotasActivas(Long id);
 
     public List<Mascota> getMascotas(Long id);
 
-    
 }
