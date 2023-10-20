@@ -17,7 +17,7 @@ public interface ClienteService {
 
     public void updateById(Cliente cliente);
 
-    public void add(Cliente cliente);
+    public Cliente add(Cliente cliente);
 
     public Cliente SearchByCedula(String cedula);
 

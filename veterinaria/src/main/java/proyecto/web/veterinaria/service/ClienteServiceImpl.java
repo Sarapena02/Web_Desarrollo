@@ -42,8 +42,8 @@ public class ClienteServiceImpl implements ClienteService {
 
     // Agrega un nuevo cliente
     @Override
-    public void add(Cliente cliente) {
-        clienteRepository.save(cliente);
+    public Cliente add(Cliente cliente) {
+        return clienteRepository.save(cliente);
     }
 
     // Busca un cliente por su cedula
