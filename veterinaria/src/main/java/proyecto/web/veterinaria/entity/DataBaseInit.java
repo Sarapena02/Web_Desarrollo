@@ -2,7 +2,6 @@ package proyecto.web.veterinaria.entity;
 
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -158,10 +157,10 @@ public class DataBaseInit implements ApplicationRunner{
         mascotaRepository.save(new Mascota("Sasha", "Criollo", 5, "NA", "Activo", "https://blogger.googleusercontent.com/img/a/AVvXsEgvSmCBsSlMDMRVX0FBoZEHUM4iS9ceeBp6ymPsKZHbfo-eTTcDL8_VTlb_etI0SjsF9RjzupZKslmfA4eDhjq3tfBvI20mBVakHKETtpyzdcV05-yMt7_WbQUyKEx9WDS5jwrDdKOdOTmxq45eoigII5MLt-VQ9Ycf69IO2UkGW3p6hdcSAyCvVEq6o0KJ"));
         mascotaRepository.save(new Mascota("Luna", "Persa", 2, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbSqf5LDj1H5vzo8j7gd-Iw3Oc2Y8s2ZavlA&usqp=CAU"));
         mascotaRepository.save(new Mascota("Max", "Maine Coon", 4, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNu8vbUF0Hy8wDDZ1keNcyGlILzaVabtuI9Q&usqp=CAU"));
-        mascotaRepository.save(new Mascota("Oliver", "Bengala", 1, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHyswh9E28aNlky97G4SiOIf1-Wbl54VVl_A&usqp=CAU"));
-        mascotaRepository.save(new Mascota("Milo", "Sphynx", 2, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMQN_qvH-nKWyHHc-D1a6JpVLRXxbfu_4yfA&usqp=CAU"));
+        mascotaRepository.save(new Mascota("Oliver", "Bengala", 1, "NA", "Inactivo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHyswh9E28aNlky97G4SiOIf1-Wbl54VVl_A&usqp=CAU"));
+        mascotaRepository.save(new Mascota("Milo", "Sphynx", 2, "NA", "Inactivo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMQN_qvH-nKWyHHc-D1a6JpVLRXxbfu_4yfA&usqp=CAU"));
         mascotaRepository.save(new Mascota("Simba", "Ragdoll", 3, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThm7eIQFM-ZCoZBDA2LfLpo7mDi50GHRxg3Q&usqp=CAU"));
-        mascotaRepository.save(new Mascota("Charlie", "Abisinio", 2, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScAoBo0zZ8sQlVUB9dCxNr8Dl7Tvrbox0pPA&usqp=CAU"));
+        mascotaRepository.save(new Mascota("Charlie", "Abisinio", 2, "NA", "Inactivo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScAoBo0zZ8sQlVUB9dCxNr8Dl7Tvrbox0pPA&usqp=CAU"));
         mascotaRepository.save(new Mascota("Tiger", "Somalí", 5, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt8pCcU438Qew8KnCmyWCzboxBbJVFEnCCbg&usqp=CAU"));
         mascotaRepository.save(new Mascota("Leo", "Oriental de Pelo Corto", 2, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuoGMvz1nIoZ5aBAEiUZqMKP8KXhTSTIPSTw&usqp=CAU"));
         mascotaRepository.save(new Mascota("Oscar", "Siberiano", 4, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsUMZHTtsdUZGQREg0EG9Ba3Rz1t8dmMpqag&usqp=CAU"));
@@ -173,9 +172,9 @@ public class DataBaseInit implements ApplicationRunner{
         mascotaRepository.save(new Mascota("Finn", "Británico de Pelo Corto", 2, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1iKeYv2nA453UoI43HyCy1AYBuxevAJQWAw&usqp=CAU"));
         mascotaRepository.save(new Mascota("Cleo", "Cornish Rex", 3, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1kMEkp3nPNeWTL-Fk6YxxjjxrOLqyYoaCbg&usqp=CAU"));
         mascotaRepository.save(new Mascota("Loki", "Devon Rex", 1, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNnZEPbAiFmSyre6vc9dSRf8XorbiDWgnqkw&usqp=CAU"));
-        mascotaRepository.save(new Mascota("Zoe", "Himalayo", 2, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcaIdPOOHcz3yFoUobbdQS_d2hfHOmxUDAzg&usqp=CAU"));
+        mascotaRepository.save(new Mascota("Zoe", "Himalayo", 2, "NA", "Inactivo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcaIdPOOHcz3yFoUobbdQS_d2hfHOmxUDAzg&usqp=CAU"));
         mascotaRepository.save(new Mascota("Misty", "Fold Escocés", 5, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn2RH1U-UQDSeK3WIDj6WSwd7y4KTgD8NYbw&usqp=CAU"));
-        mascotaRepository.save(new Mascota("Pepino", "Sphynx", 3, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk1oZIyCh72cuEoKQDOzt9QveYyMu4BFAvwg&usqp=CAU"));
+        mascotaRepository.save(new Mascota("Pepino", "Sphynx", 3, "NA", "Inactivo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk1oZIyCh72cuEoKQDOzt9QveYyMu4BFAvwg&usqp=CAU"));
         mascotaRepository.save(new Mascota("Mittens", "Van Turco", 2, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiX1vtERPawO0UAG1EYwsZoA62-zrNVsPOjjFeDhi9MtZt1acH1NGYWPiQkKq67vY2Hh0&usqp=CAU"));
         mascotaRepository.save(new Mascota("Muffin", "Ragamuffin", 4, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlPIhqYuFOf2814YkcgtJoMR5cunZ996yFnQ&usqp=CAU"));
         mascotaRepository.save(new Mascota("Snowball", "Bosque de Noruega", 1, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa9fZzTLgLJcgPJi0mHQo4Sz1lzckHZU-p3Q&usqp=CAU"));
@@ -187,14 +186,14 @@ public class DataBaseInit implements ApplicationRunner{
         mascotaRepository.save(new Mascota("Misty", "Somalí", 2, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdMX6HShggCvtPPSeswI2rF3xHIk1lseAGwpdbkVA3_UOnJY5Zze4JUDKxuI3bAKMewuI&usqp=CAU"));
         mascotaRepository.save(new Mascota("Angel", "Angora Turco", 3, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH7zoJrmPrMZzxOoGVTVo2Fa_I6sooqj4bgA&usqp=CAU"));
         mascotaRepository.save(new Mascota("Smokey", "Ragdoll", 1, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr2gS3qwvQ_cdyDt_YG0v76JPRxolbzoO8Ig&usqp=CAU"));
-        mascotaRepository.save(new Mascota("Pumpkin", "Abisinio", 2, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy2fll6tqebzCjYhGW4BQ9cHNdJN-N9vOjSQ&usqp=CAU"));
-        mascotaRepository.save(new Mascota("Ginger", "Persa", 5, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvAUYSrY_HrpzsV7Bjw_P4hDKOuxinyFKKg5c1Ifbbb0eLkh6bO2yvPXd5acKZvA_owG4&usqp=CAU"));
+        mascotaRepository.save(new Mascota("Pumpkin", "Abisinio", 2, "NA", "Inactivo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy2fll6tqebzCjYhGW4BQ9cHNdJN-N9vOjSQ&usqp=CAU"));
+        mascotaRepository.save(new Mascota("Ginger", "Persa", 5, "NA", "Inactivo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvAUYSrY_HrpzsV7Bjw_P4hDKOuxinyFKKg5c1Ifbbb0eLkh6bO2yvPXd5acKZvA_owG4&usqp=CAU"));
         mascotaRepository.save(new Mascota("Harley", "Maine Coon", 3, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFW3r3VDZdO5qi_XsqLttEs1Kt7GGQevpmBA&usqp=CAU"));
         mascotaRepository.save(new Mascota("Snickers", "Azul Ruso", 2, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcvcKG1awo5E6TtZjZXiDu0uo9sA_OR7JNA&usqp=CAU"));
-        mascotaRepository.save(new Mascota("Shadow", "Exótico de Pelo Corto", 1, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShXbNzNCsGgOon2EJ5eHcWIkGMKyah2IqKsw&usqp=CAU"));
-        mascotaRepository.save(new Mascota("Coco", "Ragamuffin", 4, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe8C2nRo3i13-CpMy-h2OelRWC1EF1qlh4fg&usqp=CAU"));
-        mascotaRepository.save(new Mascota("Rocky", "Fold Escocés", 2, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7esj5-sU18O2sxXuo444LafZWqXPs0MdPgw&usqp=CAU"));
-        mascotaRepository.save(new Mascota("Salem", "Himalayo", 3, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ7jU_25-zWT7DfkHgotRY0Nt_I_b-L-9vYQ&usqp=CAU"));
+        mascotaRepository.save(new Mascota("Shadow", "Exótico de Pelo Corto", 1, "NA", "Inactivo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShXbNzNCsGgOon2EJ5eHcWIkGMKyah2IqKsw&usqp=CAU"));
+        mascotaRepository.save(new Mascota("Coco", "Ragamuffin", 4, "NA", "Inactivo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe8C2nRo3i13-CpMy-h2OelRWC1EF1qlh4fg&usqp=CAU"));
+        mascotaRepository.save(new Mascota("Rocky", "Fold Escocés", 2, "NA", "Inactivo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7esj5-sU18O2sxXuo444LafZWqXPs0MdPgw&usqp=CAU"));
+        mascotaRepository.save(new Mascota("Salem", "Himalayo", 3, "NA", "Inactivo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ7jU_25-zWT7DfkHgotRY0Nt_I_b-L-9vYQ&usqp=CAU"));
         mascotaRepository.save(new Mascota("Simba", "Devon Rex", 1, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTlasxcvKyshO7CzkgOHrKV2VZ8_Xy19Ez5FMl_XRF6ORtKtvuLYGrhqllediRIb6MXc&usqp=CAU"));
         mascotaRepository.save(new Mascota("Lily", "Cornish Rex", 2, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDyf0zRatbLXHzg3zD9W8wFNjhDsVxkaDfGw&usqp=CAU"));
         mascotaRepository.save(new Mascota("Ruby", "Sphynx", 5, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkKOcDZ5QO-pMEzJjcZD-Go8P6wfESux1AAg&usqp=CAU"));
@@ -257,27 +256,27 @@ public class DataBaseInit implements ApplicationRunner{
         mascotaRepository.save(new Mascota("Salem", "Sphynx", 1, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ69f1xHz-gJbNzikzaWgs6YypjzaHaEGXAKg&usqp=CAU"));
 
         //Agregar veterinarios
-        veterinarioRepository.save(new Veterinario("Walter White", "12345678910", "walter1", "Cirugía Veterinaria","https://media.licdn.com/dms/image/D4E03AQFJw7XUiXz6Yg/profile-displayphoto-shrink_800_800/0/1667784141711?e=2147483647&v=beta&t=TY52duHebBPoWB2uxWMWjvm7NO1XBszLRtYTm7VzwkY"));
-        veterinarioRepository.save(new Veterinario("Juan Pérez", "1111111111", "password1", "Cirugía Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ2PnJo6v5y0L8GtemRFnMiwlT-07DEYrjmw&usqp=CAU"));
-        veterinarioRepository.save(new Veterinario("María González", "2222222222", "password2", "Dermatología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpQD7h5S7Abv4XV8jDUluWWIAss-d3GW6IBQ&usqp=CAU"));
-        veterinarioRepository.save(new Veterinario("Carlos Rodríguez", "3333333333", "password3", "Cardiología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9Ychx9yvKel0ZKKeVW3bvpvC7IcbhsVIsIw&usqp=CAU"));
-        veterinarioRepository.save(new Veterinario("Laura Martínez", "4444444444", "password4", "Odontología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRxmZrCXgJu2TulJRlzYviFxokT0nkEXFWtA&usqp=CAU"));
-        veterinarioRepository.save(new Veterinario("Luis Sánchez", "5555555555", "password5", "Medicina Interna Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuRCTG-0zAGWAXfQqilR_0C_eiSsWaxzsbSw&usqp=CAU"));
-        veterinarioRepository.save(new Veterinario("Ana López", "6666666666", "password6", "Ortopedia Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4h47IO8rim9gXJaJWhbKyLExq3cWIV3_Mnw&usqp=CAU"));
-        veterinarioRepository.save(new Veterinario("Jorge Ramírez", "7777777777", "password7", "Oftalmología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCYFicjT9DW_yA9ib6Rjdk7gm5JgHbaPHRiQ&usqp=CAU"));
-        veterinarioRepository.save(new Veterinario("Patricia Fernández", "8888888888", "password8", "Neurología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ4sOh8kSf-707bELw7jEKNl7Iil6XgVu-_g&usqp=CAU"));
-        veterinarioRepository.save(new Veterinario("Alberto Pérez", "9999999999", "password9", "Oncología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnI-10Rddeyza9vCpDGMsFHQ6m-tVGMjN7eQ&usqp=CAU"));
-        veterinarioRepository.save(new Veterinario("Juan Pérez", "1010101010", "password10", "Radiología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaVj8ii95k04OCu9Sy7XyBoU-7pb_HZ_PhUA&usqp=CAU"));
-        veterinarioRepository.save(new Veterinario("Carolina González", "1111111112", "password11", "Anestesiología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzgJz7K1Ekd-GA3GTK3i2kjhGKykJKXcveVg&usqp=CAU"));
-        veterinarioRepository.save(new Veterinario("Manuel Rodríguez", "1212121212", "password12", "Endocrinología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7uhBKbq26tsDldcyjzxNg5P4HrCBsY6NN9Q&usqp=CAU"));
-        veterinarioRepository.save(new Veterinario("Isabel Martínez", "1313131313", "password13", "Radiología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSStGD2sKlQ04YMgY__-nMB0K0ymmz7LL4VtQ&usqp=CAU"));
-        veterinarioRepository.save(new Veterinario("Javier Sánchez", "1414141414", "password14", "Medicina Preventiva Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE098wH_h5bKySx-cC7_uRkrS08BEiix9Xu-UddUze8F659UorTOuHMGmB74MUw3o8A1A&usqp=CAU"));
-        veterinarioRepository.save(new Veterinario("Eva López", "1515151515", "password15", "Nutrición Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbvr2I4QbjJS4EGWmLXBelmIIZUkMmJ_xp8Q&usqp=CAU"));
-        veterinarioRepository.save(new Veterinario("Diego Ramírez", "1616161616", "password16", "Rehabilitación Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfreiFF4m0OnRsb50wtq8FJ3K9aoU2btwtOEUwYf5r2b7PuNhfECrLoagxy5JPs_25jGU&usqp=CAU"));
-        veterinarioRepository.save(new Veterinario("María Fernández", "1717171717", "password17", "Urología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSl6mUOa8nZ0Y8Ka3TV-FHi3jJ4IKvgaznng&usqp=CAU"));
-        veterinarioRepository.save(new Veterinario("Guillermo Pérez", "1818181818", "password18", "Gastroenterología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFvz0gWXNVabMSDba1umQE-rwTo0OvRSW3PA&usqp=CAU"));
-        veterinarioRepository.save(new Veterinario("Andrea González", "1919191919", "password19", "Hematología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9tC508RbAh8jYf6sOv5e7T8TAg9R_WJ37Qg&usqp=CAU"));
-        veterinarioRepository.save(new Veterinario("Juan Carlos Rodríguez", "2020202020", "password20", "Nefrología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrVbI7GYlFY-yIDmVCZ4u11CFFmXez1R8DYg&usqp=CAU"));
+        veterinarioRepository.save(new Veterinario("Walter White", "12345678910", "walter1", "Cirugía Veterinaria","https://media.licdn.com/dms/image/D4E03AQFJw7XUiXz6Yg/profile-displayphoto-shrink_800_800/0/1667784141711?e=2147483647&v=beta&t=TY52duHebBPoWB2uxWMWjvm7NO1XBszLRtYTm7VzwkY","Activo"));
+        veterinarioRepository.save(new Veterinario("Juan Pérez", "1111111111", "password1", "Cirugía Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ2PnJo6v5y0L8GtemRFnMiwlT-07DEYrjmw&usqp=CAU","Activo"));
+        veterinarioRepository.save(new Veterinario("María González", "2222222222", "password2", "Dermatología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpQD7h5S7Abv4XV8jDUluWWIAss-d3GW6IBQ&usqp=CAU","Activo"));
+        veterinarioRepository.save(new Veterinario("Carlos Rodríguez", "3333333333", "password3", "Cardiología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9Ychx9yvKel0ZKKeVW3bvpvC7IcbhsVIsIw&usqp=CAU","Activo"));
+        veterinarioRepository.save(new Veterinario("Laura Martínez", "4444444444", "password4", "Odontología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRxmZrCXgJu2TulJRlzYviFxokT0nkEXFWtA&usqp=CAU","Inactivo"));
+        veterinarioRepository.save(new Veterinario("Luis Sánchez", "5555555555", "password5", "Medicina Interna Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuRCTG-0zAGWAXfQqilR_0C_eiSsWaxzsbSw&usqp=CAU","Activo"));
+        veterinarioRepository.save(new Veterinario("Ana López", "6666666666", "password6", "Ortopedia Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4h47IO8rim9gXJaJWhbKyLExq3cWIV3_Mnw&usqp=CAU","Inactivo"));
+        veterinarioRepository.save(new Veterinario("Jorge Ramírez", "7777777777", "password7", "Oftalmología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCYFicjT9DW_yA9ib6Rjdk7gm5JgHbaPHRiQ&usqp=CAU","Activo"));
+        veterinarioRepository.save(new Veterinario("Patricia Fernández", "8888888888", "password8", "Neurología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ4sOh8kSf-707bELw7jEKNl7Iil6XgVu-_g&usqp=CAU","Activo"));
+        veterinarioRepository.save(new Veterinario("Alberto Pérez", "9999999999", "password9", "Oncología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnI-10Rddeyza9vCpDGMsFHQ6m-tVGMjN7eQ&usqp=CAU","Inactivo"));
+        veterinarioRepository.save(new Veterinario("Juan Pérez", "1010101010", "password10", "Radiología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaVj8ii95k04OCu9Sy7XyBoU-7pb_HZ_PhUA&usqp=CAU","Activo"));
+        veterinarioRepository.save(new Veterinario("Carolina González", "1111111112", "password11", "Anestesiología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzgJz7K1Ekd-GA3GTK3i2kjhGKykJKXcveVg&usqp=CAU","Activo"));
+        veterinarioRepository.save(new Veterinario("Manuel Rodríguez", "1212121212", "password12", "Endocrinología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7uhBKbq26tsDldcyjzxNg5P4HrCBsY6NN9Q&usqp=CAU","Activo"));
+        veterinarioRepository.save(new Veterinario("Isabel Martínez", "1313131313", "password13", "Radiología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSStGD2sKlQ04YMgY__-nMB0K0ymmz7LL4VtQ&usqp=CAU","Activo"));
+        veterinarioRepository.save(new Veterinario("Javier Sánchez", "1414141414", "password14", "Medicina Preventiva Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE098wH_h5bKySx-cC7_uRkrS08BEiix9Xu-UddUze8F659UorTOuHMGmB74MUw3o8A1A&usqp=CAU","Inactivo"));
+        veterinarioRepository.save(new Veterinario("Eva López", "1515151515", "password15", "Nutrición Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbvr2I4QbjJS4EGWmLXBelmIIZUkMmJ_xp8Q&usqp=CAU","Activo"));
+        veterinarioRepository.save(new Veterinario("Diego Ramírez", "1616161616", "password16", "Rehabilitación Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfreiFF4m0OnRsb50wtq8FJ3K9aoU2btwtOEUwYf5r2b7PuNhfECrLoagxy5JPs_25jGU&usqp=CAU","Activo"));
+        veterinarioRepository.save(new Veterinario("María Fernández", "1717171717", "password17", "Urología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSl6mUOa8nZ0Y8Ka3TV-FHi3jJ4IKvgaznng&usqp=CAU","Activo"));
+        veterinarioRepository.save(new Veterinario("Guillermo Pérez", "1818181818", "password18", "Gastroenterología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFvz0gWXNVabMSDba1umQE-rwTo0OvRSW3PA&usqp=CAU","Activo"));
+        veterinarioRepository.save(new Veterinario("Andrea González", "1919191919", "password19", "Hematología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9tC508RbAh8jYf6sOv5e7T8TAg9R_WJ37Qg&usqp=CAU","Activo"));
+        veterinarioRepository.save(new Veterinario("Juan Carlos Rodríguez", "2020202020", "password20", "Nefrología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrVbI7GYlFY-yIDmVCZ4u11CFFmXez1R8DYg&usqp=CAU","Activo"));
         
 
         //Agregar drogas
@@ -336,99 +335,17 @@ public class DataBaseInit implements ApplicationRunner{
         }
 
         //Agregar tratamientos
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
-        tratamientoRepository.save(new Tratamiento( LocalDate.now()));
 
+        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 10, 1)));
+        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 9, 15)));
+        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 10, 5)));
+        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 10, 10)));
+        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 9, 15)));
+        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 9, 5)));
+        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 9, 1)));
+        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 9, 20)));
+        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 9, 30)));
+        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 9, 4)));
 
         //crear asociaciones
         List<Cliente> clientes = clienteRepository.findAll(); //Guarda en una lista todos los clientes
@@ -456,39 +373,29 @@ public class DataBaseInit implements ApplicationRunner{
         List<Tratamiento> tratamientos = tratamientoRepository.findAll();
         List<Veterinario> veterinarios = veterinarioRepository.findAll();
         List<Droga> drogas = drogaRepository.findAll();
+        for(int i = 0;i < tratamientos.size();i++){
 
-        // Crear listas separadas de mascotas y drogas no utilizadas
-        List<Mascota> mascotasNoUtilizadas = new ArrayList<>(mascotas);
-        List<Droga> drogasNoUtilizadas = new ArrayList<>(drogas);
+            // Selecciona aleatoriamente una mascota, un veterinario y una droga
+            Mascota mascotaAleatoria = mascotas.get(random.nextInt(mascotas.size()));
+            Veterinario veterinarioAleatorio = veterinarios.get(random.nextInt(veterinarios.size()));
+            Droga drogaAleatoria = drogas.get(random.nextInt(drogas.size()));
 
-        for (int i = 0; i < tratamientos.size(); i++) {
-            // Verificar si hay mascotas y drogas no utilizadas
-            if (mascotasNoUtilizadas.isEmpty() || drogasNoUtilizadas.isEmpty()) {
-                // Manejar el caso en el que ya no hay suficientes mascotas o drogas
-                break;
-            }
+            //Se obtienen las unidades disponibles y vendidas de la droga
+            int unidadesDisponibles = drogaAleatoria.getUnidadesDisponibles();
+            int unidadesVendidas = drogaAleatoria.getUnidadesVendidas();
 
-            // Selecciona aleatoriamente una mascota y una droga no utilizada
-            Mascota mascotaAleatoria = mascotasNoUtilizadas.get(random.nextInt(mascotasNoUtilizadas.size()));
-            Droga drogaAleatoria = drogasNoUtilizadas.get(random.nextInt(drogasNoUtilizadas.size()));
+            //Se actualizan las unidades disponibles y vendidas de la droga
+            drogaAleatoria.setUnidadesDisponibles(unidadesDisponibles-1);
+            drogaAleatoria.setUnidadesVendidas(unidadesVendidas+1);
 
-            // Asignar la mascota y la droga al tratamiento
             tratamientos.get(i).setMascota(mascotaAleatoria);
+            tratamientos.get(i).setVeterinario(veterinarioAleatorio);
             tratamientos.get(i).setDroga(drogaAleatoria);
 
-            // Eliminar la mascota y la droga seleccionadas de las listas no utilizadas
-            mascotasNoUtilizadas.remove(mascotaAleatoria);
-            drogasNoUtilizadas.remove(drogaAleatoria);
 
-            // Seleccionar aleatoriamente un veterinario
-            Veterinario veterinarioAleatorio = veterinarios.get(random.nextInt(veterinarios.size()));
-            tratamientos.get(i).setVeterinario(veterinarioAleatorio);
-
-            // Guardar el tratamiento
             tratamientoRepository.save(tratamientos.get(i));
+            }
         }
-    }
-
     }
 
    

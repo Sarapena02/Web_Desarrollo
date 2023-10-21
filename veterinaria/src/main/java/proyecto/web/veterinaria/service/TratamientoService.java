@@ -7,14 +7,12 @@ import proyecto.web.veterinaria.entity.Tratamiento;
 //Servicio de tratamiento
 public interface TratamientoService {
 
-    List<Tratamiento> findAll();
+    //Metodos de tratamiento
 
-    Tratamiento SearchById(Long id);
+    List<Tratamiento> findTratamientosUltimoMes();
 
-    void updateById(Tratamiento tratamiento);
+    List<Object> TratamientosPorMedicamentoEnelUltimoMes(List<Tratamiento> tratamientos);
 
     void add(Tratamiento tratamiento);
-
-    void deleteById(Long id);
     
 }
