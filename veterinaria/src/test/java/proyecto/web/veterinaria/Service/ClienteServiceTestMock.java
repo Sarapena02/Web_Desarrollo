@@ -11,16 +11,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
+
 import org.springframework.test.context.ActiveProfiles;
 
 import proyecto.web.veterinaria.entity.Cliente;
 import proyecto.web.veterinaria.repository.ClienteRepository;
-import proyecto.web.veterinaria.service.ClienteService;
 import proyecto.web.veterinaria.service.ClienteServiceImpl;
 
 @ActiveProfiles("test")
