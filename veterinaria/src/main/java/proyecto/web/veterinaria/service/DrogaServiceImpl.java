@@ -38,5 +38,11 @@ public class DrogaServiceImpl implements DrogaService{
     public void actualizarDroga(Droga droga) {
         drogaRepository.save(droga);
     }
+
+    @Override
+    public Droga SearchById(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'SearchById'");
+    }
     
 }

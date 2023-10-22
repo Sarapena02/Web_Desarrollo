@@ -13,6 +13,10 @@ public interface TratamientoService {
 
     List<Object> TratamientosPorMedicamentoEnelUltimoMes(List<Tratamiento> tratamientos);
 
-    void add(Tratamiento tratamiento);
+    Tratamiento add(Tratamiento tratamiento);
+
+    List<Tratamiento> findAll();
+
+
     
 }

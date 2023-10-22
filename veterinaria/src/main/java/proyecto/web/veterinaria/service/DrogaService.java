@@ -16,8 +16,6 @@ public interface DrogaService {
     Long ventasTotales();
 
     void actualizarDroga(Droga droga);
-    
-    public List<Droga> findAll();
 
     public Droga SearchById(Long id);
 }
