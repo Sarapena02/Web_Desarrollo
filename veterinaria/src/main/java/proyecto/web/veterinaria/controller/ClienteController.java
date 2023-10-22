@@ -31,6 +31,7 @@ public class ClienteController {
     // se autentifica el cliente
     @PostMapping("/login")
     @Operation(summary = "Log in de cliente")
+<<<<<<< Updated upstream
     public ResponseEntity<Cliente> login(@RequestBody String cedula) {
         // busca dentro de la base de datos el cliente que tenga la cedula
         Cliente cliente = clienteService.SearchByCedula(cedula);
@@ -40,6 +41,12 @@ public class ClienteController {
         }
         ResponseEntity<Cliente> response = new ResponseEntity<>(cliente, HttpStatus.OK);
         return response;
+=======
+    public Cliente login(@RequestBody String cedula) {
+        // busca dentro de la base de datos el cliente que tenga la cedula
+        Cliente cliente = clienteService.SearchByCedula(cedula);
+        return cliente;
+>>>>>>> Stashed changes
     }
 
     // Se muestra la lista de todos los clientes en formato json
@@ -120,5 +127,13 @@ public class ClienteController {
         // Obtiene las mascotas de un cliente
         List<Mascota> mascotas = clienteService.getMascotas(id);
         return new ResponseEntity<>(mascotas, HttpStatus.OK);
+    }
+
+    //Obtiene las mascotas de un cliente
+    @GetMapping("/mascotas/{id}")
+    @Operation(summary = "Obtener las mascotas de un cliente")
+    public List<Mascota> getMascotas(@PathVariable("id") Long id) {
+        // Obtiene las mascotas de un cliente
+        return clienteService.getMascotas(id);
     }
 }

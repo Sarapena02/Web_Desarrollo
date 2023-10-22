@@ -25,4 +25,10 @@ public interface ClienteService {
 
     public List<Mascota> getMascotas(Long id);
 
+<<<<<<< Updated upstream
+=======
+    public List<Mascota> getMascotas(Long id);
+
+    
+>>>>>>> Stashed changes
 }

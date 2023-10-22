@@ -35,6 +35,7 @@ public class TratamientoServiceImpl implements TratamientoService {
     }
 
     @Override
+<<<<<<< Updated upstream
     public Tratamiento add(Tratamiento tratamiento) {
         return tratamientoRepository.save(tratamiento);
     }
@@ -43,5 +44,9 @@ public class TratamientoServiceImpl implements TratamientoService {
     public List<Tratamiento> findAll() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+=======
+    public void add(Tratamiento tratamiento) {
+        tratamientoRepository.save(tratamiento);
+>>>>>>> Stashed changes
     }
 }

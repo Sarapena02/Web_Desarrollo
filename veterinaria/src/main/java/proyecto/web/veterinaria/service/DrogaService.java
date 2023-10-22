@@ -16,6 +16,11 @@ public interface DrogaService {
     Long ventasTotales();
 
     void actualizarDroga(Droga droga);
+<<<<<<< Updated upstream
+=======
+    
+    public List<Droga> findAll();
+>>>>>>> Stashed changes
 
     public Droga SearchById(Long id);
 }
