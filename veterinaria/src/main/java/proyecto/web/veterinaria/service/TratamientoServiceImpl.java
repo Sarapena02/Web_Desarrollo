@@ -35,7 +35,25 @@ public class TratamientoServiceImpl implements TratamientoService {
     }
 
     @Override
-    public void add(Tratamiento tratamiento) {
-        tratamientoRepository.save(tratamiento);
+    public Tratamiento add(Tratamiento tratamiento) {
+        return tratamientoRepository.save(tratamiento);
     }
+
+    @Override
+    public List<Tratamiento> findAll() {
+        return tratamientoRepository.findAll();
+    }
+
+    @Override
+    public Tratamiento SearchById(Long id) {
+        return tratamientoRepository.findById(id).get();}
+
+    @Override
+    public void deleteById(Long id) {
+        tratamientoRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateById(Tratamiento tratamiento) {
+        tratamientoRepository.save(tratamiento);}
 }

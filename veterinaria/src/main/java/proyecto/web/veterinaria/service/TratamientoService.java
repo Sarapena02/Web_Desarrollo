@@ -9,10 +9,19 @@ public interface TratamientoService {
 
     //Metodos de tratamiento
 
-    List<Tratamiento> findTratamientosUltimoMes();
+    public List<Tratamiento> findAll();
 
-    List<Object> TratamientosPorMedicamentoEnelUltimoMes(List<Tratamiento> tratamientos);
+    public Tratamiento SearchById(Long id);
 
-    void add(Tratamiento tratamiento);
+    public void deleteById(Long id);
+
+    public void updateById(Tratamiento tratamiento);
+
+    public List<Tratamiento> findTratamientosUltimoMes();
+
+    public List<Object> TratamientosPorMedicamentoEnelUltimoMes(List<Tratamiento> tratamientos);
+
+    public Tratamiento add(Tratamiento tratamiento);
+
     
 }
