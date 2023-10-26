@@ -28,9 +28,8 @@ import proyecto.web.veterinaria.repository.VeterinarioRepository;
 
 @Controller
 @Transactional
-@Profile("default")
-
-public class DataBaseInit implements ApplicationRunner{
+@Profile("test")
+public class DataBaseInitTest implements ApplicationRunner{
 
     @Autowired
     ClienteRepository clienteRepository;
@@ -281,7 +280,48 @@ public class DataBaseInit implements ApplicationRunner{
         veterinarioRepository.save(new Veterinario("Andrea González", "1919191919", "password19", "Hematología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9tC508RbAh8jYf6sOv5e7T8TAg9R_WJ37Qg&usqp=CAU","Activo"));
         veterinarioRepository.save(new Veterinario("Juan Carlos Rodríguez", "2020202020", "password20", "Nefrología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrVbI7GYlFY-yIDmVCZ4u11CFFmXez1R8DYg&usqp=CAU","Activo"));
         
+        drogaRepository.save(new Droga("ACOLAN", 151300L, 60520L, 4, 0));
+        drogaRepository.save(new Droga("ACTIONIS", 155100L, 124080L, 4, 0));
+        drogaRepository.save(new Droga("ACUIMIX", 114800L, 91840L, 4, 0));
+        drogaRepository.save(new Droga("ADVOCIN", 147600L, 103320L, 1, 0));
+        drogaRepository.save(new Droga("AEROFAR", 129000L, 64500L, 10, 0));
+        drogaRepository.save(new Droga("AIVLOSIN", 164900L, 115430L, 10, 0));
+        drogaRepository.save(new Droga("ALAMYCIN", 125800L, 100640L, 6, 0));
+        drogaRepository.save(new Droga("ALBIOTIC", 79100L, 47460L, 2, 0));
+        drogaRepository.save(new Droga("ALSIR", 182000L, 109200L, 4, 0));
+        drogaRepository.save(new Droga("ALTIDOX", 133400L, 80040L, 4, 0));
+        drogaRepository.save(new Droga("AMOXY-250", 156700L, 117525L, 6, 0));
+        drogaRepository.save(new Droga("AMOXYPEN", 121500L, 85050L, 8, 0));
+        drogaRepository.save(new Droga("AMPICILINA", 142600L, 85656L, 3, 0));
+        drogaRepository.save(new Droga("ANIFLOX", 131200L, 105760L, 2, 0));
+        drogaRepository.save(new Droga("APIROXAL", 118300L, 70812L, 5, 0));
+        drogaRepository.save(new Droga("AVICIL", 136500L, 95550L, 2, 0));
+        drogaRepository.save(new Droga("BACIFUR", 126300L, 75780L, 5, 0));
+        drogaRepository.save(new Droga("BAYMICINA", 141100L, 112880L, 2, 0));
+        drogaRepository.save(new Droga("BELFOLIAR", 110300L, 77210L, 7, 0));
+        drogaRepository.save(new Droga("BENZIPENICILINA", 129700L, 103760L, 5, 0));
+        drogaRepository.save(new Droga("BIOSOL-T", 140700L, 112560L, 3, 0));
+        drogaRepository.save(new Droga("CALCIFORT", 165800L, 91590L, 10, 0));
+        drogaRepository.save(new Droga("CANIGARD", 149000L, 119200L, 2, 0));
+        drogaRepository.save(new Droga("CANIMIX", 160300L, 114214L, 4, 0));
+        drogaRepository.save(new Droga("CARDISER", 131900L, 92030L, 5, 0));
+        drogaRepository.save(new Droga("CEPOREX", 135500L, 101625L, 5, 0));
+        drogaRepository.save(new Droga("CHLOROMYCETIN", 125100L, 93765L, 4, 0));
+        drogaRepository.save(new Droga("CIPROFLOXACINO", 146200L, 87520L, 7, 0));
+        drogaRepository.save(new Droga("CLAMOXIN", 127800L, 89460L, 6, 0));
+        drogaRepository.save(new Droga("CLARIDOX", 140500L, 105375L, 6, 0));
+        drogaRepository.save(new Droga("CORTACIN", 118400L, 82880L, 3, 0));
+        drogaRepository.save(new Droga("CORTAMOX", 159200L, 103480L, 7, 0));
+        drogaRepository.save(new Droga("CORTAVANCE", 134800L, 112400L, 2, 0));
+        drogaRepository.save(new Droga("CYCLAVANCE", 137300L, 109840L, 5, 0));
+        drogaRepository.save(new Droga("DELMACEN", 121600L, 85280L, 5, 0));
+        drogaRepository.save(new Droga("DERMOTRIN", 141000L, 98700L, 4, 0));
+        drogaRepository.save(new Droga("DIAZOLE", 152200L, 106540L, 7, 0));
+        drogaRepository.save(new Droga("DIAZOXIN", 122400L, 85728L, 3, 0));
+        drogaRepository.save(new Droga("DIROFEN", 130200L, 84660L, 8, 0));
+        drogaRepository.save(new Droga("DOXIKLON", 140900L, 98730L, 7, 0));
 
+                
         //Agregar drogas
         int cont2 = 0;
         try {
