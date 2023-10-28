@@ -35,18 +35,25 @@ public class TratamientoServiceImpl implements TratamientoService {
     }
 
     @Override
-<<<<<<< Updated upstream
     public Tratamiento add(Tratamiento tratamiento) {
         return tratamientoRepository.save(tratamiento);
     }
 
     @Override
     public List<Tratamiento> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
-=======
-    public void add(Tratamiento tratamiento) {
-        tratamientoRepository.save(tratamiento);
->>>>>>> Stashed changes
+        return tratamientoRepository.findAll();
     }
+
+    @Override
+    public Tratamiento SearchById(Long id) {
+        return tratamientoRepository.findById(id).get();}
+
+    @Override
+    public void deleteById(Long id) {
+        tratamientoRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateById(Tratamiento tratamiento) {
+        tratamientoRepository.save(tratamiento);}
 }

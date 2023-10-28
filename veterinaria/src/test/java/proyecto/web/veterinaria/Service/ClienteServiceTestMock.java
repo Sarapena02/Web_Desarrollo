@@ -21,7 +21,6 @@ import proyecto.web.veterinaria.service.ClienteServiceImpl;
 
 @ActiveProfiles("test")
 @ExtendWith(MockitoExtension.class)
-
 public class ClienteServiceTestMock {
     @Mock
     ClienteRepository clienteRepository;
