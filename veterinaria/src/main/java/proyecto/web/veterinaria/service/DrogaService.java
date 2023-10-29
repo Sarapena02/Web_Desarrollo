@@ -16,5 +16,7 @@ public interface DrogaService {
     Long ventasTotales();
 
     void actualizarDroga(Droga droga);
+
+    Droga findByName(String name);
     
 }
