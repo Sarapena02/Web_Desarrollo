@@ -23,9 +23,5 @@ public interface TratamientoService {
 
     public Tratamiento add(Tratamiento tratamiento);
 
-    public List<Tratamiento> TratamientosPorVeterinario(Long id);
-
-    public List<Tratamiento> TratamientosPorMascota(Long id);
-
     
 }

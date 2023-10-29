@@ -38,10 +38,5 @@ public class DrogaServiceImpl implements DrogaService{
     public void actualizarDroga(Droga droga) {
         drogaRepository.save(droga);
     }
-
-    @Override
-    public Droga findByName(String name) {
-        return drogaRepository.findByName(name);
-    }
     
 }

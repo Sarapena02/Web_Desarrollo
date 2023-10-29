@@ -93,11 +93,5 @@ public class MascotaController {
         return mascotaService.findAllInactivos().size();
     }
 
-    @GetMapping("/findByName/{name}")
-    @Operation(summary = "Obtener una Mascota por su nombre")
-    public Mascota findByName(@PathVariable("name") String name){
-        return mascotaService.findByName(name);
-    }
-
    
 }

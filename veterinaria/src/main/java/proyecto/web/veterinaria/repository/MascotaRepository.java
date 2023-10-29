@@ -21,7 +21,4 @@ public interface MascotaRepository extends JpaRepository<Mascota, Long> {
     @Query("select m.cliente from Mascota m where m.cliente.id = ?1")
     Cliente findClienteById(Long id);
 
-    @Query("select m from Mascota m where m.nombre = ?1")
-    Mascota findByName(String name);
-
 }

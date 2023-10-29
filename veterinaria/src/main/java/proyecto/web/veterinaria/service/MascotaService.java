@@ -24,6 +24,4 @@ public interface MascotaService {
     public List<Mascota> findAllInactivos();
 
     public Cliente findClienteById(Long id);
-
-    public Mascota findByName(String name);
 }

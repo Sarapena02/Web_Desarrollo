@@ -86,24 +86,4 @@ public class TratamientoController {
         tratamientoService.add(tratamiento);
     }
 
-    @GetMapping("/TratamientosPorVeterinario/{id}")
-    @Operation(summary = "Obtener los tratamientos por veterinario")
-    public ResponseEntity<List<Tratamiento>> TratamientosPorVeterinario(@PathVariable("id") Long id){
-
-        List<Tratamiento> tratamientos = tratamientoService.TratamientosPorVeterinario(id);
-
-        ResponseEntity<List<Tratamiento>> response = new ResponseEntity<>(tratamientos, HttpStatus.OK);
-        return response;
-    }
-
-    @GetMapping("/TratamientosPorMascota/{id}")
-    @Operation(summary = "Obtener los tratamientos por mascota")
-    public ResponseEntity<List<Tratamiento>> TratamientosPorMascota(@PathVariable("id") Long id){
-        
-        List<Tratamiento> tratamientos = tratamientoService.TratamientosPorMascota(id);
-
-        ResponseEntity<List<Tratamiento>> response = new ResponseEntity<>(tratamientos, HttpStatus.OK);
-        return response;
-    }
-
 }
