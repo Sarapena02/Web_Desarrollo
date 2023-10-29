@@ -5,19 +5,13 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 
-import java.io.FileInputStream;
 
 import jakarta.transaction.Transactional;
 import proyecto.web.veterinaria.repository.ClienteRepository;
@@ -320,62 +314,6 @@ public class DataBaseInitTest implements ApplicationRunner{
         drogaRepository.save(new Droga("DIAZOXIN", 122400L, 85728L, 3, 0));
         drogaRepository.save(new Droga("DIROFEN", 130200L, 84660L, 8, 0));
         drogaRepository.save(new Droga("DOXIKLON", 140900L, 98730L, 7, 0));
-
-                
-        //Agregar drogas
-        int cont2 = 0;
-        try {
-            // Ruta relativa al archivo Excel
-            String filePath = "veterinaria//src//main//resources//static//Archivos//MEDICAMENTOS_VETERINARIA.xlsx ";
-
-            // Crear un flujo de entrada para el archivo Excel
-            FileInputStream inp = new FileInputStream(filePath);
-
-            // Crear un libro de trabajo a partir del flujo de entrada
-            Workbook wb = WorkbookFactory.create(inp);
-
-            // Obtener la hoja de trabajo (supongamos que es la primera hoja)
-            Sheet sheet = wb.getSheetAt(0);
-
-            int rowCount = sheet.getPhysicalNumberOfRows();
-
-            for(int i = 1   ; i < rowCount; i++){
-                Droga droga = new Droga();
-                Row row = sheet.getRow(i);
-
-                int cellCount = row.getPhysicalNumberOfCells();
-
-                for (int j = 0; j < cellCount; j++){
-
-                    Cell cell = row.getCell(j);
-                    if (cell != null) {
-                        DataFormatter dataFormatter = new DataFormatter();
-                        String cellValue = dataFormatter.formatCellValue(cell);
-                        if(cont2 == 0){
-                            droga.setNombre(cellValue);
-                        }else if(cont2 == 1){
-                            long precioV = Long.parseLong(cellValue);
-                            droga.setPrecioVenta(precioV);
-                        }else if(cont2 == 2){
-                            long precioC = Long.parseLong(cellValue);
-                            droga.setPrecioCompra(precioC);
-                        }else if(cont2 == 3){
-                            int unidadesD = Integer.parseInt(cellValue);
-                            droga.setUnidadesDisponibles(unidadesD);
-                        }else{
-                            int unidadesV = Integer.parseInt(cellValue);
-                            droga.setUnidadesVendidas(unidadesV);
-                        }
-                    }
-                    cont2++;
-                }
-                cont2 = 0;
-                drogaRepository.save(droga);
-            }
-            inp.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         //Agregar tratamientos
 
