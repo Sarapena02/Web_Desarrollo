@@ -352,7 +352,11 @@ public class DataBaseInit implements ApplicationRunner{
         tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 9, 1)));
         tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 9, 20)));
         tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 9, 30)));
-        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 9, 4)));
+        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 9, 22)));
+        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 10, 10)));
+        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 10, 28)));
+        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 10, 7)));
+
 
         //crear asociaciones
         List<Cliente> clientes = clienteRepository.findAll(); //Guarda en una lista todos los clientes
