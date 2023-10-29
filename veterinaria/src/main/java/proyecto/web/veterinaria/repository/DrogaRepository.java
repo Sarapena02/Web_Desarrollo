@@ -17,5 +17,8 @@ public interface DrogaRepository extends JpaRepository<Droga, Long> {
 
     @Query("select sum(d.unidadesVendidas * d.precioVenta) from Droga d")
     Long ventasTotales();
+
+    @Query("select d from Droga d where d.nombre = ?1")
+    Droga findByName(String name);
     
 }

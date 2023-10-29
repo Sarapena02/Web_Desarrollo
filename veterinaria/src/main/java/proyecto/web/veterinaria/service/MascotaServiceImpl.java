@@ -60,5 +60,10 @@ public class MascotaServiceImpl implements MascotaService{
     public Cliente findClienteById(Long id) {
         return mascotaRepository.findClienteById(id);
     }
+
+    @Override
+    public Mascota findByName(String name) {
+        return mascotaRepository.findByName(name);
+    }
     
 }

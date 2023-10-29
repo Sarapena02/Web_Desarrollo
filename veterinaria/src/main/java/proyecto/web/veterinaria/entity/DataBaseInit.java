@@ -555,6 +555,8 @@ public class DataBaseInit implements ApplicationRunner{
             tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 14)));
             tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 14)));
             tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 14)));
+            //tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 14)));
+
 
             List<Tratamiento> tratamientos2 = tratamientoRepository.findAll();
 
@@ -605,6 +607,16 @@ public class DataBaseInit implements ApplicationRunner{
             tratamientos2.get(157).setDroga(drogaAleatoria2);
 
             tratamientoRepository.save(tratamientos2.get(157));
+
+            //
+            /*drogaAleatoria2.setUnidadesDisponibles(drogaAleatoria2.getUnidadesDisponibles()-1);
+            drogaAleatoria2.setUnidadesVendidas(drogaAleatoria2.getUnidadesVendidas()+1);
+
+            tratamientos2.get(158).setMascota(mascotaAleatoria2);
+            tratamientos2.get(158).setVeterinario(veterinarioAleatorio2);
+            tratamientos2.get(158).setDroga(drogaAleatoria2);
+
+            tratamientoRepository.save(tratamientos2.get(158)); */
         }
     }
 

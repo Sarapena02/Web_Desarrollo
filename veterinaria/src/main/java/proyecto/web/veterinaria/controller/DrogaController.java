@@ -55,4 +55,10 @@ public class DrogaController {
         // Se actualiza la droga que se selecciono en el formulario
         drogaService.actualizarDroga(droga);
     }
+
+    @GetMapping("findByName/{name}")
+    @Operation(summary = "Obtener una droga por su nombre")
+    public Droga findByName(@PathVariable("name") String name){
+        return drogaService.findByName(name);
+    }
 }
