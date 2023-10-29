@@ -121,4 +121,10 @@ public class ClienteController {
         List<Mascota> mascotas = clienteService.getMascotas(id);
         return new ResponseEntity<>(mascotas, HttpStatus.OK);
     }
+
+    @GetMapping("/cedula/{cedula}")
+    @Operation(summary = "Obtener un cliente por su cedula")
+    public ResponseEntity<Cliente> SearchByCedula(@PathVariable("cedula") String cedula){
+        return new ResponseEntity<>(clienteService.SearchByCedula(cedula), HttpStatus.OK);
+    }
 }
