@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.models.headers.Header.StyleEnum;
 import proyecto.web.veterinaria.entity.Cliente;
 import proyecto.web.veterinaria.entity.Mascota;
 import proyecto.web.veterinaria.service.ClienteService;
@@ -121,4 +122,11 @@ public class ClienteController {
         List<Mascota> mascotas = clienteService.getMascotas(id);
         return new ResponseEntity<>(mascotas, HttpStatus.OK);
     }
+
+    @GetMapping("/cedula/{cedula}")
+    @Operation(summary = "Obtener un cliente por su cedula")
+    public ResponseEntity<Cliente> SearchByCedula(@PathVariable("cedula") String cedula){
+        return new ResponseEntity<>(clienteService.SearchByCedula(cedula), HttpStatus.OK);
+    }
+
 }

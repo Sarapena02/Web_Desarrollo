@@ -15,4 +15,10 @@ public interface TratamientoRepository extends JpaRepository<Tratamiento, Long> 
 
     @Query("select t.droga.nombre, count(t) from Tratamiento t where t in ?1 group by t.droga.nombre")
     List<Object> TratamientosPorMedicamentoEnelUltimoMes(List<Tratamiento> medicamentos);
+
+    @Query("select t from Tratamiento t where t.veterinario.id = ?1")
+    List<Tratamiento> TratamientosPorVeterinario(Long id);
+
+    @Query("select t from Tratamiento t where t.mascota.id = ?1")
+    List<Tratamiento> TratamientosPorMascota(Long id);
 }

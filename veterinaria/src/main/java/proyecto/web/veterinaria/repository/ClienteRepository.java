@@ -22,4 +22,5 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     // busca las mascotas de un cliente
     @Query("select m from Mascota m inner join Cliente c On m.cliente.id = c.id where c.id = ?1")
     List<Mascota> getMascotas(Long id);
+
 }

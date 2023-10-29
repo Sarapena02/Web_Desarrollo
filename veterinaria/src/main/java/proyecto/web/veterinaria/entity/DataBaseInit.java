@@ -29,7 +29,6 @@ import proyecto.web.veterinaria.repository.VeterinarioRepository;
 @Controller
 @Transactional
 @Profile("default")
-
 public class DataBaseInit implements ApplicationRunner{
 
     @Autowired
@@ -257,8 +256,9 @@ public class DataBaseInit implements ApplicationRunner{
         mascotaRepository.save(new Mascota("Misty", "Van Turco", 3, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUDa4EZyFCPfLzISMKQEODWlvxqGRUSdhaxg&usqp=CAU"));
         mascotaRepository.save(new Mascota("Angel", "Ragamuffin", 2, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS04FazkkzwCEJA4YTvUEp-D4Sa1whhQidRTg&usqp=CAU"));
         mascotaRepository.save(new Mascota("Salem", "Sphynx", 1, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ69f1xHz-gJbNzikzaWgs6YypjzaHaEGXAKg&usqp=CAU"));
-        mascotaRepository.save(new Mascota("Miguel", "Sphynx", 1, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ69f1xHz-gJbNzikzaWgs6YypjzaHaEGXAKg&usqp=CAU"));
-        mascotaRepository.save(new Mascota("Sergio", "Azul Ruso", 2, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKskU7vTLR8NYE9HCw5CMaP1mESKWpWWaslg&usqp=CAU"));
+        
+        mascotaRepository.save(new Mascota("Miguel", "Himalayo", 3, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtxjILg6yZi7kLvQ3S164BDhcDyaF-H1ByVg&usqp=CAU"));
+        mascotaRepository.save(new Mascota("Sergio", "Devon Rex", 1, "NA", "Activo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVYt1z3BSDjxkoHA_x88S1Yss4xrIRgAWQ9w&usqp=CAU"));
 
 
 
@@ -285,12 +285,32 @@ public class DataBaseInit implements ApplicationRunner{
         veterinarioRepository.save(new Veterinario("Andrea González", "1919191919", "password19", "Hematología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9tC508RbAh8jYf6sOv5e7T8TAg9R_WJ37Qg&usqp=CAU","Activo"));
         veterinarioRepository.save(new Veterinario("Juan Carlos Rodríguez", "2020202020", "password20", "Nefrología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrVbI7GYlFY-yIDmVCZ4u11CFFmXez1R8DYg&usqp=CAU","Activo"));
         
+        //crear asociaciones
+        List<Cliente> clientes = clienteRepository.findAll(); //Guarda en una lista todos los clientes
+        List<Mascota> mascotas = mascotaRepository.findAll(); //Guarda en una lista todlas las mascotas
+
+        //Se crean asociaciones de mascotas y clientes
+        for (int i = 0; i < mascotas.size(); i++) {
+            // Asegúrate de que i no sea mayor que la cantidad de clientes disponibles
+            int clienteIndex = i % clientes.size(); // Calcula el índice del cliente correspondiente
+            Cliente clienteAsociado = clientes.get(clienteIndex);
+            
+            // Obtén la mascota actual
+            Mascota mascota = mascotas.get(i);
+            
+            // Asigna el cliente al que corresponde
+            mascota.setCliente(clienteAsociado);
+            
+            // Guarda la mascota en la base de datos
+            mascotaRepository.save(mascota);
+        }
+
 
         //Agregar drogas
         int cont2 = 0;
         try {
             // Ruta relativa al archivo Excel
-            String filePath = "veterinaria//src//main//resources//static//Archivos//MEDICAMENTOS_VETERINARIA.xlsx ";
+            String filePath = "veterinaria//src//main//resources//static//Archivos//MEDICAMENTOS.xlsx ";
 
             // Crear un flujo de entrada para el archivo Excel
             FileInputStream inp = new FileInputStream(filePath);
@@ -352,31 +372,155 @@ public class DataBaseInit implements ApplicationRunner{
         tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 9, 1)));
         tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 9, 20)));
         tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 9, 30)));
-        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 9, 22)));
-        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 10, 10)));
-        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 10, 28)));
-        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 10, 7)));
+        tratamientoRepository.save(new Tratamiento( LocalDate.of(2023, 9, 4)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 1, 15)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 2, 8)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 3, 21)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 4, 5)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 5, 12)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 6, 27)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 7, 9)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 8, 2)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 18)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 10, 11)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 11, 24)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 12, 7)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 1, 4)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 2, 19)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 3, 8)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 4, 17)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 5, 23)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 6, 1)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 7, 14)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 8, 22)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 30)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 10, 5)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 11, 13)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 12, 29)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 1, 22)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 2, 16)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 3, 4)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 4, 29)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 5, 6)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 6, 11)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 7, 29)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 8, 17)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 13)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 10, 19)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 11, 8)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 12, 31)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 1, 7)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 2, 26)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 3, 11)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 4, 8)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 5, 30)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 19)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 2)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 28)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 27)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 10, 1)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 11, 3)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 12, 14)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 1, 15)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 2, 8)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 3, 21)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 4, 5)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 5, 12)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 6, 27)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 7, 9)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 8, 2)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 18)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 10, 11)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 11, 24)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 12, 7)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 1, 4)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 2, 19)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 3, 8)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 4, 17)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 5, 23)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 6, 1)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 7, 14)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 8, 22)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 30)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 10, 5)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 11, 13)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 12, 29)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 1, 22)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 2, 16)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 3, 4)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 4, 29)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 5, 6)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 6, 11)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 7, 29)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 8, 17)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 13)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 10, 19)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 11, 8)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 12, 31)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 1, 7)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 2, 26)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 3, 11)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 4, 8)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 5, 30)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 6, 19)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 7, 2)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 8, 28)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 27)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 10, 1)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 11, 3)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 12, 14)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 1, 15)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 2, 8)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 3, 21)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 4, 5)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 5, 12)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 6, 27)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 7, 9)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 8, 2)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 18)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 10, 11)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 11, 24)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 12, 7)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 1, 4)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 2, 19)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 3, 8)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 4, 17)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 5, 23)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 6, 1)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 7, 14)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 8, 22)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 30)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 10, 5)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 11, 13)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 12, 29)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 1, 22)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 2, 16)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 3, 4)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 4, 29)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 5, 6)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 6, 11)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 7, 29)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 8, 17)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 13)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 10, 19)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 11, 8)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 12, 31)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 1, 7)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 2, 26)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 3, 11)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 4, 8)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 5, 30)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 6, 19)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 7, 2)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 8, 28)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 27)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 10, 1)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 11, 3)));
+        tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 12, 14)));
 
 
-        //crear asociaciones
-        List<Cliente> clientes = clienteRepository.findAll(); //Guarda en una lista todos los clientes
-        List<Mascota> mascotas = mascotaRepository.findAll(); //Guarda en una lista todlas las mascotas
 
-        //Se crean asociaciones de mascotas y clientes
-        for (int i = 0; i < mascotas.size(); i++) {
-            // Asegúrate de que i no sea mayor que la cantidad de clientes disponibles
-            int clienteIndex = i % clientes.size(); // Calcula el índice del cliente correspondiente
-            Cliente clienteAsociado = clientes.get(clienteIndex);
-            
-            // Obtén la mascota actual
-            Mascota mascota = mascotas.get(i);
-            
-            // Asigna el cliente al que corresponde
-            mascota.setCliente(clienteAsociado);
-            
-            // Guarda la mascota en la base de datos
-            mascotaRepository.save(mascota);
-        }
+        
 
         //Se crean asociaciones de los tratamientos con las drogas y los veterinarios
         Random random = new Random(123);
@@ -406,6 +550,77 @@ public class DataBaseInit implements ApplicationRunner{
 
             tratamientoRepository.save(tratamientos.get(i));
             }
+
+            
+            Random random2 = new Random(1123);
+
+
+            tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 14)));
+            tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 14)));
+            tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 14)));
+            tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 14)));
+            //tratamientoRepository.save(new Tratamiento(LocalDate.of(2023, 9, 14)));
+
+
+            List<Tratamiento> tratamientos2 = tratamientoRepository.findAll();
+
+
+            Mascota mascotaAleatoria2 = mascotas.get(random2.nextInt(mascotas.size()));
+            Veterinario veterinarioAleatorio2 = veterinarios.get(random2.nextInt(veterinarios.size()));
+            Droga drogaAleatoria2 = drogas.get(drogas.get(1).getId().intValue());
+
+            //
+            drogaAleatoria2.setUnidadesDisponibles(drogaAleatoria2.getUnidadesDisponibles()-1);
+            drogaAleatoria2.setUnidadesVendidas(drogaAleatoria2.getUnidadesVendidas()+1);
+
+            tratamientos2.get(154).setMascota(mascotaAleatoria2);
+            tratamientos2.get(154).setVeterinario(veterinarioAleatorio2);
+            tratamientos2.get(154).setDroga(drogaAleatoria2);
+
+            tratamientoRepository.save(tratamientos2.get(154));
+
+            //
+            drogaAleatoria2.setUnidadesDisponibles(drogaAleatoria2.getUnidadesDisponibles()-1);
+            drogaAleatoria2.setUnidadesVendidas(drogaAleatoria2.getUnidadesVendidas()+1);
+
+            tratamientos2.get(155).setMascota(mascotaAleatoria2);
+            tratamientos2.get(155).setVeterinario(veterinarioAleatorio2);
+            tratamientos2.get(155).setDroga(drogaAleatoria2);
+
+            tratamientoRepository.save(tratamientos2.get(155));
+
+            //
+            drogaAleatoria2.setUnidadesDisponibles(drogaAleatoria2.getUnidadesDisponibles()-1);
+            drogaAleatoria2.setUnidadesVendidas(drogaAleatoria2.getUnidadesVendidas()+1);
+
+            drogaAleatoria2.setUnidadesDisponibles(drogaAleatoria2.getUnidadesDisponibles()-1);
+            drogaAleatoria2.setUnidadesVendidas(drogaAleatoria2.getUnidadesVendidas()+1);
+
+            tratamientos2.get(156).setMascota(mascotaAleatoria2);
+            tratamientos2.get(156).setVeterinario(veterinarioAleatorio2);
+            tratamientos2.get(156).setDroga(drogaAleatoria2);
+
+            tratamientoRepository.save(tratamientos2.get(156));
+            
+            //
+            drogaAleatoria2.setUnidadesDisponibles(drogaAleatoria2.getUnidadesDisponibles()-1);
+            drogaAleatoria2.setUnidadesVendidas(drogaAleatoria2.getUnidadesVendidas()+1);
+
+            tratamientos2.get(157).setMascota(mascotaAleatoria2);
+            tratamientos2.get(157).setVeterinario(veterinarioAleatorio2);
+            tratamientos2.get(157).setDroga(drogaAleatoria2);
+
+            tratamientoRepository.save(tratamientos2.get(157));
+
+            //
+            /*drogaAleatoria2.setUnidadesDisponibles(drogaAleatoria2.getUnidadesDisponibles()-1);
+            drogaAleatoria2.setUnidadesVendidas(drogaAleatoria2.getUnidadesVendidas()+1);
+
+            tratamientos2.get(158).setMascota(mascotaAleatoria2);
+            tratamientos2.get(158).setVeterinario(veterinarioAleatorio2);
+            tratamientos2.get(158).setDroga(drogaAleatoria2);
+
+            tratamientoRepository.save(tratamientos2.get(158)); */
         }
     }
 

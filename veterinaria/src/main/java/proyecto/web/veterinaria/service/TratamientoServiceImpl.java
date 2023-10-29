@@ -56,4 +56,14 @@ public class TratamientoServiceImpl implements TratamientoService {
     @Override
     public void updateById(Tratamiento tratamiento) {
         tratamientoRepository.save(tratamiento);}
+
+    @Override
+    public List<Tratamiento> TratamientosPorVeterinario(Long id) {
+        return tratamientoRepository.TratamientosPorVeterinario(id);
+    }
+    
+    @Override
+    public List<Tratamiento> TratamientosPorMascota(Long id) {
+        return tratamientoRepository.TratamientosPorMascota(id);
+    }
 }
