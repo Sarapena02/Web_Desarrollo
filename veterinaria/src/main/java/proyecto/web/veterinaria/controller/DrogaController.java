@@ -24,7 +24,6 @@ public class DrogaController {
     @Autowired
     DrogaService drogaService;
     
-<<<<<<< Updated upstream
 
     @GetMapping("/all")
     @Operation(summary = "Obtener todas las drogas")
@@ -56,6 +55,4 @@ public class DrogaController {
         // Se actualiza la droga que se selecciono en el formulario
         drogaService.actualizarDroga(droga);
     }
-=======
->>>>>>> Stashed changes
 }

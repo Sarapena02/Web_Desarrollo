@@ -63,13 +63,4 @@ public class ClienteServiceImpl implements ClienteService {
         return clienteRepository.getMascotas(id);
     }
 
-<<<<<<< Updated upstream
-=======
-    @Override
-    public List<Mascota> getMascotas(Long id) {
-        return clienteRepository.getMascotas(id);
-    }
-
-    
->>>>>>> Stashed changes
 }
