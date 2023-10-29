@@ -101,7 +101,7 @@ public class ClienteController {
     public ResponseEntity<String> eliminarCliente(@PathVariable("id") Long id) {
         // Se elimina el cliente con el id que se selecciono
         clienteService.deleteById(id);
-        return new ResponseEntity<>("Cliente eliminado", HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>("", HttpStatus.OK);
     }
 
     // Se actualiza un cliente en la base de datos
@@ -110,7 +110,7 @@ public class ClienteController {
     public ResponseEntity<String> actualizarCliente(@PathVariable("id") int id, @RequestBody Cliente cliente) {
         // Se actualiza el cliente que se selecciono en el formulario
         clienteService.updateById(cliente);
-        return new ResponseEntity<>("Cliente actualizado", HttpStatus.OK);
+        return new ResponseEntity<>("{\"message\":\"Cliente actualizado\"}", HttpStatus.OK);
     }
 
     //Obtiene las mascotas de un cliente
