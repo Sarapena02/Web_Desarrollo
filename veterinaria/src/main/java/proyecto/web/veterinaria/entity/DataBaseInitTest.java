@@ -274,10 +274,10 @@ public class DataBaseInitTest implements ApplicationRunner{
         veterinarioRepository.save(new Veterinario("Andrea González", "1919191919", "password19", "Hematología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9tC508RbAh8jYf6sOv5e7T8TAg9R_WJ37Qg&usqp=CAU","Activo"));
         veterinarioRepository.save(new Veterinario("Juan Carlos Rodríguez", "2020202020", "password20", "Nefrología Veterinaria","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrVbI7GYlFY-yIDmVCZ4u11CFFmXez1R8DYg&usqp=CAU","Activo"));
         
-        drogaRepository.save(new Droga("ACOLAN", 151300L, 60520L, 4, 0));
-        drogaRepository.save(new Droga("ACTIONIS", 155100L, 124080L, 4, 0));
-        drogaRepository.save(new Droga("ACUIMIX", 114800L, 91840L, 4, 0));
-        drogaRepository.save(new Droga("ADVOCIN", 147600L, 103320L, 1, 0));
+        drogaRepository.save(new Droga("ACOLAN", 151300L, 60520L, 4, 70));
+        drogaRepository.save(new Droga("ACTIONIS", 155100L, 124080L, 4, 30));
+        drogaRepository.save(new Droga("ACUIMIX", 114800L, 91840L, 4, 150));
+        drogaRepository.save(new Droga("ADVOCIN", 147600L, 103320L, 1, 500));
         drogaRepository.save(new Droga("AEROFAR", 129000L, 64500L, 10, 0));
         drogaRepository.save(new Droga("AIVLOSIN", 164900L, 115430L, 10, 0));
         drogaRepository.save(new Droga("ALAMYCIN", 125800L, 100640L, 6, 0));
@@ -302,7 +302,7 @@ public class DataBaseInitTest implements ApplicationRunner{
         drogaRepository.save(new Droga("CEPOREX", 135500L, 101625L, 5, 0));
         drogaRepository.save(new Droga("CHLOROMYCETIN", 125100L, 93765L, 4, 0));
         drogaRepository.save(new Droga("CIPROFLOXACINO", 146200L, 87520L, 7, 0));
-        drogaRepository.save(new Droga("CLAMOXYL", 127800L, 89460L, 6, 0));
+        drogaRepository.save(new Droga("CLAMOXYL", 127800L, 89460L, 6,0  ));
         drogaRepository.save(new Droga("CLARIDOX", 140500L, 105375L, 6, 0));
         drogaRepository.save(new Droga("CORTACIN", 118400L, 82880L, 3, 0));
         drogaRepository.save(new Droga("CORTAMOX", 159200L, 103480L, 7, 0));

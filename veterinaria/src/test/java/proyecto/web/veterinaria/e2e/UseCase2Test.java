@@ -1,12 +1,11 @@
 package proyecto.web.veterinaria.e2e;
 
 import java.time.Duration;
-import java.util.List;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -44,9 +43,10 @@ public class UseCase2Test {
 
     }
     @Test
-    public void SystemTest_mascotaDetail_BuscarMascotaName() {
+    public void SystemTest_mascotaDetail_DarTratamientoMascota() {
         driver.get("http://localhost:4200/logInVet");
-        //Ingresa el Veterinario
+
+    //Ingresa el Veterinario logInVet
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("btonLoginVet")));
         WebElement inputUser = driver.findElement(By.id("cedulaVeterianrio"));
         WebElement inputContra = driver.findElement(By.id("contraseña"));
@@ -78,23 +78,49 @@ public class UseCase2Test {
         WebElement botonGuardarTratamiento = driver.findElement(By.xpath("//html//body//app-root//main//app-form-tratamiento//form//button"));
         botonGuardarTratamiento.click();
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("thFecha")));
+       wait.until(ExpectedConditions.presenceOfElementLocated(By.id("thFecha")));
 
-        driver.get("http://localhost:4200/mascota/findTratamientos/1");
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } // Espera 2 segundos
 
-        //Cierra Sesion
-        WebElement botonCerrarSesion = driver.findElement(By.xpath("/html/body/app-root/header/nav/ul/li[2]/a/span"));
-        botonCerrarSesion.click();
+        //Vuelve a la Landing Page
+        driver.get("http://localhost:4200/home");
+    loginAdmin();
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("inicio")));
+    int ganaciaTotalesAntes = 90053840;
+    int gananciaEsperada = ganaciaTotalesAntes + (127800+89460);
+    WebElement ganaciaTotalDespues = driver.findElement(By.id("total"));
+    Assertions.assertThat(ganaciaTotalDespues.getText()).isEqualTo(String.valueOf(gananciaEsperada)+"$");
 
-
-
-
-        
-
-
-        
     }
+    public void loginAdmin(){
+        //hace click al boton de login
+        WebElement btonLogin = driver.findElement(By.className("dropdown"));
+        btonLogin.click();
+
+        //hace click al boton de login de administrador
+        WebElement btonLoginAdmin = driver.findElement(By.id("botonAdmin"));
+        btonLoginAdmin.click();
+
+        //llena los campos del login
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("userAdmin")));
+
+        WebElement inputAdmin = driver.findElement(By.id("userAdmin"));
+        inputAdmin.sendKeys("admin");
+
+        WebElement inputContraseña = driver.findElement(By.id("password"));
+        inputContraseña.sendKeys("admin");
+
+        WebElement btonIngresarAdmin = driver.findElement(By.id("btonIngresarAdmin"));
+        btonIngresarAdmin.click();
+
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("tratamiento")));
+        //90053840
+    }
+
+
 }
     
