@@ -16,7 +16,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.models.headers.Header.StyleEnum;
 import proyecto.web.veterinaria.entity.Cliente;
 import proyecto.web.veterinaria.entity.Mascota;
 import proyecto.web.veterinaria.service.ClienteService;

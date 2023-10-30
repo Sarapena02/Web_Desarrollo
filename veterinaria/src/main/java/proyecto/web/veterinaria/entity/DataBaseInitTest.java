@@ -308,7 +308,7 @@ public class DataBaseInitTest implements ApplicationRunner{
         drogaRepository.save(new Droga("CEPOREX", 135500L, 101625L, 5, 0));
         drogaRepository.save(new Droga("CHLOROMYCETIN", 125100L, 93765L, 4, 0));
         drogaRepository.save(new Droga("CIPROFLOXACINO", 146200L, 87520L, 7, 0));
-        drogaRepository.save(new Droga("CLAMOXIN", 127800L, 89460L, 6, 0));
+        drogaRepository.save(new Droga("CLAMOXYL", 127800L, 89460L, 6, 0));
         drogaRepository.save(new Droga("CLARIDOX", 140500L, 105375L, 6, 0));
         drogaRepository.save(new Droga("CORTACIN", 118400L, 82880L, 3, 0));
         drogaRepository.save(new Droga("CORTAMOX", 159200L, 103480L, 7, 0));
