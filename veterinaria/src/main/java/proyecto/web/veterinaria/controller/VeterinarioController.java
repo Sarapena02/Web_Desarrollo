@@ -1,7 +1,6 @@
 package proyecto.web.veterinaria.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,9 +30,9 @@ public class VeterinarioController {
 
     @PostMapping("/login")
     @Operation(summary = "Log in de veterinario")
-    public Veterinario login(@RequestBody Map<String, String> requestBody) {
+    public Veterinario login(@RequestBody Veterinario requestBody) {
         //busca dentro de la base de datos el cliente que tenga la cedula
-        Veterinario veterinario = veterinarioService.SearchByCedulayContrasenia(requestBody.get("cedula"), requestBody.get("contrasenia"));
+        Veterinario veterinario = veterinarioService.SearchByCedula(requestBody.getCedula());
   
         return veterinario;
     }

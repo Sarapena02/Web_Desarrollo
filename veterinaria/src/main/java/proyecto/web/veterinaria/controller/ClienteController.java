@@ -31,11 +31,11 @@ public class ClienteController {
     // se autentifica el cliente
     @PostMapping("/login")
     @Operation(summary = "Log in de cliente")
-    public ResponseEntity<Cliente> login(@RequestBody String cedula) {
+    public ResponseEntity login(@RequestBody String cedula) {
         // busca dentro de la base de datos el cliente que tenga la cedula
         Cliente cliente = clienteService.SearchByCedula(cedula);
         if(cliente == null){
-            ResponseEntity<Cliente> response = new ResponseEntity<>(cliente, HttpStatus.NOT_FOUND);
+            ResponseEntity<String> response = new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
             return response;
         }
         ResponseEntity<Cliente> response = new ResponseEntity<>(cliente, HttpStatus.OK);
