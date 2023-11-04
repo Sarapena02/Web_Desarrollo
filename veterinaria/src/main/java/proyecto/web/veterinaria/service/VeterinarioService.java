@@ -17,7 +17,7 @@ public interface VeterinarioService {
 
     public void updateById(Veterinario veterinario);
 
-    public void add(Veterinario veterinario);
+    public Veterinario add(Veterinario veterinario);
 
     public Veterinario SearchByCedula(String cedula);
 

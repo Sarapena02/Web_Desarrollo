@@ -20,25 +20,46 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig {
 
+    @Autowired
+    private JwtAuthEntryPoint jwtAuthEntryPoint;
     @Bean
-    SecurityFilterChain securityFilter(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
 
         http
-        .csrf(AbstractHttpConfigurer::disable)
-        .headers(headers -> headers.frameOptions(frame -> frame.disable()))
-        .authorizeHttpRequests(requests -> requests
-            .requestMatchers("/h2/**").permitAll()
-            .requestMatchers("/clientes/find/**").authenticated()
-            .anyRequest().permitAll()
-        );
+                .csrf(AbstractHttpConfigurer::disable)
+                .headers(headers -> headers.frameOptions(frame -> frame.disable()))
+                .sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(requests -> requests
+                        .requestMatchers("/h2/**").permitAll()
+                        .requestMatchers("/clientes/login").permitAll()
+                        .requestMatchers("/clientes/find/**").hasAuthority("CLIENTE")
+                        .requestMatchers("/veterinarios/find/**").hasAuthority("VETERINARIO")
+                        .requestMatchers("/veterinarios/details").hasAuthority("VETERINARIO")
+                        .requestMatchers("/clientes/details").hasAuthority("CLIENTE")
+                        .anyRequest().permitAll()
+                )
+                .exceptionHandling( exception -> exception.authenticationEntryPoint(jwtAuthEntryPoint));
 
+                http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
-        
     }
 
     @Bean
-    PasswordEncoder passwordEncoder(){
+    PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    @Bean
+    public AuthenticationManager authenticationManager(
+            AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+
+    @Bean
+    public JWTAuthenticationFilter jwtAuthenticationFilter() {
+        return new JWTAuthenticationFilter();
+    }
+
     
 }

@@ -1,4 +1,4 @@
-package proyecto.web.veterinaria.entity;
+package proyecto.web.veterinaria.Database;
 
 
 import java.time.LocalDate;
@@ -14,6 +14,11 @@ import org.springframework.stereotype.Controller;
 
 
 import jakarta.transaction.Transactional;
+import proyecto.web.veterinaria.entity.Cliente;
+import proyecto.web.veterinaria.entity.Droga;
+import proyecto.web.veterinaria.entity.Mascota;
+import proyecto.web.veterinaria.entity.Tratamiento;
+import proyecto.web.veterinaria.entity.Veterinario;
 import proyecto.web.veterinaria.repository.ClienteRepository;
 import proyecto.web.veterinaria.repository.DrogaRepository;
 import proyecto.web.veterinaria.repository.MascotaRepository;
