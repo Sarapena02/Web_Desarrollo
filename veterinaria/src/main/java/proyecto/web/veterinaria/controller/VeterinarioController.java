@@ -1,9 +1,14 @@
 package proyecto.web.veterinaria.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +21,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
+import proyecto.web.veterinaria.entity.Cliente;
+import proyecto.web.veterinaria.entity.UserEntity;
 import proyecto.web.veterinaria.entity.Veterinario;
+import proyecto.web.veterinaria.repository.UserRepository;
+import proyecto.web.veterinaria.security.CustomUserDetailsService;
+import proyecto.web.veterinaria.security.JWTGenerator;
 import proyecto.web.veterinaria.service.VeterinarioService;
 
 @RestController
@@ -28,21 +38,56 @@ public class VeterinarioController {
     @Autowired
     VeterinarioService veterinarioService;
 
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    CustomUserDetailsService customUserDetailsService;
+
+    @Autowired
+    AuthenticationManager authenticationManager;
+
+    @Autowired
+    JWTGenerator jwtGenerator;
+
 
     @PostMapping("/login")
     @Operation(summary = "Log in de veterinario")
-    public Veterinario login(@RequestBody Map<String, String> requestBody) {
-        //busca dentro de la base de datos el cliente que tenga la cedula
-        Veterinario veterinario = veterinarioService.SearchByCedulayContrasenia(requestBody.get("cedula"), requestBody.get("contrasenia"));
+    public ResponseEntity login(@RequestBody Veterinario veterinario) {
+        /*//busca dentro de la base de datos el cliente que tenga la cedula
+        Veterinario veterinario = veterinarioService.SearchByCedula(requestBody.getCedula());
   
-        return veterinario;
+        return veterinario;*/
+         Authentication authentication = authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(veterinario.getCedula(), veterinario.getContrasenia()));
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String token = jwtGenerator.generateToken(authentication);
+
+        return new ResponseEntity<String>(token, HttpStatus.OK);
+    }
+
+    @GetMapping("/details")
+    public ResponseEntity<Veterinario> buscarVeterinario(){
+
+        //Obtiene el cliente que inicio sesion
+        Veterinario veterinario = veterinarioService.SearchByCedula(
+            SecurityContextHolder.getContext().getAuthentication().getName()
+        );
+
+        if(veterinario == null){
+            return new ResponseEntity<>(veterinario, HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(veterinario, HttpStatus.OK);
+        
     }
 
     //Se busca un veterinario por su id
     //localhost:8090/veterinarios/find/{id}
     @GetMapping("/find/{id}")
     @Operation(summary = "Obtener un Veterinario por su id")
-    public Veterinario buscarVeterinario( @PathVariable("id") Long id) {
+    public Veterinario buscarVeterinarioa( @PathVariable("id") Long id) {
             // Buscar un cliente por su ID
             Veterinario veterinario = veterinarioService.SearchById(id);
             return veterinario;
@@ -62,9 +107,18 @@ public class VeterinarioController {
     //localhost:8090/clientes/add
     @PostMapping("/agregar")
     @Operation(summary = "Agregar un nuevo Veterinario")
-    public void mostrarFormularioCrear(@RequestBody Veterinario veterinario) {
-        //se añade un nuevo veterianario
-        veterinarioService.add(veterinario);
+    public ResponseEntity mostrarFormularioCrear(@RequestBody Veterinario veterinario) {
+        if(userRepository.existsByUsername(veterinario.getCedula())){
+            return new ResponseEntity<String>("este usuario ya existe",HttpStatus.BAD_REQUEST);
+        }
+
+        UserEntity userEntity  = customUserDetailsService.VeterinarioToUser(veterinario);
+        veterinario.setUser(userEntity);
+        Veterinario newVeterinario = veterinarioService.add(veterinario);
+         if (newVeterinario == null) {
+                return new ResponseEntity<>(newVeterinario, HttpStatus.BAD_REQUEST);
+            }
+        return new ResponseEntity<>(newVeterinario, HttpStatus.CREATED);
     }
 
     //Se elimina un veterinario de la base de datos por su id
