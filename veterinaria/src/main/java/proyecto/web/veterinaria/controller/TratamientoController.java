@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
+import proyecto.web.veterinaria.DTOs.TratamientoDTO;
+import proyecto.web.veterinaria.DTOs.TratamientoMapper;
 import proyecto.web.veterinaria.entity.Tratamiento;
 import proyecto.web.veterinaria.service.TratamientoService;
 
@@ -81,9 +83,11 @@ public class TratamientoController {
 
     @PostMapping("/agregar")
     @Operation(summary = "Agregar un nuevo tratamiento")
-    public void agregarTratamiento(@RequestBody Tratamiento tratamiento){
+    public ResponseEntity <TratamientoDTO> agregarTratamiento(@RequestBody Tratamiento tratamiento){
         //se añade un nuevo tratamiento
-        tratamientoService.add(tratamiento);
+        Tratamiento newTratamiento = tratamientoService.add(tratamiento);
+        TratamientoDTO tratamientoDTO = TratamientoMapper.INSTANCE.convert(newTratamiento);
+		return new ResponseEntity<TratamientoDTO>(tratamientoDTO, HttpStatus.CREATED);	
     }
 
     @GetMapping("/TratamientosPorVeterinario/{id}")

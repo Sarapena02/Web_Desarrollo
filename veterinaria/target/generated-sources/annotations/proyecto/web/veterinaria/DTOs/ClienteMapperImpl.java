@@ -5,7 +5,7 @@ import proyecto.web.veterinaria.entity.Cliente;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-11-04T20:20:00-0500",
+    date = "2023-11-05T16:13:19-0500",
     comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.35.0.v20230814-2020, environment: Java 17.0.8.1 (Eclipse Adoptium)"
 )
 public class ClienteMapperImpl implements ClienteMapper {
@@ -21,6 +21,7 @@ public class ClienteMapperImpl implements ClienteMapper {
         clienteDTO.setCedula( cliente.getCedula() );
         clienteDTO.setCelular( cliente.getCelular() );
         clienteDTO.setCorreo( cliente.getCorreo() );
+        clienteDTO.setNombre( cliente.getNombre() );
 
         return clienteDTO;
     }

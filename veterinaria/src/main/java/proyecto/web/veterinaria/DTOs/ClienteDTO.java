@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class ClienteDTO {
-    private String name;
+    private String nombre;
     private String cedula;
     private String correo;
     private String celular;
