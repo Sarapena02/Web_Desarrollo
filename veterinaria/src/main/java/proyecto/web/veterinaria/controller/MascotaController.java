@@ -17,6 +17,8 @@ import io.swagger.v3.oas.annotations.Operation;
 
 import org.springframework.web.bind.annotation.RequestBody;
 
+import proyecto.web.veterinaria.DTOs.MascotaDTO;
+import proyecto.web.veterinaria.DTOs.MascotaMapper;
 import proyecto.web.veterinaria.entity.Cliente;
 import proyecto.web.veterinaria.entity.Mascota;
 import proyecto.web.veterinaria.service.MascotaService;
@@ -54,6 +56,7 @@ public class MascotaController {
     public void agregarMascota(@RequestBody Mascota mascota){
         //Se agrega la mascota que se selecciono en el formulario
         mascotaService.add(mascota);
+        MascotaDTO mascotaDTO = MascotaMapper.INSTANCE.convert(mascota);
     }
 
     @GetMapping("/cliente/{id}")
