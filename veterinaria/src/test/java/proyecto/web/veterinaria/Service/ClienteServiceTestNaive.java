@@ -22,8 +22,8 @@ public class ClienteServiceTestNaive {
 
     @BeforeEach
     public void init(){
-        Cliente cliente1 = new Cliente("Juan", "1234567895", "juan@correo", "123456789");
-        Cliente cliente2 = new Cliente("Juan Pérez", "123456789", "juan@correo1.com", "123456789");
+        Cliente cliente1 = new Cliente("Juan", "1234567895", "juan@correo", "123456789","Activo");
+        Cliente cliente2 = new Cliente("Juan Pérez", "123456789", "juan@correo1.com", "123456789","Activo");
 
         clienteService.add(cliente1);
         clienteService.add(cliente2);        
@@ -33,8 +33,8 @@ public class ClienteServiceTestNaive {
     public void ClienteService_createCliente_Cliente(){
     
         //arrange
-        Cliente cliente1 = new Cliente("Juan", "1234567895", "juan@correo", "123456789");
-        Cliente cliente2 = new Cliente("Juan Pérez", "123456789", "juan@correo1.com", "123456789");
+        Cliente cliente1 = new Cliente("Juan", "1234567895", "juan@correo", "123456789","Activo");
+        Cliente cliente2 = new Cliente("Juan Pérez", "123456789", "juan@correo1.com", "123456789","Activo");
 
         //act
         Cliente newCliente = clienteService.add(cliente1);

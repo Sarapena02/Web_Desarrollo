@@ -45,7 +45,7 @@ public class ClienteControllerTest {
     @Test
     public void ClienteController_createCliente_Cliente() throws Exception {
 
-        Cliente cliente = new Cliente("Sergio", "1", "sergio@correo", "123456789");
+        Cliente cliente = new Cliente("Sergio", "1", "sergio@correo", "123456789","Activo");
 
         when(clienteService.add(Mockito.any(Cliente.class))).thenReturn(cliente);
 
@@ -69,13 +69,15 @@ public class ClienteControllerTest {
                     "Juan",
                     "1234567895", 
                     "juan@correo", 
-                    "123456789"
+                    "123456789",
+                    "Activo"
                     ),
                 new Cliente(
                     "Pedro",
                     "123456789",
                     "pedro@correo1.com",
-                    "123456789"
+                    "123456789",
+                    "Activo"
                 )
             )
         );
@@ -110,7 +112,8 @@ public class ClienteControllerTest {
                 "Juan",
                 "1234567895", 
                 "juan@correo", 
-                "123456789"
+                "123456789",
+                "Activo"
             )  
         );
 
