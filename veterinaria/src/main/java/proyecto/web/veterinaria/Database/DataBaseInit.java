@@ -663,7 +663,7 @@ public class DataBaseInit implements ApplicationRunner{
 
             tratamientoRepository.save(tratamientos2.get(158)); */
         }
-
+//UserEntity -> Ultimo spring
         private UserEntity saveUserStudent(Cliente cliente){
             UserEntity userEntity = new UserEntity();
             //Asigna la cedula
