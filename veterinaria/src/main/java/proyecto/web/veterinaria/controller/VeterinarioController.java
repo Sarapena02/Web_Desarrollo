@@ -21,7 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
-import proyecto.web.veterinaria.entity.Cliente;
+import proyecto.web.veterinaria.DTOs.VeterinarioDTO;
+import proyecto.web.veterinaria.DTOs.VeterinarioMapper;
 import proyecto.web.veterinaria.entity.UserEntity;
 import proyecto.web.veterinaria.entity.Veterinario;
 import proyecto.web.veterinaria.repository.UserRepository;
@@ -68,18 +69,20 @@ public class VeterinarioController {
     }
 
     @GetMapping("/details")
-    public ResponseEntity<Veterinario> buscarVeterinario(){
+    public ResponseEntity buscarVeterinario(){
 
         //Obtiene el cliente que inicio sesion
         Veterinario veterinario = veterinarioService.SearchByCedula(
             SecurityContextHolder.getContext().getAuthentication().getName()
         );
 
+        VeterinarioDTO veterinarioDTO = VeterinarioMapper.INSTANCE.convert(veterinario);
+
         if(veterinario == null){
-            return new ResponseEntity<>(veterinario, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<VeterinarioDTO>(veterinarioDTO, HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<>(veterinario, HttpStatus.OK);
+        return new ResponseEntity<VeterinarioDTO>(veterinarioDTO, HttpStatus.OK);
         
     }
 
@@ -114,11 +117,13 @@ public class VeterinarioController {
 
         UserEntity userEntity  = customUserDetailsService.VeterinarioToUser(veterinario);
         veterinario.setUser(userEntity);
-        Veterinario newVeterinario = veterinarioService.add(veterinario);
+        Veterinario veterinarioDB = veterinarioService.add(veterinario);
+        VeterinarioDTO newVeterinario = VeterinarioMapper.INSTANCE.convert(veterinarioDB);
+
          if (newVeterinario == null) {
-                return new ResponseEntity<>(newVeterinario, HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<VeterinarioDTO>(newVeterinario, HttpStatus.BAD_REQUEST);
             }
-        return new ResponseEntity<>(newVeterinario, HttpStatus.CREATED);
+        return new ResponseEntity<VeterinarioDTO>(newVeterinario, HttpStatus.CREATED);
     }
 
     //Se elimina un veterinario de la base de datos por su id

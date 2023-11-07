@@ -30,6 +30,7 @@ public class Cliente {
     private String cedula;
     private String correo;
     private String celular;
+    private String estado;
 
     //lista de mascotas con relacion de uno a muchos
     @JsonIgnore
@@ -41,10 +42,11 @@ public class Cliente {
     private UserEntity user;
 
     //Constructor
-    public Cliente(String nombre, String cedula, String correo, String celular) {
+    public Cliente(String nombre, String cedula, String correo, String celular, String estado) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.correo = correo;
         this.celular = celular;
+        this.estado = estado;
     }
 }

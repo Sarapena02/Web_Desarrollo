@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import proyecto.web.veterinaria.entity.Admin;
 import proyecto.web.veterinaria.entity.Cliente;
 import proyecto.web.veterinaria.entity.Rol;
 import proyecto.web.veterinaria.entity.UserEntity;
@@ -33,7 +34,7 @@ public class CustomUserDetailsService implements UserDetailsService{
     @Autowired
     private PasswordEncoder passwordEncoder;    
 
-    //Mapear userEntity a UserDetails (user standart de srping decurity)
+    //Mapear userEntity a UserDetails (user standart de spring security)
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
@@ -72,6 +73,16 @@ public class CustomUserDetailsService implements UserDetailsService{
         Rol roles = rolRepository.findByNombre("VETERINARIO").get();
         user.setRoles(List.of(roles));
         return user; 
+    }
+
+    public UserEntity AdminToUser(Admin admin) {
+        UserEntity user = new UserEntity();
+        user.setUsername(admin.getCedula());
+        user.setPassword(passwordEncoder.encode(admin.getContrasenia()));
+
+        Rol roles = rolRepository.findByNombre("ADMIN").get();
+        user.setRoles(List.of(roles));
+        return user;
     }
     
 }
