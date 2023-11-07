@@ -13,7 +13,7 @@ public interface ClienteService {
 
     public List<Cliente> findAll();
 
-    public void deleteById(Cliente cliente);
+    public void deleteById(Long id);
 
     public void updateById(Cliente cliente);
 
