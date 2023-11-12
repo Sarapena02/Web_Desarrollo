@@ -32,12 +32,12 @@ public class ClienteRepositoryTest {
     // Caso inicial de creacion de entidades
     @BeforeEach
     void init() {
-        clienteRepository.save(new Cliente("Juan", "1234567895", "juan@correo", "123456789"));
-        clienteRepository.save(new Cliente("Juan Pérez", "123456789", "juan@correo1.com", "123456789"));
-        clienteRepository.save(new Cliente("María García", "987654321", "maria@correo2.com", "987654321"));
-        clienteRepository.save(new Cliente("Carlos López", "234567890", "carlos@correo3.com", "234567890"));
-        clienteRepository.save(new Cliente("Lisa Rodríguez", "876543210", "laura@correo4.com", "876543210"));
-        clienteRepository.save(new Cliente("Pedro Martínez", "345678901", "pedro@correo5.com", "345678901"));
+        clienteRepository.save(new Cliente("Juan", "1234567895", "juan@correo", "123456789","Activo"));
+        clienteRepository.save(new Cliente("Juan Pérez", "123456789", "juan@correo1.com", "123456789","Activo"));
+        clienteRepository.save(new Cliente("María García", "987654321", "maria@correo2.com", "987654321","Activo"));
+        clienteRepository.save(new Cliente("Carlos López", "234567890", "carlos@correo3.com", "234567890","Activo"));
+        clienteRepository.save(new Cliente("Lisa Rodríguez", "876543210", "laura@correo4.com", "876543210","Activo"));
+        clienteRepository.save(new Cliente("Pedro Martínez", "345678901", "pedro@correo5.com", "345678901","Activo"));
 
         mascotaRepository.save(new Mascota("Jack", "Siamés", 2, "NA", "Activo",
                 "https://blogger.googleusercontent.com/img/a/AVvXsEjkJLupeAFKtrO6_cQuZlns2Og3ur5WTFilP13nVwThhYDzja8Ek45mFAa5oUZwIw4kObxpDKFs_CiH6Ho6turTohDH7Fd7-iaKslaFK9zdXF-38v8KvqDX8DAzDF3FVzJY_U-ZeYBBM46osdrgG9Wm5r9y2dEJnxh4_NIzXWQF5yWnQqdwmhoZpcNF1qAN"));
@@ -77,7 +77,7 @@ public class ClienteRepositoryTest {
     @Test
     public void clienteRepository_save_Cliente() {
         // arrange
-        Cliente cliente = new Cliente("Juan", "1234567895", "juan@correo", "123456789");
+        Cliente cliente = new Cliente("Juan", "1234567895", "juan@correo", "123456789","Activo");
         // act
         Cliente savedCliente = clienteRepository.save(cliente);
 

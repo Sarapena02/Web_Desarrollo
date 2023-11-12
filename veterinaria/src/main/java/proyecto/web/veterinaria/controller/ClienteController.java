@@ -20,9 +20,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.models.headers.Header.StyleEnum;
-import proyecto.web.veterinaria.DTOs.ClienteDTO;
-import proyecto.web.veterinaria.DTOs.ClienteMapper;
 import proyecto.web.veterinaria.entity.Cliente;
 import proyecto.web.veterinaria.entity.Mascota;
 import proyecto.web.veterinaria.entity.UserEntity;
@@ -54,9 +51,7 @@ public class ClienteController {
     // se autentifica el cliente
     @PostMapping("/login")
     @Operation(summary = "Log in de cliente")
-    public ResponseEntity < ClienteDTO>login(@RequestBody Cliente cliente) {
-        ClienteDTO clienteDTO = ClienteMapper.INSTANCE.convert(cliente);
-
+    public ResponseEntity login(@RequestBody Cliente cliente) {
         Authentication authentication = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(cliente.getCedula(), "123")
         );
@@ -65,7 +60,7 @@ public class ClienteController {
 
         String token = jwtGenerator.generateToken(authentication);
 
-        return new ResponseEntity<ClienteDTO>(clienteDTO, HttpStatus.OK);
+        return new ResponseEntity<>(token, HttpStatus.OK);
     }
 
     // Se muestra la lista de todos los clientes en formato json
@@ -118,19 +113,19 @@ public class ClienteController {
     // Se agrega un nuevo cliente a la base de datos
     @PostMapping("/agregar")
     @Operation(summary = "Agregar un nuevo Cliente")
-    public ResponseEntity <ClienteDTO> agregarCliente(@RequestBody Cliente cliente) {
-        Cliente newCliente = clienteService.add(cliente);
-        ClienteDTO clienteDTO = ClienteMapper.INSTANCE.convert(newCliente);
+    public ResponseEntity <Cliente> agregarCliente(@RequestBody Cliente cliente) {
+
         if(userRepository.existsByUsername(cliente.getCedula())){
-            return new ResponseEntity<ClienteDTO>(clienteDTO, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<Cliente>(cliente, HttpStatus.BAD_REQUEST);
         }
 
         UserEntity userEntity  = customUserDetailsService.ClienteToUser(cliente);
         cliente.setUser(userEntity);
+        Cliente newCliente = clienteService.add(cliente);
          if (newCliente == null) {
-                return new ResponseEntity<ClienteDTO>(clienteDTO, HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<Cliente>(newCliente, HttpStatus.BAD_REQUEST);
             }
-        return new ResponseEntity<ClienteDTO>(clienteDTO, HttpStatus.CREATED);
+        return new ResponseEntity<Cliente>(newCliente, HttpStatus.CREATED);
                     
     }
 
@@ -141,7 +136,9 @@ public class ClienteController {
     @Operation(summary = "Eliminar un Cliente")
     public ResponseEntity<String> eliminarCliente(@PathVariable("id") Long id) {
         // Se elimina el cliente con el id que se selecciono
-        clienteService.deleteById(id);
+        Cliente cliente = clienteService.SearchById(id);
+        cliente.setEstado("Inactivo");
+        clienteService.deleteById(cliente);
         return new ResponseEntity<>("", HttpStatus.OK);
     }
 

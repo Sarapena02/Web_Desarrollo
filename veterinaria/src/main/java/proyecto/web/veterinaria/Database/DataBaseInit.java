@@ -22,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import java.io.FileInputStream;
 
 import jakarta.transaction.Transactional;
+import proyecto.web.veterinaria.entity.Admin;
 import proyecto.web.veterinaria.entity.Cliente;
 import proyecto.web.veterinaria.entity.Droga;
 import proyecto.web.veterinaria.entity.Mascota;
@@ -29,6 +30,7 @@ import proyecto.web.veterinaria.entity.Rol;
 import proyecto.web.veterinaria.entity.Tratamiento;
 import proyecto.web.veterinaria.entity.UserEntity;
 import proyecto.web.veterinaria.entity.Veterinario;
+import proyecto.web.veterinaria.repository.AdminRepository;
 import proyecto.web.veterinaria.repository.ClienteRepository;
 import proyecto.web.veterinaria.repository.DrogaRepository;
 import proyecto.web.veterinaria.repository.MascotaRepository;
@@ -64,6 +66,9 @@ public class DataBaseInit implements ApplicationRunner{
     RolRepository rolRepository;
 
     @Autowired
+    AdminRepository adminRepository;
+
+    @Autowired
     PasswordEncoder passwordEncoder;
 
     @Override
@@ -72,112 +77,122 @@ public class DataBaseInit implements ApplicationRunner{
         //creacion roles
         rolRepository.save(new Rol("CLIENTE"));
         rolRepository.save(new Rol("VETERINARIO"));
+        rolRepository.save(new Rol("ADMIN"));
+
+        //creacion admin
+        Admin adminSave;
+        UserEntity userEntity;
+
+        adminSave = new Admin("admin", "admin");
+        userEntity = saveUserAdmin(adminSave);
+        adminSave.setUser(userEntity);
+        adminRepository.save(adminSave);
 
         //agregar clientes
 
         List<Cliente> cli = new ArrayList<>();
 
-        cli.add(new Cliente("Juan Pérez", "123456789", "juan@correo1.com", "123456789"));
-        cli.add(new Cliente("Juan", "1234567895", "juan@correo", "123456789"));
-        cli.add(new Cliente("María García", "987654321", "maria@correo2.com", "987654321"));
-        cli.add(new Cliente("Carlos López", "234567890", "carlos@correo3.com", "234567890"));
-        cli.add(new Cliente("Laura Rodríguez", "876543210", "laura@correo4.com", "876543210"));
-        cli.add(new Cliente("Pedro Martínez", "345678901", "pedro@correo5.com", "345678901"));
-        cli.add(new Cliente("Ana Sánchez", "765432109", "ana@correo6.com", "765432109"));
-        cli.add(new Cliente("Luis González", "456789012", "luis@correo7.com", "456789012"));
-        cli.add(new Cliente("Carmen López", "654321098", "carmen@correo8.com", "654321098"));
-        cli.add(new Cliente("Sofía Pérez", "567890123", "sofia@correo9.com", "567890123"));
-        cli.add(new Cliente("Andrés Rodríguez", "543210987", "andres@correo10.com", "543210987"));
-        cli.add(new Cliente("Elena Martínez", "432109876", "elena@correo11.com", "432109876"));
-        cli.add(new Cliente("Javier Sánchez", "321098765", "javier@correo12.com", "321098765"));
-        cli.add(new Cliente("Isabel García", "210987654", "isabel@correo13.com", "210987654"));
-        cli.add(new Cliente("Raul López", "109876543", "raul@correo14.com", "109876543"));
-        cli.add(new Cliente("Silvia Pérez", "987654322", "silvia@correo15.com", "987654322"));
-        cli.add(new Cliente("Diego Rodríguez", "234567891", "diego@correo16.com", "234567891"));
-        cli.add(new Cliente("Eva Martínez", "876543211", "eva@correo17.com", "876543211"));
-        cli.add(new Cliente("Pablo Sánchez", "345678902", "pablo@correo18.com", "345678902"));
-        cli.add(new Cliente("Marta López", "765432110", "marta@correo19.com", "765432110"));
-        cli.add(new Cliente("Raúl González", "456789013", "raul@correo20.com", "456789013"));
-        cli.add(new Cliente("Ana María Pérez", "654321099", "anamaria@correo21.com", "654321099"));
-        cli.add(new Cliente("Carlos Fernández", "567890124", "carlos@correo22.com", "567890124"));
-        cli.add(new Cliente("Luisa Rodríguez", "543210988", "luisa@correo23.com", "543210988"));
-        cli.add(new Cliente("José López", "432109877", "jose@correo24.com", "432109877"));
-        cli.add(new Cliente("Rosa García", "321098766", "rosa@correo25.com", "321098766"));
-        cli.add(new Cliente("Jorge Martínez", "210987655", "jorge@correo26.com", "210987655"));
-        cli.add(new Cliente("María José Sánchez", "109876544", "mariajose@correo27.com", "109876544"));
-        cli.add(new Cliente("Manuel Pérez", "987654323", "manuel@correo28.com", "987654323"));
-        cli.add(new Cliente("Cristina Rodríguez", "234567892", "cristina@correo29.com", "234567892"));
-        cli.add(new Cliente("Sergio López", "876543213", "sergio@correo30.com", "876543213"));
-        cli.add(new Cliente("Beatriz Martínez", "345678903", "beatriz@correo31.com", "345678903"));
-        cli.add(new Cliente("Antonio Sánchez", "765432111", "antonio@correo32.com", "765432111"));
-        cli.add(new Cliente("Natalia Pérez", "456789014", "natalia@correo33.com", "456789014"));
-        cli.add(new Cliente("Daniel García", "654321100", "daniel@correo34.com", "654321100"));
-        cli.add(new Cliente("Lucía López", "567890125", "lucia@correo35.com", "567890125"));
-        cli.add(new Cliente("Juan José Rodríguez", "543210990", "juanjose@correo36.com", "543210990"));
-        cli.add(new Cliente("Mónica Martínez", "432109879", "monica@correo37.com", "432109879"));
-        cli.add(new Cliente("Paco Sánchez", "321098768", "paco@correo38.com", "321098768"));
-        cli.add(new Cliente("Teresa Pérez", "210987657", "teresa@correo39.com", "210987657"));
-        cli.add(new Cliente("Roberto García", "109876546", "roberto@correo40.com", "109876546"));
-        cli.add(new Cliente("Isabella López", "987654324", "isabella@correo41.com", "987654324"));
-        cli.add(new Cliente("Manuela Rodríguez", "234567893", "manuela@correo42.com", "234567893"));
-        cli.add(new Cliente("Alejandro Martínez", "876543214", "alejandro@correo43.com", "876543214"));
-        cli.add(new Cliente("Patricia Sánchez", "345678905", "patricia@correo44.com", "345678905"));
-        cli.add(new Cliente("Gabriel Pérez", "765432112", "gabriel@correo45.com", "765432112"));
-        cli.add(new Cliente("Lucas García", "456789015", "lucas@correo46.com", "456789015"));
-        cli.add(new Cliente("Elena López", "654321101", "elena@correo47.com", "654321101"));
-        cli.add(new Cliente("Olivia Martínez", "567890126", "olivia@correo48.com", "567890126"));
-        cli.add(new Cliente("Juan Carlos Rodríguez", "543210989", "juancarlos@correo49.com", "543210989"));
-        cli.add(new Cliente("Sara Sánchez", "432109878", "sara@correo50.com", "432109878"));
-        cli.add(new Cliente("Miguel Pérez", "321098767", "miguel@correo51.com", "321098767"));
-        cli.add(new Cliente("Cecilia García", "210987656", "cecilia@correo52.com", "210987656"));
-        cli.add(new Cliente("Pablo López", "109876545", "pablo@correo53.com", "109876545"));
-        cli.add(new Cliente("Ximena Martínez", "987654325", "ximena@correo54.com", "987654325"));
-        cli.add(new Cliente("Andrea Rodríguez", "234567894", "andrea@correo55.com", "234567894"));
-        cli.add(new Cliente("Adrián Sánchez", "876543215", "adrian@correo56.com", "876543215"));
-        cli.add(new Cliente("Valentina Pérez", "345678906", "valentina@correo57.com", "345678906"));
-        cli.add(new Cliente("Hugo García", "765432113", "hugo@correo58.com", "765432113"));
-        cli.add(new Cliente("Marina López", "456789016", "marina@correo59.com", "456789016"));
-        cli.add(new Cliente("Gustavo Martínez", "654321102", "gustavo@correo60.com", "654321102"));
-        cli.add(new Cliente("Rocío Rodríguez", "567890127", "rocio@correo61.com", "567890127"));
-        cli.add(new Cliente("Francisco Sánchez", "543210991", "francisco@correo62.com", "543210991"));
-        cli.add(new Cliente("Camila Pérez", "432109880", "camila@correo63.com", "432109880"));
-        cli.add(new Cliente("Iván García", "321098769", "ivan@correo64.com", "321098769"));
-        cli.add(new Cliente("Valeria López", "210987658", "valeria@correo65.com", "210987658"));
-        cli.add(new Cliente("Eduardo Martínez", "109876547", "eduardo@correo66.com", "109876547"));
-        cli.add(new Cliente("Natalie Rodríguez", "987654326", "natalie@correo67.com", "987654326"));
-        cli.add(new Cliente("Arturo Sánchez", "234567895", "arturo@correo68.com", "234567895"));
-        cli.add(new Cliente("Carolina Pérez", "876543216", "carolina@correo69.com", "876543216"));
-        cli.add(new Cliente("Roberto López", "345678907", "roberto@correo70.com", "345678907"));
-        cli.add(new Cliente("Sandra Martínez", "765432114", "sandra@correo71.com", "765432114"));
-        cli.add(new Cliente("Martín García", "456789017", "martin@correo72.com", "456789017"));
-        cli.add(new Cliente("Alicia Rodríguez", "654321103", "alicia@correo73.com", "654321103"));
-        cli.add(new Cliente("Diego Sánchez", "567890128", "diego@correo74.com", "567890128"));
-        cli.add(new Cliente("Lorena Pérez", "543210992", "lorena@correo75.com", "543210992"));
-        cli.add(new Cliente("Fernando López", "432109881", "fernando@correo76.com", "432109881"));
-        cli.add(new Cliente("Gabriela Martínez", "321098770", "gabriela@correo77.com", "321098770"));
-        cli.add(new Cliente("Eduardo Rodríguez", "210987659", "eduardo@correo78.com", "210987659"));
-        cli.add(new Cliente("Isidro Sánchez", "109876548", "isidro@correo79.com", "109876548"));
-        cli.add(new Cliente("Paola Pérez", "987654327", "paola@correo80.com", "987654327"));
-        cli.add(new Cliente("Luciano García", "234567896", "luciano@correo81.com", "234567896"));
-        cli.add(new Cliente("Luz López", "876543217", "luz@correo82.com", "876543217"));
-        cli.add(new Cliente("Antonia Martínez", "345678908", "antonia@correo83.com", "345678908"));
-        cli.add(new Cliente("Ricardo Rodríguez", "765432115", "ricardo@correo84.com", "765432115"));
-        cli.add(new Cliente("Mariana Sánchez", "456789018", "mariana@correo85.com", "456789018"));
-        cli.add(new Cliente("Joaquín Pérez", "654321104", "joaquin@correo86.com", "654321104"));
-        cli.add(new Cliente("Laura García", "567890129", "laura@correo87.com", "567890129"));
-        cli.add(new Cliente("Fernanda López", "543210993", "fernanda@correo88.com", "543210993"));
-        cli.add(new Cliente("Héctor Martínez", "432109882", "hector@correo89.com", "432109882"));
-        cli.add(new Cliente("Valentín Sánchez", "321098771", "valentin@correo90.com", "321098771"));
-        cli.add(new Cliente("Rosa Rodríguez", "210987660", "rosa@correo91.com", "210987660"));
-        cli.add(new Cliente("Julián Pérez", "109876549", "julian@correo92.com", "109876549"));
-        cli.add(new Cliente("Aurora García", "987654328", "aurora@correo93.com", "987654328"));
-        cli.add(new Cliente("Germán López", "234567897", "german@correo94.com", "234567897"));
-        cli.add(new Cliente("Carla Martínez", "876543218", "carla@correo95.com", "876543218"));
-        cli.add(new Cliente("Raul Sánchez", "345678909", "raul@correo96.com", "345678909"));
-        cli.add(new Cliente("Victoria Pérez", "765432116", "victoria@correo97.com", "765432116"));
-        cli.add(new Cliente("Renato Rodríguez", "456789019", "renato@correo98.com", "456789019"));
-        cli.add(new Cliente("Claudia López", "654321105", "claudia@correo99.com", "654321105"));
-        cli.add(new Cliente("Gonzalo Martínez", "567890130", "gonzalo@correo100.com", "567890130"));
+        cli.add(new Cliente("Juan Pérez", "123456789", "juan@correo1.com", "123456789", "Activo"));
+        cli.add(new Cliente("Juan", "1234567895", "juan@correo", "123456789", "Activo"));
+        cli.add(new Cliente("María García", "987654321", "maria@correo2.com", "987654321", "Activo"));
+        cli.add(new Cliente("Carlos López", "234567890", "carlos@correo3.com", "234567890", "Activo"));
+        cli.add(new Cliente("Laura Rodríguez", "876543210", "laura@correo4.com", "876543210", "Activo"));
+        cli.add(new Cliente("Pedro Martínez", "345678901", "pedro@correo5.com", "345678901", "Activo"));
+        cli.add(new Cliente("Ana Sánchez", "765432109", "ana@correo6.com", "765432109", "Activo"));
+        cli.add(new Cliente("Luis González", "456789012", "luis@correo7.com", "456789012", "Activo"));
+        cli.add(new Cliente("Carmen López", "654321098", "carmen@correo8.com", "654321098", "Activo"));
+        cli.add(new Cliente("Sofía Pérez", "567890123", "sofia@correo9.com", "567890123", "Activo"));
+        cli.add(new Cliente("Andrés Rodríguez", "543210987", "andres@correo10.com", "543210987", "Activo"));
+        cli.add(new Cliente("Elena Martínez", "432109876", "elena@correo11.com", "432109876", "Activo"));
+        cli.add(new Cliente("Javier Sánchez", "321098765", "javier@correo12.com", "321098765", "Activo"));
+        cli.add(new Cliente("Isabel García", "210987654", "isabel@correo13.com", "210987654", "Activo"));
+        cli.add(new Cliente("Raul López", "109876543", "raul@correo14.com", "109876543", "Activo"));
+        cli.add(new Cliente("Silvia Pérez", "987654322", "silvia@correo15.com", "987654322", "Activo"));
+        cli.add(new Cliente("Diego Rodríguez", "234567891", "diego@correo16.com", "234567891", "Activo"));
+        cli.add(new Cliente("Eva Martínez", "876543211", "eva@correo17.com", "876543211", "Activo"));
+        cli.add(new Cliente("Pablo Sánchez", "345678902", "pablo@correo18.com", "345678902", "Activo"));
+        cli.add(new Cliente("Marta López", "765432110", "marta@correo19.com", "765432110", "Activo"));
+        cli.add(new Cliente("Raúl González", "456789013", "raul@correo20.com", "456789013", "Activo"));
+        cli.add(new Cliente("Ana María Pérez", "654321099", "anamaria@correo21.com", "654321099", "Activo"));
+        cli.add(new Cliente("Carlos Fernández", "567890124", "carlos@correo22.com", "567890124", "Activo"));
+        cli.add(new Cliente("Luisa Rodríguez", "543210988", "luisa@correo23.com", "543210988", "Activo"));
+        cli.add(new Cliente("José López", "432109877", "jose@correo24.com", "432109877", "Activo"));
+        cli.add(new Cliente("Rosa García", "321098766", "rosa@correo25.com", "321098766", "Activo"));
+        cli.add(new Cliente("Jorge Martínez", "210987655", "jorge@correo26.com", "210987655", "Activo"));
+        cli.add(new Cliente("María José Sánchez", "109876544", "mariajose@correo27.com", "109876544", "Activo"));
+        cli.add(new Cliente("Manuel Pérez", "987654323", "manuel@correo28.com", "987654323", "Activo"));
+        cli.add(new Cliente("Cristina Rodríguez", "234567892", "cristina@correo29.com", "234567892", "Activo"));
+        cli.add(new Cliente("Sergio López", "876543213", "sergio@correo30.com", "876543213", "Activo"));
+        cli.add(new Cliente("Beatriz Martínez", "345678903", "beatriz@correo31.com", "345678903", "Activo"));
+        cli.add(new Cliente("Antonio Sánchez", "765432111", "antonio@correo32.com", "765432111", "Activo"));
+        cli.add(new Cliente("Natalia Pérez", "456789014", "natalia@correo33.com", "456789014", "Activo"));
+        cli.add(new Cliente("Daniel García", "654321100", "daniel@correo34.com", "654321100", "Activo"));
+        cli.add(new Cliente("Lucía López", "567890125", "lucia@correo35.com", "567890125", "Activo"));
+        cli.add(new Cliente("Juan José Rodríguez", "543210989", "juanjose@correo36.com", "543210989", "Activo"));
+        cli.add(new Cliente("Mónica Martínez", "432109878", "monica@correo37.com", "432109878", "Activo"));
+        cli.add(new Cliente("Paco Sánchez", "321098768", "paco@correo38.com", "321098768", "Activo"));
+        cli.add(new Cliente("Teresa Pérez", "210987657", "teresa@correo39.com", "210987657", "Activo"));
+        cli.add(new Cliente("Roberto García", "109876546", "roberto@correo40.com", "109876546", "Activo"));
+        cli.add(new Cliente("Isabella López", "987654324", "isabella@correo41.com", "987654324", "Activo"));
+        cli.add(new Cliente("Manuela Rodríguez", "234567893", "manuela@correo42.com", "234567893", "Activo"));
+        cli.add(new Cliente("Alejandro Martínez", "876543214", "alejandro@correo43.com", "876543214", "Activo"));
+        cli.add(new Cliente("Patricia Sánchez", "345678905", "patricia@correo44.com", "345678905", "Activo"));
+        cli.add(new Cliente("Gabriel Pérez", "765432112", "gabriel@correo45.com", "765432112", "Activo"));
+        cli.add(new Cliente("Lucas García", "456789015", "lucas@correo46.com", "456789015", "Activo"));
+        cli.add(new Cliente("Elena López", "654321101", "elena@correo47.com", "654321101", "Activo"));
+        cli.add(new Cliente("Olivia Martínez", "567890126", "olivia@correo48.com", "567890126", "Activo"));
+        cli.add(new Cliente("Juan Carlos Rodríguez", "543210990", "juancarlos@correo49.com", "543210990", "Activo"));
+        cli.add(new Cliente("Sara Sánchez", "432109878", "sara@correo50.com", "432109878", "Activo"));
+        cli.add(new Cliente("Miguel Pérez", "321098767", "miguel@correo51.com", "321098767", "Activo"));
+        cli.add(new Cliente("Cecilia García", "210987656", "cecilia@correo52.com", "210987656", "Activo"));
+        cli.add(new Cliente("Pablo López", "109876545", "pablo@correo53.com", "109876545", "Activo"));
+        cli.add(new Cliente("Ximena Martínez", "987654325", "ximena@correo54.com", "987654325", "Activo"));
+        cli.add(new Cliente("Andrea Rodríguez", "234567894", "andrea@correo55.com", "234567894", "Activo"));
+        cli.add(new Cliente("Adrián Sánchez", "876543215", "adrian@correo56.com", "876543215", "Activo"));
+        cli.add(new Cliente("Valentina Pérez", "345678906", "valentina@correo57.com", "345678906", "Activo"));
+        cli.add(new Cliente("Hugo García", "765432113", "hugo@correo58.com", "765432113", "Activo"));
+        cli.add(new Cliente("Marina López", "456789016", "marina@correo59.com", "456789016", "Activo"));
+        cli.add(new Cliente("Gustavo Martínez", "654321102", "gustavo@correo60.com", "654321102", "Activo"));
+        cli.add(new Cliente("Rocío Rodríguez", "567890127", "rocio@correo61.com", "567890127", "Activo"));
+        cli.add(new Cliente("Francisco Sánchez", "543210991", "francisco@correo62.com", "543210991", "Activo"));
+        cli.add(new Cliente("Camila Pérez", "432109880", "camila@correo63.com", "432109880", "Activo"));
+        cli.add(new Cliente("Iván García", "321098769", "ivan@correo64.com", "321098769", "Activo"));
+        cli.add(new Cliente("Valeria López", "210987658", "valeria@correo65.com", "210987658", "Activo"));
+        cli.add(new Cliente("Eduardo Martínez", "109876547", "eduardo@correo66.com", "109876547", "Activo"));
+        cli.add(new Cliente("Natalie Rodríguez", "987654326", "natalie@correo67.com", "987654326", "Activo"));
+        cli.add(new Cliente("Arturo Sánchez", "234567895", "arturo@correo68.com", "234567895", "Activo"));
+        cli.add(new Cliente("Carolina Pérez", "876543216", "carolina@correo69.com", "876543216", "Activo"));
+        cli.add(new Cliente("Roberto López", "345678907", "roberto@correo70.com", "345678907", "Activo"));
+        cli.add(new Cliente("Sandra Martínez", "765432114", "sandra@correo71.com", "765432114", "Activo"));
+        cli.add(new Cliente("Martín García", "456789017", "martin@correo72.com", "456789017", "Activo"));
+        cli.add(new Cliente("Alicia Rodríguez", "654321103", "alicia@correo73.com", "654321103", "Activo"));
+        cli.add(new Cliente("Diego Sánchez", "567890128", "diego@correo74.com", "567890128", "Activo"));
+        cli.add(new Cliente("Lorena Pérez", "543210992", "lorena@correo75.com", "543210992", "Activo"));
+        cli.add(new Cliente("Fernando López", "432109881", "fernando@correo76.com", "432109881", "Activo"));
+        cli.add(new Cliente("Gabriela Martínez", "321098770", "gabriela@correo77.com", "321098770", "Activo"));
+        cli.add(new Cliente("Eduardo Rodríguez", "210987659", "eduardo@correo78.com", "210987659", "Activo"));
+        cli.add(new Cliente("Isidro Sánchez", "109876548", "isidro@correo79.com", "109876548", "Activo"));
+        cli.add(new Cliente("Paola Pérez", "987654327", "paola@correo80.com", "987654327", "Activo"));
+        cli.add(new Cliente("Luciano García", "234567896", "luciano@correo81.com", "234567896", "Activo"));
+        cli.add(new Cliente("Luz López", "876543217", "luz@correo82.com", "876543217", "Activo"));
+        cli.add(new Cliente("Antonia Martínez", "345678908", "antonia@correo83.com", "345678908", "Activo"));
+        cli.add(new Cliente("Ricardo Rodríguez", "765432115", "ricardo@correo84.com", "765432115", "Activo"));
+        cli.add(new Cliente("Mariana Sánchez", "456789018", "mariana@correo85.com", "456789018", "Activo"));
+        cli.add(new Cliente("Joaquín Pérez", "654321104", "joaquin@correo86.com", "654321104", "Activo"));
+        cli.add(new Cliente("Laura García", "567890129", "laura@correo87.com", "567890129", "Activo"));
+        cli.add(new Cliente("Fernanda López", "543210993", "fernanda@correo88.com", "543210993", "Activo"));
+        cli.add(new Cliente("Héctor Martínez", "432109882", "hector@correo89.com", "432109882", "Activo"));
+        cli.add(new Cliente("Valentín Sánchez", "321098771", "valentin@correo90.com", "321098771", "Activo"));
+        cli.add(new Cliente("Rosa Rodríguez", "210987660", "rosa@correo91.com", "210987660", "Activo"));
+        cli.add(new Cliente("Julián Pérez", "109876549", "julian@correo92.com", "109876549", "Activo"));
+        cli.add(new Cliente("Aurora García", "987654328", "aurora@correo93.com", "987654328","Activo"));
+        cli.add(new Cliente("Germán López", "234567897", "german@correo94.com", "234567897","Activo"));
+        cli.add(new Cliente("Carla Martínez", "876543218", "carla@correo95.com", "876543218","Activo"));
+        cli.add(new Cliente("Raul Sánchez", "345678909", "raul@correo96.com", "345678909","Activo"));
+        cli.add(new Cliente("Victoria Pérez", "765432116", "victoria@correo97.com", "765432116","Activo"));
+        cli.add(new Cliente("Renato Rodríguez", "456789019", "renato@correo98.com", "456789019","Activo"));
+        cli.add(new Cliente("Claudia López", "654321105", "claudia@correo99.com", "654321105","Activo"));
+        cli.add(new Cliente("Gonzalo Martínez", "567890130", "gonzalo@correo100.com", "567890130","Activo"));
 
         //agrega clientes a la tabla con userEntity
         for (Cliente cliente : cli) {
@@ -686,6 +701,20 @@ public class DataBaseInit implements ApplicationRunner{
             userEntity.setPassword(passwordEncoder.encode(veterinario.getContrasenia()));
             //Asigna el rol
             Rol roles  = rolRepository.findByNombre("VETERINARIO").get();
+            userEntity.setRoles(List.of(roles));
+
+            //guarda en la base de datos
+            return userRepository.save(userEntity);
+        }
+
+        private UserEntity saveUserAdmin(Admin admin){
+            UserEntity userEntity = new UserEntity();
+            //Asigna el username
+            userEntity.setUsername(admin.getCedula());
+            //Asigna una contraseña encriptada
+            userEntity.setPassword(passwordEncoder.encode(admin.getContrasenia()));
+            //Asigna el rol
+            Rol roles  = rolRepository.findByNombre("ADMIN").get();
             userEntity.setRoles(List.of(roles));
 
             //guarda en la base de datos
