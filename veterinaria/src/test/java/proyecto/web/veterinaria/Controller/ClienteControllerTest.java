@@ -145,7 +145,13 @@ public class ClienteControllerTest {
     @Test
     public void ClienteController_deleteById_Cliente() throws Exception {
     
-        Mockito.doNothing().when(clienteService).deleteById(1L);
+        Mockito.doNothing().when(clienteService).deleteById(            new Cliente(
+                "Juan",
+                "1234567895", 
+                "juan@correo", 
+                "123456789",
+                "Activo"
+            ) );
     
         mockMvc.perform(delete("/clientes/delete/{id}", 1l))
                .andExpect(status().isNoContent());
