@@ -41,13 +41,13 @@ public class VeterinarioServiceImpl implements VeterinarioService {
 
     //Agrega un nuevo cliente
     @Override
-    public void add(Veterinario cliente) {
-        veterinarioRepository.save(cliente);
+    public Veterinario add(Veterinario cliente) {
+       return veterinarioRepository.save(cliente);
     }
 
     @Override
-    public Veterinario SearchByCedulayContrasenia(String cedula, String contrasenia) {
-        return veterinarioRepository.findByCedulaYContrasenia(cedula, contrasenia);
+    public Veterinario SearchByCedula(String cedula) {
+        return veterinarioRepository.findByCedula(cedula);
     }
 
     @Override

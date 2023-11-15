@@ -30,8 +30,8 @@ public class ClienteServiceImpl implements ClienteService {
 
     // Elimina un cliente
     @Override
-    public void deleteById(Long id) {
-        clienteRepository.deleteById(id);
+    public void deleteById(Cliente cliente) {
+        clienteRepository.save(cliente);
     }
 
     // Actualiza un cliente

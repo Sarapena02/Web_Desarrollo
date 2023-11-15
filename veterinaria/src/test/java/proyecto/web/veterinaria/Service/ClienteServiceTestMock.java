@@ -37,7 +37,7 @@ public class ClienteServiceTestMock {
     public void ClienteService_createService_Cliente(){
     
         //arrange
-         Cliente cliente1 = new Cliente("Juan", "1234567895", "juan@correo", "123456789");
+         Cliente cliente1 = new Cliente("Juan", "1234567895", "juan@correo", "123456789","Activo");
 
         when(clienteRepository.save(cliente1)).thenReturn(
             cliente1
@@ -56,8 +56,8 @@ public class ClienteServiceTestMock {
         //arrange
         when(clienteRepository.findAll()).thenReturn(
             List.of(
-                 new Cliente("Juan", "1234567895", "juan@correo", "123456789"),
-                 new Cliente("Juan Pérez", "123456789", "juan@correo1.com", "123456789")
+                 new Cliente("Juan", "1234567895", "juan@correo", "123456789","Activo"),
+                 new Cliente("Juan Pérez", "123456789", "juan@correo1.com", "123456789","Activo")
             )
         );
 
@@ -74,7 +74,7 @@ public class ClienteServiceTestMock {
         //arrange
         when(clienteRepository.findById(1L)).thenReturn(
             Optional.of(
-                new Cliente("Juan", "1234567895", "juan@correo", "123456789")
+                new Cliente("Juan", "1234567895", "juan@correo", "123456789","Activo")
             )
         );
         //act
@@ -89,7 +89,7 @@ public class ClienteServiceTestMock {
     public void  ClienteService_searchByCedula_Cliente(){
         //arrange
         when(clienteRepository.findByCedula("1234567895")).thenReturn(
-            new Cliente("Juan", "1234567895", "juan@correo", "123456789")
+            new Cliente("Juan", "1234567895", "juan@correo", "123456789","Activo")
         );
         
         //act

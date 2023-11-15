@@ -14,10 +14,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import io.swagger.v3.oas.annotations.Operation;
 import proyecto.web.veterinaria.entity.Cliente;
 import proyecto.web.veterinaria.entity.Mascota;
+import proyecto.web.veterinaria.entity.UserEntity;
+import proyecto.web.veterinaria.repository.UserRepository;
+import proyecto.web.veterinaria.security.CustomUserDetailsService;
+import proyecto.web.veterinaria.security.JWTGenerator;
 import proyecto.web.veterinaria.service.ClienteService;
 
 @RestController
@@ -28,18 +36,31 @@ public class ClienteController {
     @Autowired
     ClienteService clienteService;
 
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    private CustomUserDetailsService customUserDetailsService;
+
+    @Autowired
+    AuthenticationManager authenticationManager;
+
+    @Autowired
+    JWTGenerator jwtGenerator;
+
     // se autentifica el cliente
     @PostMapping("/login")
     @Operation(summary = "Log in de cliente")
-    public ResponseEntity<Cliente> login(@RequestBody String cedula) {
-        // busca dentro de la base de datos el cliente que tenga la cedula
-        Cliente cliente = clienteService.SearchByCedula(cedula);
-        if(cliente == null){
-            ResponseEntity<Cliente> response = new ResponseEntity<>(cliente, HttpStatus.NOT_FOUND);
-            return response;
-        }
-        ResponseEntity<Cliente> response = new ResponseEntity<>(cliente, HttpStatus.OK);
-        return response;
+    public ResponseEntity login(@RequestBody Cliente cliente) {
+        Authentication authentication = authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(cliente.getCedula(), "123")
+        );
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        String token = jwtGenerator.generateToken(authentication);
+
+        return new ResponseEntity<>(token, HttpStatus.OK);
     }
 
     // Se muestra la lista de todos los clientes en formato json
@@ -54,11 +75,27 @@ public class ClienteController {
         return response;
     }
 
+    @GetMapping("/details")
+    public ResponseEntity<Cliente> buscarCliente(){
+
+        //Obtiene el cliente que inicio sesion
+        Cliente cliente = clienteService.SearchByCedula(
+            SecurityContextHolder.getContext().getAuthentication().getName()
+        );
+
+        if(cliente == null){
+            return new ResponseEntity<>(cliente, HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(cliente, HttpStatus.OK);
+        
+    }
+
     // Se busca un cliente por su id y se muestra como un json
     // localhost:8090/clientes/find/{id}
     @GetMapping("/find/{id}")
     @Operation(summary = "Obtener un Cliente por su id")
-    public ResponseEntity<Cliente> buscarCliente(@PathVariable("id") Long id) {
+    public ResponseEntity<Cliente> buscarClientea(@PathVariable("id") Long id) {
         // Buscar un cliente por su ID
         Cliente cliente = clienteService.SearchById(id);
 
@@ -76,21 +113,20 @@ public class ClienteController {
     // Se agrega un nuevo cliente a la base de datos
     @PostMapping("/agregar")
     @Operation(summary = "Agregar un nuevo Cliente")
-    public ResponseEntity<Cliente> agregarCliente(@RequestBody Cliente cliente) {
-        // Se busca si ya existe un cliente con esa cedula
-        Cliente clienteExiste = clienteService.SearchByCedula(cliente.getCedula());
-        // Si ya existe entonces se manda una alerta al formulario
-        if (clienteExiste == null ) {
-            Cliente newCliente = clienteService.add(cliente);
-            if (newCliente == null) {
-                ResponseEntity<Cliente> response = new ResponseEntity<>(newCliente, HttpStatus.BAD_REQUEST);
-                return response;
-            }
-            ResponseEntity<Cliente> response = new ResponseEntity<>(newCliente, HttpStatus.CREATED);
-            return response;
-        }else{
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+    public ResponseEntity <Cliente> agregarCliente(@RequestBody Cliente cliente) {
+
+        if(userRepository.existsByUsername(cliente.getCedula())){
+            return new ResponseEntity<Cliente>(cliente, HttpStatus.BAD_REQUEST);
         }
+
+        UserEntity userEntity  = customUserDetailsService.ClienteToUser(cliente);
+        cliente.setUser(userEntity);
+        Cliente newCliente = clienteService.add(cliente);
+         if (newCliente == null) {
+                return new ResponseEntity<Cliente>(newCliente, HttpStatus.BAD_REQUEST);
+            }
+        return new ResponseEntity<Cliente>(newCliente, HttpStatus.CREATED);
+                    
     }
 
     
@@ -100,7 +136,9 @@ public class ClienteController {
     @Operation(summary = "Eliminar un Cliente")
     public ResponseEntity<String> eliminarCliente(@PathVariable("id") Long id) {
         // Se elimina el cliente con el id que se selecciono
-        clienteService.deleteById(id);
+        Cliente cliente = clienteService.SearchById(id);
+        cliente.setEstado("Inactivo");
+        clienteService.deleteById(cliente);
         return new ResponseEntity<>("", HttpStatus.OK);
     }
 
